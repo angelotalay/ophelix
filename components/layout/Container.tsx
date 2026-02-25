@@ -9,10 +9,13 @@ type ContainerProps = {
 function Container({ children, className, minor, ...props }: ContainerProps) {
   return (
     <div
-      className={cslx(
-        "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
-        minor ? "py-6" : "py-12",
-      )}
+      className={
+        className +
+        cslx(
+          "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
+          minor ? "py-6" : "py-12",
+        )
+      }
       {...props}
     >
       {children}
