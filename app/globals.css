@@ -137,3 +137,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  @keyframes opx-move-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(50% - 20px));
+    }
+  }
+
+  .opx-animate-move-left {
+    animation: opx-move-left 10s linear infinite;
+  }
+}
+/* Stop the amination of the user doesn't want motion */
+@media (prefers-reduced-motion: reduce) {
+  .opx-animate-move-left {
+    animation: none !important;
+    transform: none !important;
+  }
+}

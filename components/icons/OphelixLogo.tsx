@@ -1,8 +1,8 @@
 import React from "react";
-import { clsx } from "clsx";
 import OphelixLogoFull from "@/assets/ophelix_transparent_full.svg";
 import OphelixLogoShort from "@/assets/ophelix_transparent_x.svg";
 import OphelixLogoText from "@/assets/ophelix_transparent_text.svg";
+
 type LogoProps = {
   className?: string;
 };

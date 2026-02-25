@@ -43,7 +43,11 @@ function ShopJewelButton() {
 function UserButton() {
   return (
     // For now, we have the hover accent do nothing ß
-    <Button variant={"ghost"} size={"icon-lg"} className={"hover:bg-primary"}>
+    <Button
+      variant={"ghost"}
+      size={"icon-lg"}
+      className={"hover:bg-extra-dark"}
+    >
       <UserIcon className={"text-white size-6"} />
     </Button>
   );
