@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import NavBar from "@/components/nav/NavBar";
-import AnnouncementBar from "@/components/announcementBar/AnnouncementBar";
+import { MarqueeAnnouncementBar } from "@/components/announcementBar/AnnouncementBar";
 
 export const metadata: Metadata = {
   title: "Ophelix",
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased w-screen`}>
-        <AnnouncementBar />
+        <MarqueeAnnouncementBar />
         <NavBar />
         {children}
       </body>

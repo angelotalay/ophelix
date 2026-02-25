@@ -1,35 +1,34 @@
 import React from "react";
+import Marquee from "react-fast-marquee";
 
-// This will either be from
 const ANNOUNCEMENT_TEXT = [
-  {
-    label: "✓ 3 Month Money-Back Guarantee",
-  },
-  {
-    label: "✓ 5-Year UK Warranty",
-  },
-  {
-    label: "✓ 30-Day Service Turnaround",
-  },
-  {
-    label: "✓ Direct Human Support",
-  },
+  { label: "✓ 3 Month Money-Back Guarantee" },
+  { label: "•" },
+  { label: "✓ 5-Year UK Warranty" },
+  { label: "•" },
+  { label: "✓ 30-Day Service Turnaround" },
+  { label: "•" },
+  { label: "✓ Direct Human Support" },
+  { label: "•" },
 ];
 
-function AnnouncementBar() {
+function MarqueeAnnouncementBar() {
   return (
-    <div className={"bg-extra-dark"}>
-      <div
-        className={
-          "bg-extra-dark text-extra-dark-foreground p-2 flex flex-row justify-evenly items-center opx-animate-move-left"
-        }
-      >
-        {ANNOUNCEMENT_TEXT.map((item) => (
-          <li key={item.label}>{item.label.toUpperCase()}</li>
-        ))}
-      </div>
-    </div>
+    <Marquee
+      autoFill
+      className={
+        "flex flex-row bg-extra-dark text-extra-dark-foreground w-full py-2"
+      }
+      speed={60}
+      loop={0}
+    >
+      {ANNOUNCEMENT_TEXT.map((item, index) => (
+        <div key={item.label + index} className={"flex items-center px-4"}>
+          <span>{item.label}</span>
+        </div>
+      ))}
+    </Marquee>
   );
 }
 
-export default AnnouncementBar;
+export { MarqueeAnnouncementBar };
