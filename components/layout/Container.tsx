@@ -16,7 +16,7 @@ function Container({
     <div
       className={cslx(
         "w-full max-w-7xl px-4 sm:px-6 lg:px-12",
-        minor ? "py-6" : "py-12",
+        minor ? "py-16" : "py-24",
         className,
       )}
       {...props}
