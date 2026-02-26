@@ -2,14 +2,11 @@
 import React from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { OphelixText } from "@/components/icons/OphelixLogo";
-import Container from "@/components/layout/Container";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import RoundedButton from "@/components/buttons/RoundedButton";
@@ -35,7 +32,7 @@ function UserButton() {
 export default function NavBar() {
   return (
     <NavigationMenu color="primary" className="w-full bg-primary">
-      <div className="w-full md:px-12 md:py-4">
+      <div className="mx-auto w-full max-w-7xl md:px-12 md:py-4">
         <NavigationMenuList className="flex w-full items-center justify-between">
           <NavigationMenuItem className={"flex justify-start"}>
             <OphelixText />

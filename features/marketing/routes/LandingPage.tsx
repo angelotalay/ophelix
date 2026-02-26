@@ -1,11 +1,12 @@
 import React from "react";
-import Container from "@/components/layout/Container";
 import Hero from "@/features/marketing/components/Hero";
+import FeatureImage from "@/features/marketing/components/FeatureImage";
 
 function LandingPage() {
   return (
-    <div className={"w-full"}>
+    <div className={""}>
       <Hero />
+      <FeatureImage color={"background"} />
     </div>
   );
 }
