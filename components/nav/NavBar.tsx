@@ -12,23 +12,20 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
+import RoundedButton from "@/components/buttons/RoundedButton";
 import MENU_LINKS from "@/components/nav/navbar.copy";
 
 function ShopJewelButton() {
   return (
-    <Button
-      variant={"outline"}
-      className={"h-fit rounded-full bg-white text-primary"}
-      size={"sm"}
-    >
+    <RoundedButton variant={"outline"} size={"sm"} color={"background"}>
       Shop Jewel
-    </Button>
+    </RoundedButton>
   );
 }
 
 function UserButton() {
   return (
-    // For now, we have the hover accent do nothing
+    // For now, we have the hover accent do nothing also do we need a custom button here?
     <Button variant={"ghost"} size={"icon-lg"} className="hover:bg-extra-dark">
       <UserIcon className="size-6 text-white" />
     </Button>

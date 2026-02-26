@@ -2,21 +2,17 @@ import React from "react";
 import { MuxBackgroundVideo } from "@mux/mux-background-video/react";
 
 import Container from "@/components/layout/Container";
-import { Button } from "@/components/ui/button";
+import RoundedButton from "@/components/buttons/RoundedButton";
 
 function HeaderButtons() {
   return (
     <>
-      <Button
-        className={"rounded-full bg-primary text-primary-foreground"}
-        size={"lg"}
-        variant={"default"}
-      >
+      <RoundedButton size={"lg"} color={"primary"}>
         Shop Jewel
-      </Button>
-      <Button className={"rounded-full bg-background text-foreground"}>
+      </RoundedButton>
+      <RoundedButton size={"lg"} color={"background"}>
         Join the insider list
-      </Button>
+      </RoundedButton>
     </>
   );
 }
