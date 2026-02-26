@@ -39,7 +39,8 @@ function RoundedButton({
     <Button
       className={cn(className, "rounded-full", {
         "bg-primary text-primary-foreground": color === "primary",
-        "bg-background text-foreground": color === "background",
+        "border-foreground bg-background text-foreground":
+          color === "background",
       })}
       size={size}
       variant={variant}

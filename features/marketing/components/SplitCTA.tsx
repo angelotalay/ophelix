@@ -44,7 +44,7 @@ function CTAImage() {
 function SplitCTA() {
   return (
     <Container className="flex w-full flex-row items-center">
-      <div className="w-1/2 items-center">
+      <div className="w-1/2 items-center gap-x-4">
         <CTAContent />
       </div>
       <div>
