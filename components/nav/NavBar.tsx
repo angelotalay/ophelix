@@ -12,27 +12,13 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
-
-const MENU_LINKS = [
-  {
-    label: "Why Ophelix Exists",
-    link: "/why-ophelix",
-  },
-  {
-    label: "Service Promise",
-    link: "/service-promise",
-  },
-  {
-    label: "Your Concerns",
-    link: "/your-concerns",
-  },
-];
+import MENU_LINKS from "@/components/nav/navbar.copy";
 
 function ShopJewelButton() {
   return (
     <Button
       variant={"outline"}
-      className={"rounded-full  bg-white text-primary h-fit"}
+      className={"h-fit rounded-full bg-white text-primary"}
       size={"sm"}
     >
       Shop Jewel
@@ -42,26 +28,21 @@ function ShopJewelButton() {
 
 function UserButton() {
   return (
-    // For now, we have the hover accent do nothing ß
-    <Button
-      variant={"ghost"}
-      size={"icon-lg"}
-      className={"hover:bg-extra-dark"}
-    >
-      <UserIcon className={"text-white size-6"} />
+    // For now, we have the hover accent do nothing
+    <Button variant={"ghost"} size={"icon-lg"} className="hover:bg-extra-dark">
+      <UserIcon className="size-6 text-white" />
     </Button>
   );
 }
 
 export default function NavBar() {
   return (
-    <NavigationMenu color="primary" className="bg-primary w-full">
-      <Container minor className="w-full">
+    <NavigationMenu color="primary" className="w-full bg-primary">
+      <div className="w-full md:px-12 md:py-4">
         <NavigationMenuList className="flex w-full items-center justify-between">
-          <NavigationMenuItem>
+          <NavigationMenuItem className={"flex justify-start"}>
             <OphelixText />
           </NavigationMenuItem>
-
           <div className="flex items-center gap-4 text-primary-foreground">
             {MENU_LINKS.map((item) => (
               <NavigationMenuLink key={item.label} href={item.link}>
@@ -72,7 +53,7 @@ export default function NavBar() {
             <UserButton />
           </div>
         </NavigationMenuList>
-      </Container>
+      </div>
     </NavigationMenu>
   );
 }

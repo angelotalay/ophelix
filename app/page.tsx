@@ -1,9 +1,5 @@
 import Container from "@/components/layout/Container";
-
+import LandingPage from "@/features/marketing/routes/LandingPage";
 export default function Home() {
-  return (
-    <Container minor>
-      <h1> Test </h1>
-    </Container>
-  );
+  return <LandingPage />;
 }

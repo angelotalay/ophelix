@@ -1,16 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-
-const ANNOUNCEMENT_TEXT = [
-  { label: "✓ 3 Month Money-Back Guarantee" },
-  { label: "•" },
-  { label: "✓ 5-Year UK Warranty" },
-  { label: "•" },
-  { label: "✓ 30-Day Service Turnaround" },
-  { label: "•" },
-  { label: "✓ Direct Human Support" },
-  { label: "•" },
-];
+import ANNOUNCEMENT_TEXT from "@/components/announcementBar/announcement.copy";
 
 function MarqueeAnnouncementBar() {
   return (
@@ -31,4 +21,4 @@ function MarqueeAnnouncementBar() {
   );
 }
 
-export { MarqueeAnnouncementBar };
+export default MarqueeAnnouncementBar;

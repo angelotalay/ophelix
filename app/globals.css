@@ -50,13 +50,17 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
 
+  /* Fonts */
+  --font-sans: var(--font-inter-tight);
+  --font-display: var(--font-pp-editorial);
+
 }
 
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.9702 0 0);
+  --foreground: oklch(0.1772 0.0564 302.44);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -89,6 +93,10 @@
   /* Custom colours */
   --extra-dark: oklch(0.2036 0.0716 305.83);
   --extra-dark-foreground: oklch(0.7686 0.1386 91.59);
+
+  /* Fallback Fonts */
+  --font-inter-tight: system-ui;
+  --font-pp-editorial: serif;
 }
 
 .dark {
@@ -127,6 +135,9 @@
   --extra-dark: oklch(0.2036 0.0716 305.83);
   --extra-dark-foreground: oklch(0.7686 0.1386 91.59);
 
+  /* Fallback fonts */
+  --font-inter-tight: system-ui;
+  --font-pp-editorial: serif;
 }
 
 @layer base {
@@ -135,34 +146,5 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-@layer utilities {
-  @keyframes opx-move-left {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-50% - 20px));
-    }
-  }
-  .opx-animate-move-left {
-    animation: opx-move-left 5s linear infinite;
-  }
-  @keyframes marquee-left {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-}
-/* Stop the amination of the user doesn't want motion */
-@media (prefers-reduced-motion: reduce) {
-  .opx-animate-move-left {
-    animation: none !important;
-    transform: none !important;
   }
 }
