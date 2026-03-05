@@ -7,4 +7,16 @@ const SPLIT_CTA_CONTENT = {
   ],
 };
 
-export default SPLIT_CTA_CONTENT;
+const SPLIT_CTA_CONTENT_2 = {
+  tag: "Craftsmanship",
+  title: "We Felt This Problem",
+  descriptions: [
+    "Our rules are written down clearly, no surprises. If we deny a claim, we tell you exactly why, in writing, before anything costs you money. If we don't return your repaired watch within 30 days, we refund you £50 automatically. And we pay the return shipping ,every time.",
+    "Full details on our Service Promise Page",
+  ],
+};
+
+export default {
+  SPLIT_CTA_CONTENT,
+  SPLIT_CTA_CONTENT_2,
+} as const;

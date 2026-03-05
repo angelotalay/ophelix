@@ -11,7 +11,6 @@ interface CTAContentProps {
   tag?: string;
   title?: string;
   descriptions?: string[];
-  intent?: SplitCTAProps["intent"];
 }
 
 interface CTAImageProps {
@@ -19,9 +18,9 @@ interface CTAImageProps {
 }
 
 function CTAContent({
-  tag = SPLIT_CTA_CONTENT.tag,
-  title = SPLIT_CTA_CONTENT.title,
-  descriptions = SPLIT_CTA_CONTENT.description,
+  tag = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.tag,
+  title = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.title,
+  descriptions = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.description,
 }: CTAContentProps) {
   return (
     <>
@@ -52,14 +51,24 @@ function CTAImage({ src = PLACEHOLDER_IMAGE_PATH }: CTAImageProps) {
   );
 }
 
-function SplitCTA({ intent = "extra-dark" }) {
+function SplitCTA({
+  intent = "extra-dark",
+  title,
+  tag,
+  descriptions,
+}: {
+  intent?: "primary" | "extra-dark";
+  title?: string;
+  tag?: string;
+  descriptions?: string[];
+}) {
   return (
     <Container
       className={"flex w-full flex-row items-center gap-y-2"}
       data-intent={intent}
     >
       <div className="w-1/2">
-        <CTAContent />
+        <CTAContent title={title} tag={tag} descriptions={descriptions} />
       </div>
       <div className={"w-1/2"}>
         <CTAImage />

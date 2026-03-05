@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "@/features/marketing/components/Hero";
 import FeatureImage from "@/features/marketing/components/FeatureImage";
 import SplitCTA from "@/features/marketing/components/SplitCTA";
+import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta.copy";
 
 function LandingPage() {
   return (
@@ -17,7 +18,12 @@ function LandingPage() {
         <SplitCTA intent={"primary"} />
       </div>
       <div className={"w-full bg-extra-dark"}>
-        <SplitCTA intent={"extra-dark"} />
+        <SplitCTA
+          intent={"extra-dark"}
+          title={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT_2.title}
+          tag={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT_2.tag}
+          descriptions={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT_2.descriptions}
+        />
       </div>
     </div>
   );

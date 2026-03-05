@@ -14,7 +14,7 @@ import MENU_LINKS from "@/components/nav/navbar.copy";
 
 function ShopJewelButton() {
   return (
-    <RoundedButton variant={"outline"} size={"sm"} color={"background"}>
+    <RoundedButton variant={"outline"} size={"sm"} intent={"background"}>
       Shop Jewel
     </RoundedButton>
   );
