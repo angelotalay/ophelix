@@ -1,6 +1,20 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cva } from "class-variance-authority";
+import { VariantProps } from "class-variance-authority";
+
+const roundedButtonVariants = cva("rounded-full", {
+  variants: {
+    intent: {
+      primary: "bg-primary text-primary-foreground",
+      background: "bg-background text-foreground border-foreground",
+      secondary: "bg-secondary text-secondary-foreground",
+    },
+  },
+  defaultVariants: {
+    intent: "primary",
+  },
+});
 
 type RoundedButtonProps = {
   children: React.ReactNode;
@@ -25,23 +39,18 @@ type RoundedButtonProps = {
     | "ghost"
     | null
     | undefined;
-  color?: "primary" | "background" | "secondary";
-};
+} & VariantProps<typeof roundedButtonVariants>;
 
 function RoundedButton({
   children,
   className,
   size = "sm",
   variant = "default",
-  color = "primary",
+  intent = "primary",
 }: RoundedButtonProps) {
   return (
     <Button
-      className={cn(className, "rounded-full", {
-        "bg-primary text-primary-foreground": color === "primary",
-        "border-foreground bg-background text-foreground":
-          color === "background",
-      })}
+      className={roundedButtonVariants({ intent, className })}
       size={size}
       variant={variant}
     >

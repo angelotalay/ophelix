@@ -7,9 +7,18 @@ function LandingPage() {
   return (
     // The div here should probably be a Section component
     <div>
-      <Hero />
-      <FeatureImage color={"background"} />
-      <SplitCTA />
+      <div>
+        <Hero />
+      </div>
+      <div>
+        <FeatureImage color={"background"} />
+      </div>
+      <div className="w-full">
+        <SplitCTA intent={"primary"} />
+      </div>
+      <div className={"w-full bg-extra-dark"}>
+        <SplitCTA intent={"extra-dark"} />
+      </div>
     </div>
   );
 }

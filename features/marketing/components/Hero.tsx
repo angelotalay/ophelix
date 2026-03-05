@@ -7,10 +7,10 @@ import RoundedButton from "@/components/buttons/RoundedButton";
 function HeaderButtons() {
   return (
     <>
-      <RoundedButton size={"lg"} color={"primary"}>
+      <RoundedButton size={"lg"} intent={"primary"}>
         Shop Jewel
       </RoundedButton>
-      <RoundedButton size={"lg"} color={"background"}>
+      <RoundedButton size={"lg"} intent={"background"} variant={"default"}>
         Join the insider list
       </RoundedButton>
     </>
