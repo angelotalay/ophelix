@@ -37,14 +37,14 @@ function TestimonialItem({
         ))}
       </div>
       <div>
-        <div className={"flex max-w-4xl flex-col gap-4"}>
+        <div className={"flex max-w-4xl flex-col gap-8"}>
           <p className="text-center text-4xl">{review}</p>
           <div className="flex flex-row items-center justify-center gap-2">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
             </Avatar>
             <span className="block">
-              <p>{name}</p>
+              <p className="font-semibold">{name}</p>
               <p>{occupationAndLocation}</p>
             </span>
           </div>
