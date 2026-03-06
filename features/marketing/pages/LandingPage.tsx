@@ -5,23 +5,16 @@ import SplitCTA from "@/features/marketing/components/splitCta/SplitCTA";
 import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta/splitCta.copy";
 import CustomerStory from "@/features/marketing/components/customerStory/CustsomerStory";
 import CarouselHeadline from "@/features/marketing/components/carouselHeadline/CarouselHeadline";
+import Testimonials from "@/features/marketing/components/testimonials/Testomonials";
 
 function LandingPage() {
   return (
     // The div here should probably be a Section component
     <div>
-      <div>
-        <Hero />
-      </div>
-      <div>
-        <FeatureImage color={"background"} />
-      </div>
-      <div className="w-full">
-        <SplitCTA intent={"primary"} />
-      </div>
-      <div>
-        <CustomerStory />
-      </div>
+      <Hero />
+      <FeatureImage color={"background"} />
+      <SplitCTA intent={"primary"} />
+      <CustomerStory />
       <div className={"w-full bg-extra-dark"}>
         <SplitCTA
           intent={"extra-dark"}
@@ -31,9 +24,8 @@ function LandingPage() {
           src={"/images/placeholder_image_3.png"}
         />
       </div>
-      <div>
-        <CarouselHeadline />
-      </div>
+      <CarouselHeadline />
+      <Testimonials />
     </div>
   );
 }
