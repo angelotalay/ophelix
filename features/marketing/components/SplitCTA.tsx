@@ -8,18 +8,12 @@ import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta.copy";
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_2.png";
 
 interface SplitCTAProps {
-  tag: string;
-  title: string;
-  descriptions: string[];
-  src: string;
+  tag?: string;
+  title?: string;
+  descriptions?: string[];
+  src?: string;
   intent: "primary" | "extra-dark";
 }
-
-// interface CTAContentProps {
-//   tag?: string;
-//   title?: string;
-//   descriptions?: string[];
-// }
 
 type CTAContentProps = Omit<SplitCTAProps, "src" | "intent">;
 
