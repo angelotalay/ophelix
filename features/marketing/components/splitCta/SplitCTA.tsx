@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import Container from "@/components/layout/Container";
 import RoundedButton from "@/components/buttons/RoundedButton";
-import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta.copy";
+import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta/splitCta.copy";
 
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_2.png";
 

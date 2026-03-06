@@ -1,13 +1,13 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-import ANNOUNCEMENT_TEXT from "@/components/announcementBar/announcement.copy";
+import ANNOUNCEMENT_TEXT from "@/features/marketing/components/announcementBar/announcement.copy";
 
 function MarqueeAnnouncementBar() {
   return (
     <Marquee
       autoFill
       className={
-        "flex flex-row bg-extra-dark text-extra-dark-foreground w-full py-2"
+        "flex w-full flex-row bg-extra-dark py-2 text-extra-dark-foreground"
       }
       speed={60}
       loop={0}

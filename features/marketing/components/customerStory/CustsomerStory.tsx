@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import Container from "@/components/layout/Container";
-import CUSTOMER_STORY_CONTENT from "@/features/marketing/components/customerStory.copy";
+import CUSTOMER_STORY_CONTENT from "@/features/marketing/components/customerStory/customerStory.copy";
 
 const PLACE_HOLDER_IMAGE_PATH = "/images/placeholder_image_3.png";
 interface StoryImageProps {

@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import { Inter_Tight } from "next/font/google";
 
 import NavBar from "@/components/nav/NavBar";
-import MarqueeAnnouncementBar from "@/components/announcementBar/AnnouncementBar";
+import MarqueeAnnouncementBar from "@/features/marketing/components/announcementBar/AnnouncementBar";
 import React from "react";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 
@@ -68,7 +68,7 @@ export default function RootLayout({
       lang="en"
       className={`${ppEditorialNew.variable} ${interTight.variable}`}
     >
-      <body className={`antialiased w-dvw`}>
+      <body className={`w-dvw antialiased`}>
         <MarqueeAnnouncementBar />
         <NavBar />
         {children}

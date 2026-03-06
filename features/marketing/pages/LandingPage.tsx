@@ -1,10 +1,10 @@
 import React from "react";
-import Hero from "@/features/marketing/components/Hero";
-import FeatureImage from "@/features/marketing/components/FeatureImage";
-import SplitCTA from "@/features/marketing/components/SplitCTA";
-import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta.copy";
-import CustomerStory from "@/features/marketing/components/CustsomerStory";
-import CarouselHeadline from "@/features/marketing/components/CarouselHeadline";
+import Hero from "@/features/marketing/components/hero/Hero";
+import FeatureImage from "@/features/marketing/components/featureImage/FeatureImage";
+import SplitCTA from "@/features/marketing/components/splitCta/SplitCTA";
+import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta/splitCta.copy";
+import CustomerStory from "@/features/marketing/components/customerStory/CustsomerStory";
+import CarouselHeadline from "@/features/marketing/components/carouselHeadline/CarouselHeadline";
 
 function LandingPage() {
   return (
