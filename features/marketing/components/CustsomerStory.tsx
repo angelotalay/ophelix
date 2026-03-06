@@ -30,9 +30,9 @@ function StoryImageHeadline({
           fill
         />
       </div>
-      <Container className="relative z-10 flex justify-center font-display text-5xl text-background">
-        <h2>{title}</h2>
-        <p>{text}</p>
+      <Container className="relative z-10 flex flex-col gap-2 text-background">
+        <h2 className="font-display text-5xl">{title}</h2>
+        <p className={"text-2xl"}>{text}</p>
       </Container>
     </div>
   );
@@ -50,7 +50,9 @@ function StoryImage({ src, titles }: StoryImageProps) {
         />
       </div>
       <Container
-        className={"relative z-10 font-display text-5xl text-background"}
+        className={
+          "relative z-10 flex flex-col gap-2 font-display text-5xl text-background"
+        }
       >
         {titles.map((text) => (
           <h2 key={text}>{text}</h2>
@@ -64,9 +66,9 @@ function CustomerStory() {
   return (
     <div className={"w-full"}>
       <StoryImageHeadline
-        text={"What's The Real Risk After You Buy?"}
+        title={"What's The Real Risk After You Buy?"}
         src={PLACE_HOLDER_IMAGE_PATH}
-        title={"An everyday watch. A real warranty. A fast repair path."}
+        text={"An everyday watch. A real warranty. A fast repair path."}
       />
       {CUSTOMER_STORY_CONTENT.map((item, idx) => (
         <StoryImage
