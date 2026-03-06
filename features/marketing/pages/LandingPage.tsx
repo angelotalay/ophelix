@@ -4,6 +4,8 @@ import FeatureImage from "@/features/marketing/components/FeatureImage";
 import SplitCTA from "@/features/marketing/components/SplitCTA";
 import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta.copy";
 import CustomerStory from "@/features/marketing/components/CustsomerStory";
+import CarouselHeadline from "@/features/marketing/components/CarouselHeadline";
+
 function LandingPage() {
   return (
     // The div here should probably be a Section component
@@ -28,6 +30,9 @@ function LandingPage() {
           descriptions={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT_2.descriptions}
           src={"/images/placeholder_image_3.png"}
         />
+      </div>
+      <div>
+        <CarouselHeadline />
       </div>
     </div>
   );

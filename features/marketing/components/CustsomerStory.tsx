@@ -16,7 +16,7 @@ interface StoryImageHeadlineProps extends Omit<StoryImageProps, "titles"> {
 }
 
 function StoryImageHeadline({
-  src,
+  src = PLACE_HOLDER_IMAGE_PATH,
   title = "",
   text,
 }: StoryImageHeadlineProps) {
@@ -25,9 +25,9 @@ function StoryImageHeadline({
       <div className="absolute inset-0 z-0 h-full w-full">
         <Image
           src={src}
-          alt="Empty placeholder image"
-          className={"object-cover"}
+          alt={"Empty placeholder image"}
           fill
+          className={"aspect-video object-cover"}
         />
       </div>
       <Container className="relative z-10 flex h-full flex-col items-center justify-center gap-2 text-background">
@@ -39,14 +39,18 @@ function StoryImageHeadline({
 }
 
 // Images have overlays that have titles,
-function StoryImage({ src, titles }: StoryImageProps) {
+function StoryImage({
+  src = PLACE_HOLDER_IMAGE_PATH,
+  titles,
+}: StoryImageProps) {
   return (
     <div className={"relative md:h-200"}>
       <div className="absolute inset-0 z-0 w-full">
         <Image
-          src={"/images/placeholder_image_3.png"}
+          src={PLACE_HOLDER_IMAGE_PATH}
           alt={"Empty placeholder image"}
           fill
+          className={"aspect-video object-cover"}
         />
       </div>
       <Container
