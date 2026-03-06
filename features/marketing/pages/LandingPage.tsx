@@ -3,7 +3,7 @@ import Hero from "@/features/marketing/components/Hero";
 import FeatureImage from "@/features/marketing/components/FeatureImage";
 import SplitCTA from "@/features/marketing/components/SplitCTA";
 import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta.copy";
-
+import CustomerStory from "@/features/marketing/components/CustsomerStory";
 function LandingPage() {
   return (
     // The div here should probably be a Section component
@@ -16,6 +16,9 @@ function LandingPage() {
       </div>
       <div className="w-full">
         <SplitCTA intent={"primary"} />
+      </div>
+      <div>
+        <CustomerStory />
       </div>
       <div className={"w-full bg-extra-dark"}>
         <SplitCTA
