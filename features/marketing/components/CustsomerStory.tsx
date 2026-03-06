@@ -21,7 +21,7 @@ function StoryImageHeadline({
   text,
 }: StoryImageHeadlineProps) {
   return (
-    <div className="relative md:h-150">
+    <div className="relative md:h-100">
       <div className="absolute inset-0 z-0 h-full w-full">
         <Image
           src={src}
@@ -30,7 +30,7 @@ function StoryImageHeadline({
           fill
         />
       </div>
-      <Container className="relative z-10 flex flex-col gap-2 text-background">
+      <Container className="relative z-10 flex h-full flex-col items-center justify-center gap-2 text-background">
         <h2 className="font-display text-5xl">{title}</h2>
         <p className={"text-2xl"}>{text}</p>
       </Container>
@@ -41,7 +41,7 @@ function StoryImageHeadline({
 // Images have overlays that have titles,
 function StoryImage({ src, titles }: StoryImageProps) {
   return (
-    <div className={"relative md:h-250"}>
+    <div className={"relative md:h-200"}>
       <div className="absolute inset-0 z-0 w-full">
         <Image
           src={"/images/placeholder_image_3.png"}
@@ -51,7 +51,7 @@ function StoryImage({ src, titles }: StoryImageProps) {
       </div>
       <Container
         className={
-          "relative z-10 flex flex-col gap-2 font-display text-5xl text-background"
+          "relative z-10 flex h-full flex-col justify-center gap-2 font-display text-5xl text-background"
         }
       >
         {titles.map((text) => (

@@ -11,7 +11,7 @@ const CUSTOMER_STORY_CONTENT = [
   },
   {
     title: [
-      "Maybe It's Covered",
+      "Maybe It's Covered,",
       "Maybe It Isn't.",
       "Maybe He'll Find Out ",
       "In Two Weeks.",

@@ -26,6 +26,7 @@ function LandingPage() {
           title={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT_2.title}
           tag={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT_2.tag}
           descriptions={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT_2.descriptions}
+          src={"/images/placeholder_image_3.png"}
         />
       </div>
     </div>

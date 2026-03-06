@@ -7,11 +7,21 @@ import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta.copy";
 
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_2.png";
 
-interface CTAContentProps {
-  tag?: string;
-  title?: string;
-  descriptions?: string[];
+interface SplitCTAProps {
+  tag: string;
+  title: string;
+  descriptions: string[];
+  src: string;
+  intent: "primary" | "extra-dark";
 }
+
+// interface CTAContentProps {
+//   tag?: string;
+//   title?: string;
+//   descriptions?: string[];
+// }
+
+type CTAContentProps = Omit<SplitCTAProps, "src" | "intent">;
 
 interface CTAImageProps {
   src?: string;
@@ -56,22 +66,18 @@ function SplitCTA({
   title,
   tag,
   descriptions,
-}: {
-  intent?: "primary" | "extra-dark";
-  title?: string;
-  tag?: string;
-  descriptions?: string[];
-}) {
+  src,
+}: SplitCTAProps) {
   return (
     <Container
-      className={"flex w-full flex-row items-center gap-y-2"}
+      className={"flex w-full flex-row items-center gap-y-4"}
       data-intent={intent}
     >
       <div className="w-1/2">
         <CTAContent title={title} tag={tag} descriptions={descriptions} />
       </div>
       <div className={"w-1/2"}>
-        <CTAImage />
+        <CTAImage src={src} />
       </div>
     </Container>
   );
