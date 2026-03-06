@@ -6,7 +6,7 @@ import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta/splitCta
 import CustomerStory from "@/features/marketing/components/customerStory/CustsomerStory";
 import CarouselHeadline from "@/features/marketing/components/carouselHeadline/CarouselHeadline";
 import Testimonials from "@/features/marketing/components/testimonials/Testomonials";
-
+import CTA from "@/features/marketing/components/cta/CTA";
 function LandingPage() {
   return (
     // The div here should probably be a Section component
@@ -26,6 +26,7 @@ function LandingPage() {
       </div>
       <CarouselHeadline />
       <Testimonials />
+      <CTA />
     </div>
   );
 }

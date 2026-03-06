@@ -17,8 +17,6 @@ function HeaderButtons() {
   );
 }
 
-// NEED UNIT TESTS
-// ALSO THE GAP SPACING NEEDS WORK
 function HeroHeader() {
   return (
     <Container className={"flex flex-col gap-y-6"}>
