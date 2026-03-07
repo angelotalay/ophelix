@@ -7,6 +7,7 @@ import NavBar from "@/components/nav/NavBar";
 import MarqueeAnnouncementBar from "@/features/marketing/components/announcementBar/AnnouncementBar";
 import React from "react";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Ophelix",
@@ -72,6 +73,7 @@ export default function RootLayout({
         <MarqueeAnnouncementBar />
         <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   );

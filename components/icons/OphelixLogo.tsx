@@ -21,7 +21,7 @@ function OphelixText() {
 }
 
 function OphelixShort({ className }: LogoProps) {
-  return <OphelixLogoShort className={"w-auto"} />;
+  return <OphelixLogoShort className={className} />;
 }
 
 export { OphelixFull, OphelixShort, OphelixText };

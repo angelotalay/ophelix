@@ -9,7 +9,7 @@ import Testimonials from "@/features/marketing/components/testimonials/Testomoni
 import CTA from "@/features/marketing/components/cta/CTA";
 function LandingPage() {
   return (
-    // The div here should probably be a Section component
+    // The divs here should probably be a Section component
     <div>
       <Hero />
       <FeatureImage color={"background"} />
@@ -24,8 +24,12 @@ function LandingPage() {
           src={"/images/placeholder_image_3.png"}
         />
       </div>
-      <CarouselHeadline />
-      <Testimonials />
+      <div className="bg-background-grey">
+        <CarouselHeadline />
+      </div>
+      <div className="bg-white">
+        <Testimonials />
+      </div>
       <CTA />
     </div>
   );

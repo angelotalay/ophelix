@@ -40,6 +40,7 @@
   /* Additional Colours */
   --color-extra-dark: var(--extra-dark);
   --color-extra-dark-foreground: var(--extra-dark-foreground);
+  --color-background-grey: var(--background-grey);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -92,6 +93,7 @@
   /* Custom colours */
   --extra-dark: oklch(0.2036 0.0716 305.83);
   --extra-dark-foreground: oklch(0.7686 0.1386 91.59);
+  --background-grey: oklch(0.9702 0 0);
 
   /* Fallback Fonts */
   --font-inter-tight: system-ui;
@@ -132,6 +134,8 @@
   /* Custom colours */
   --extra-dark: oklch(0.2036 0.0716 305.83);
   --extra-dark-foreground: oklch(0.7686 0.1386 91.59);
+  --background-grey: oklch(0.9702 0 0);
+
 
   /* Fallback fonts */
   --font-inter-tight: system-ui;

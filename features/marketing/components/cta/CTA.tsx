@@ -10,7 +10,7 @@ const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_4.jpg";
 function CTA() {
   return (
     <div className="relative w-full overflow-hidden md:h-150">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 brightness-50">
         <Image
           src={PLACEHOLDER_IMAGE_PATH}
           fill
