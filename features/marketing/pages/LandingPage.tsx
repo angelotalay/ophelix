@@ -13,7 +13,12 @@ function LandingPage() {
     <div>
       <Hero />
       <FeatureImage color={"background"} />
-      <SplitCTA intent={"primary"} />
+      <SplitCTA
+        intent={"primary"}
+        title={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.title}
+        tag={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.tag}
+        descriptions={SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.description}
+      />
       <CustomerStory />
       <div className={"w-full bg-extra-dark"}>
         <SplitCTA
