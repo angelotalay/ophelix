@@ -2,18 +2,20 @@ import React from "react";
 import Image from "next/image";
 
 import Container from "@/components/layout/Container";
+import { BaseHeadlineCTAProps } from "@/features/marketing/types";
+
 import CUSTOMER_STORY_CONTENT from "@/features/marketing/components/customerStory/customerStory.copy";
 
 const PLACE_HOLDER_IMAGE_PATH = "/images/placeholder_image_3.png";
+
 interface StoryImageProps {
   src: string;
   titles: string[];
 }
 
-interface StoryImageHeadlineProps extends Omit<StoryImageProps, "titles"> {
-  title: string;
-  text: string;
-}
+type StoryImageHeadlineProps = Omit<BaseHeadlineCTAProps, "tag"> & {
+  src: string;
+};
 
 function StoryImageHeadline({
   src = PLACE_HOLDER_IMAGE_PATH,
