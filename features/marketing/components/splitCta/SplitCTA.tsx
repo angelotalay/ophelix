@@ -4,16 +4,17 @@ import Image from "next/image";
 import Container from "@/components/layout/Container";
 import RoundedButton from "@/components/buttons/RoundedButton";
 import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta/splitCta.copy";
+import { BaseHeadlineCTAProps } from "@/features/marketing/types";
 
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_2.png";
 
-interface SplitCTAProps {
-  tag?: string;
-  title?: string;
+type SplitCTAProps = Omit<BaseHeadlineCTAProps, "text"> & {
+  tag: string;
+  title: string;
   descriptions?: string[];
   src?: string;
   intent: "primary" | "extra-dark";
-}
+};
 
 type CTAContentProps = Omit<SplitCTAProps, "src" | "intent">;
 
