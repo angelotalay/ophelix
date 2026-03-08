@@ -1,5 +1,7 @@
+import WhyPage from "@/features/marketing/pages/WhyPage";
+
 function Page() {
-  return;
+  return <WhyPage />;
 }
 
 export default Page;
