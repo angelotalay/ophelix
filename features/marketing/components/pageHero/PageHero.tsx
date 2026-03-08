@@ -1,15 +1,24 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import Image from "next/image";
+import { clsx } from "clsx";
 
-import Container from "@/components/layout/Container";
+import { BaseHeadlineCTAProps } from "@/features/marketing/types";
 
-interface PageHeroProps {
-  title: string;
-  text: string;
-  src?: string;
-}
+type PageHeroProps = BaseHeadlineCTAProps;
 
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_4.jpg";
+
+type PageHeroContainerProps = HTMLAttributes<HTMLDivElement> & {
+  children: React.ReactNode;
+};
+
+function PageHeroContainer({ children, className }: PageHeroContainerProps) {
+  return (
+    <div className={clsx("mx-auto w-full max-w-7xl pt-24 pb-8", className)}>
+      {children}
+    </div>
+  );
+}
 
 function PageHero({
   title,
@@ -17,7 +26,7 @@ function PageHero({
   text,
 }: PageHeroProps) {
   return (
-    <Container className="md:h-175">
+    <PageHeroContainer className="md:h-175">
       <div className="relative h-full">
         <div className="absolute inset-0 z-0">
           <Image
@@ -32,7 +41,7 @@ function PageHero({
           <p className="text-center text-2xl">{text}</p>
         </div>
       </div>
-    </Container>
+    </PageHeroContainer>
   );
 }
 
