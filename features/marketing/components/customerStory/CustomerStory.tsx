@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
+import Stack from "@/components/layout/Stack";
+import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import { BaseHeadlineCTAProps } from "@/features/marketing/types";
 
@@ -32,9 +34,11 @@ function StoryImageHeadline({
           className={"aspect-video object-cover"}
         />
       </div>
-      <Container className="relative z-10 flex h-full flex-col items-center justify-center gap-2 text-background">
-        <h2 className="font-display text-5xl">{title}</h2>
-        <p className={"text-2xl"}>{text}</p>
+      <Container className="relative z-10 h-full py-16">
+        <Stack gap="sm" className="h-full justify-center text-background">
+          <h2 className="font-display text-5xl">{title}</h2>
+          <p className={"text-2xl"}>{text}</p>
+        </Stack>
       </Container>
     </div>
   );
@@ -49,20 +53,22 @@ function StoryImage({
     <div className={"relative md:h-200"}>
       <div className="absolute inset-0 z-0 w-full">
         <Image
-          src={PLACE_HOLDER_IMAGE_PATH}
+          src={src}
           alt={"Empty placeholder image"}
           fill
           className={"aspect-video object-cover"}
         />
       </div>
-      <Container
-        className={
-          "relative z-10 flex h-full flex-col justify-center gap-2 font-display text-5xl text-background"
-        }
-      >
-        {titles.map((text) => (
-          <h2 key={text}>{text}</h2>
-        ))}
+
+      <Container className={"relative z-10 h-full"}>
+        <Stack
+          className="h-full justify-center font-display text-5xl text-background"
+          gap="sm"
+        >
+          {titles.map((text) => (
+            <h2 key={text}>{text}</h2>
+          ))}
+        </Stack>
       </Container>
     </div>
   );
@@ -70,7 +76,7 @@ function StoryImage({
 
 function CustomerStory() {
   return (
-    <div className={"w-full"}>
+    <Section className={"w-full"} paddingY="none">
       <StoryImageHeadline
         title={"What's The Real Risk After You Buy?"}
         src={PLACE_HOLDER_IMAGE_PATH}
@@ -83,7 +89,7 @@ function CustomerStory() {
           titles={item.title.map((title) => title)}
         />
       ))}
-    </div>
+    </Section>
   );
 }
 
