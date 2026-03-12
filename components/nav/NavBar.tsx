@@ -31,7 +31,10 @@ function UserButton() {
 
 export default function NavBar() {
   return (
-    <NavigationMenu color="primary" className="w-full bg-primary">
+    <NavigationMenu
+      color="primary"
+      className="sticky top-0 z-50 w-full bg-primary"
+    >
       <div className="mx-auto w-full max-w-7xl md:px-12 md:py-4">
         <NavigationMenuList className="flex w-full items-center justify-between">
           <NavigationMenuItem className={"flex justify-start"}>

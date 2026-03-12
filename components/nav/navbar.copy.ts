@@ -5,7 +5,7 @@ const MENU_LINKS: { label: string; link: string }[] = [
   },
   {
     label: "Service Promise",
-    link: "/service-promise",
+    link: "/service-promises",
   },
   {
     label: "Your Concerns",
