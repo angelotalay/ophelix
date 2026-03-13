@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 
-export const companyType = defineType({
+const companyDocumentType = defineType({
   name: "company",
   title: "Company",
   type: "document",
@@ -50,3 +50,5 @@ export const companyType = defineType({
     }),
   ],
 });
+
+export default companyDocumentType;

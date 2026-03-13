@@ -1,8 +1,29 @@
 import { type SchemaTypeDefinition } from "sanity";
-import { companyType } from "@/sanity/schemaTypes/documents/companyType";
-import addressType from "@/sanity/schemaTypes/objects/addressType";
-import socialMediaType from "@/sanity/schemaTypes/objects/socialMediaType";
+import companyDocumentType from "@/sanity/schemaTypes/documents/companyDocumentType";
+import addressObjectType from "@/sanity/schemaTypes/objects/addressObjectType";
+import socialMediaObjectType from "@/sanity/schemaTypes/objects/socialMediaObjectType";
+import heroObjectType from "@/sanity/schemaTypes/objects/heroObjectType";
+import pageDocumentType from "@/sanity/schemaTypes/documents/pageDocumentType";
+import navigationObjectType from "@/sanity/schemaTypes/objects/navigationObjectType";
+import splitCtaObjectType from "@/sanity/schemaTypes/objects/splitCtaObjectType";
+import ctaObjectType from "@/sanity/schemaTypes/objects/ctaObjectType";
+import {userStoryInstanceObjectType, userStoryObjectType} from "@/sanity/schemaTypes/objects/userStoryObjectType";
+
+type arraySanityTypes = Array<SchemaTypeDefinition>;
+
+const documentTypes: arraySanityTypes = [pageDocumentType,
+  companyDocumentType,
+
+]
+
+const pageSections: arraySanityTypes = [heroObjectType, splitCtaObjectType, ctaObjectType, userStoryObjectType, userStoryInstanceObjectType];
+
+const informationTypes: arraySanityTypes = [
+  addressObjectType,
+  socialMediaObjectType,
+  navigationObjectType
+];
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [companyType, addressType, socialMediaType],
+  types: [...informationTypes, ...pageSections, ...documentTypes],
 };

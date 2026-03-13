@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 
-const addressType = defineType({
+const addressObjectType = defineType({
   name: "address",
   title: "Address",
   type: "object",
@@ -23,4 +23,4 @@ const addressType = defineType({
   ],
 });
 
-export default addressType;
+export default addressObjectType;

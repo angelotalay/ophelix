@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 
-const socialMediaType = defineType({
+const socialMediaObjectType = defineType({
   name: "socialMedia",
   title: "Social Media",
   description: "Social Media Link",
@@ -21,4 +21,4 @@ const socialMediaType = defineType({
   ],
 });
 
-export default socialMediaType;
+export default socialMediaObjectType;
