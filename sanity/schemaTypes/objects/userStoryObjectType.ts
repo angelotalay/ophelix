@@ -10,11 +10,13 @@ export const userStoryInstanceObjectType = defineType({
       name: "Text",
       type: "text",
       description: "The text block for the user story",
+      validation: rule => rule.required()
     }),
     defineField({
       name: "image",
       title: "Background Image",
       type: "image",
+      validation: rule => rule.required()
     })
   ]
 });
@@ -28,7 +30,7 @@ export const userStoryObjectType = defineType({
     defineField({
       name: "storyBlocks",
       type: "array",
-      of: [{type: "userStoryInstance"}]
+      of: [{type: "userStoryInstance"}],
     })
   ]
 });

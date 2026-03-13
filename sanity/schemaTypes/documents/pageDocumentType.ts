@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineField, defineType, defineArrayMember } from "sanity";
 
 const pageDocumentType = defineType({
   name: "page",
@@ -31,9 +31,13 @@ const pageDocumentType = defineType({
       name: "pageSections",
       title: "Page Sections",
       type: "array",
-      of: [{ type: "image" }, { type: "heroSection" }, {type: "splitCtaSection"}, {type: "block"}, {type: "ctaSection"}, {type: "userStorySection"} ],
+      of: [defineArrayMember({ type: "image" }), defineArrayMember({ type: "heroSection" }), defineArrayMember({type: "splitCtaSection"}),
+        defineArrayMember({type: "block" }), defineArrayMember({type: "ctaSection"}), defineArrayMember({type: "userStorySection"}),
+      defineArrayMember({type: "testimonialSection"} )
+      ]
     }),
   ],
+
 });
 
 export default pageDocumentType;

@@ -8,6 +8,7 @@ import navigationObjectType from "@/sanity/schemaTypes/objects/navigationObjectT
 import splitCtaObjectType from "@/sanity/schemaTypes/objects/splitCtaObjectType";
 import ctaObjectType from "@/sanity/schemaTypes/objects/ctaObjectType";
 import {userStoryInstanceObjectType, userStoryObjectType} from "@/sanity/schemaTypes/objects/userStoryObjectType";
+import testimonialObjectType from "@/sanity/schemaTypes/objects/testimonial";
 
 type arraySanityTypes = Array<SchemaTypeDefinition>;
 
@@ -16,7 +17,7 @@ const documentTypes: arraySanityTypes = [pageDocumentType,
 
 ]
 
-const pageSections: arraySanityTypes = [heroObjectType, splitCtaObjectType, ctaObjectType, userStoryObjectType, userStoryInstanceObjectType];
+const pageSections: arraySanityTypes = [heroObjectType, splitCtaObjectType, ctaObjectType, userStoryObjectType, userStoryInstanceObjectType, testimonialObjectType];
 
 const informationTypes: arraySanityTypes = [
   addressObjectType,

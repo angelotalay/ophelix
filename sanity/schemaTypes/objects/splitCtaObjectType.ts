@@ -24,7 +24,20 @@ const splitCtaObjectType = defineType({
       title: "CTA Image",
       description: "The CTA Image",
       type: "image",
+      validation: rule => rule.required(),
     }),
+    defineField({
+      name: "ctaNavigation1",
+      title: "CTA Navigation Link 1",
+      type: "reference",
+      to: {type: "navigation"}
+    }),
+    defineField({
+      name: "ctaNavigation2",
+      title: "CTA Navigation Link 2",
+      type: "reference",
+      to: {type: "navigation"}
+    })
   ]
 });
 

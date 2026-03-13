@@ -1,5 +1,6 @@
 import { defineType, defineField } from "sanity";
 
+
 const socialMediaObjectType = defineType({
   name: "socialMedia",
   title: "Social Media",
