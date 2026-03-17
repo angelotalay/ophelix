@@ -1,5 +1,5 @@
-import {defineType, defineField} from "sanity";
-import {BlockElementIcon} from '@sanity/icons'
+import { defineType, defineField } from "sanity";
+import { BlockElementIcon } from "@sanity/icons";
 
 const splitCtaObjectType = defineType({
   name: "splitCtaSection",
@@ -12,17 +12,17 @@ const splitCtaObjectType = defineType({
       name: "navigationButtons",
       title: "Navigation Buttons (Optional)",
       options: {
-        columns: 2
-      }
-    }
+        columns: 2,
+      },
+    },
   ],
-  fields : [
+  fields: [
     defineField({
       name: "title",
       title: "Title",
       description: "The CTA title",
       type: "text",
-      validation: rule => rule.required()
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "text",
@@ -31,33 +31,31 @@ const splitCtaObjectType = defineType({
       type: "text",
     }),
     defineField({
-      name: "image",
+      name: "ctaImage",
       title: "CTA Image",
       description: "The CTA Image",
-      type: "image",
-      validation: rule => rule.required(),
+      type: "imageAsset",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "ctaNavigation1",
       title: "CTA Navigation Link 1",
-      type: "reference",
-      to: {type: "navigation"},
-      fieldset: "navigationButtons"
+      type: "navigation",
+      fieldset: "navigationButtons",
     }),
     defineField({
       name: "ctaNavigation2",
       title: "CTA Navigation Link 2",
-      type: "reference",
-      to: {type: "navigation"},
-      fieldset: "navigationButtons"
-    })
+      type: "navigation",
+      fieldset: "navigationButtons",
+    }),
   ],
   preview: {
     select: {
       title: "title",
-      media: "image"
-    }
-  }
+      media: "ctaImage.image",
+    },
+  },
 });
 
-export default splitCtaObjectType
+export default splitCtaObjectType;

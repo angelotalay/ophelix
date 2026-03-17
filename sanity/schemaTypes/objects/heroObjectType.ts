@@ -9,6 +9,15 @@ const heroObjectType = defineType({
     "overlaid on either an image or video",
   type: "object",
   icon: BlockElementIcon,
+  fieldsets: [
+    {
+      name: "navigationButtons",
+      title: "Navigation Buttons (Optional)",
+      options: {
+        columns: 2,
+      },
+    },
+  ],
   fields: [
     defineField({
       name: "title",
@@ -27,8 +36,7 @@ const heroObjectType = defineType({
       title: "Hero Image",
       description:
         "The hero image displayed at the top of the page with a title.",
-      type: "image",
-      options: { hotspot: true },
+      type: "imageAsset",
       hidden: ({ parent, value }) => !value && !!parent?.muxVideo,
     }),
     defineField({
@@ -38,6 +46,18 @@ const heroObjectType = defineType({
         "The hero video displayed at the top of the page with a title.",
       type: "mux.video",
       hidden: ({ parent, value }) => !value && !!parent?.heroImage,
+    }),
+    defineField({
+      name: "heroNavigation1",
+      title: "Hero Navigation Link 1",
+      type: "navigation",
+      fieldset: "navigationButtons",
+    }),
+    defineField({
+      name: "heroNavigation2",
+      title: "Hero Navigation Link 2",
+      type: "navigation",
+      fieldset: "navigationButtons",
     }),
   ],
   validation: (Rule) =>
@@ -58,7 +78,7 @@ const heroObjectType = defineType({
   preview: {
     select: {
       title: "title",
-      media: "image",
+      media: "heroImage.image",
     },
   },
 });

@@ -8,6 +8,15 @@ const ctaObjectType = defineType({
     "CTA section that contains text and optional CTA buttons over a background image",
   type: "object",
   icon: BlockElementIcon,
+  fieldsets: [
+    {
+      name: "navigationButtons",
+      title: "Navigation Buttons (Optional)",
+      options: {
+        columns: 2,
+      },
+    },
+  ],
   fields: [
     defineField({
       name: "title",
@@ -24,16 +33,14 @@ const ctaObjectType = defineType({
     defineField({
       name: "ctaNavigation1",
       title: "CTA Navigation Link 1",
-      description: "Optional CTA Button",
-      type: "reference",
-      to: { type: "navigation" },
+      type: "navigation",
+      fieldset: "navigationButtons",
     }),
     defineField({
       name: "ctaNavigation2",
       title: "CTA Navigation Link 2",
-      description: "Optional CTA Button",
-      type: "reference",
-      to: { type: "navigation" },
+      type: "navigation",
+      fieldset: "navigationButtons",
     }),
     defineField({
       name: "alignment",

@@ -10,18 +10,25 @@ export const userStoryInstanceObjectType = defineType({
   icon: BlockElementIcon,
   fields: [
     defineField({
-      name: "Text",
+      name: "storyText",
+      title: "Story Text",
       type: "text",
       description: "The text block for the user story",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "image",
+      name: "userStoryImage",
       title: "Background Image",
-      type: "image",
+      type: "imageAsset",
       validation: (rule) => rule.required(),
     }),
   ],
+  preview: {
+    select: {
+      title: "storyText",
+      media: "userStoryImage.image",
+    },
+  },
 });
 
 export const userStoryObjectType = defineType({
@@ -45,9 +52,9 @@ export const userStoryObjectType = defineType({
       description: "Extra subtext for the headline.",
     }),
     defineField({
-      name: "image",
+      name: "headlineImage",
       title: "User Story Headline Background Image",
-      type: "image",
+      type: "imageAsset",
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -59,7 +66,7 @@ export const userStoryObjectType = defineType({
   preview: {
     select: {
       title: "title",
-      media: "image",
+      media: "headlineImage.image",
     },
   },
 });
