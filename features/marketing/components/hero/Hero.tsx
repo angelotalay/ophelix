@@ -3,6 +3,8 @@ import { MuxBackgroundVideo } from "@mux/mux-background-video/react";
 
 import Container from "@/components/layout/Container";
 import RoundedButton from "@/components/buttons/RoundedButton";
+import Section from "@/components/layout/Section";
+import Stack from "@/components/layout/Stack";
 
 function HeaderButtons() {
   return (
@@ -19,27 +21,31 @@ function HeaderButtons() {
 
 function HeroHeader() {
   return (
-    <Container className={"flex flex-col gap-y-6"}>
-      <div
-        className={"flex flex-col gap-2 font-display text-6xl text-background"}
-      >
-        <h1> Wear It Everyday.</h1>
-        <h1>We'll Take Care Of It.</h1>
-      </div>
-      <div className={"flex flex-col gap-2 text-2xl text-background"}>
-        <p>Warranty repair dispatched in 30 days and £50 back.</p>
-        <p>First run limited to 100 watches.</p>
-      </div>
-      <div className="flex flex-row gap-2">
-        <HeaderButtons />
-      </div>
+    <Container>
+      <Stack gap="md">
+        <Stack className={"font-display text-6xl text-background"} gap="sm">
+          <h1> Wear It Everyday.</h1>
+          <h1>We'll Take Care Of It.</h1>
+        </Stack>
+        <Stack gap="sm" className={"text-2xl text-background"}>
+          <p>Warranty repair dispatched in 30 days and £50 back.</p>
+          <p>First run limited to 100 watches.</p>
+        </Stack>
+        <Stack orientation="horizontal" gap="sm">
+          <HeaderButtons />
+        </Stack>
+      </Stack>
     </Container>
   );
 }
 
 function Hero() {
   return (
-    <div className={"relative h-dvh w-full overflow-hidden"}>
+    <Section
+      className={"relative h-dvh w-full overflow-hidden"}
+      as="section"
+      paddingY="md"
+    >
       <div className="absolute inset-0 z-0">
         <MuxBackgroundVideo
           className="h-full w-full object-cover"
@@ -59,7 +65,7 @@ function Hero() {
       <div className={"relative z-10 flex h-full items-end"}>
         <HeroHeader />
       </div>
-    </div>
+    </Section>
   );
 }
 

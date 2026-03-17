@@ -6,17 +6,14 @@ type ContainerProps = {
   minor?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-function Container({
-  children,
-  className,
-  minor = false,
-  ...props
-}: ContainerProps) {
+/**
+ * Layout element that deals with center alignment and max-width
+ */
+function Container({ children, className, ...props }: ContainerProps) {
   return (
     <div
       className={cslx(
         "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-12",
-        minor ? "py-16" : "py-24",
         className,
       )}
       {...props}

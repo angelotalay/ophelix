@@ -2,12 +2,13 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { OphelixShort } from "@/components/icons/OphelixLogo";
 import RoundedButton from "@/components/buttons/RoundedButton";
 import Container from "@/components/layout/Container";
+import Stack from "@/components/layout/Stack";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { OphelixShort } from "@/components/icons/OphelixLogo";
 
 import Instagram from "@/assets/instagram_white_glyph.svg";
 import X from "@/assets/x.svg";
@@ -88,7 +89,7 @@ function NewsletterForm() {
 
 function FooterLinks() {
   return (
-    <div className="flex w-full flex-row justify-between">
+    <Stack className="justify-between" orientation="horizontal">
       <p>© 2025. Ophelix. All rights reserved.</p>
       <div className="flex gap-4">
         {FOOTER_CONTENT.links.map((link) => (
@@ -97,44 +98,43 @@ function FooterLinks() {
           </Link>
         ))}
       </div>
-    </div>
+    </Stack>
   );
 }
 
 function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <Container className="flex flex-col items-center justify-center gap-6 py-12 text-center">
-        <OphelixShort className="md:h-10" />
+    <footer className="bg-primary py-20 text-primary-foreground">
+      <Container>
+        <Stack className="items-center justify-center text-center">
+          <OphelixShort className="md:h-10" />
+          <Stack className="items-center" gap="sm">
+            <p className="text-background">
+              Join our newsletter to stay up to date on future releases.
+            </p>
+            <NewsletterForm />
+          </Stack>
+          <SocialLinks />
+          <Stack className="items-center">
+            <FooterSection title="Address">
+              <address className="not-italic">
+                Level 12, 447 Collins Street, Melbourne VIC 3000
+              </address>
+            </FooterSection>
 
-        <div className="flex flex-col items-center gap-4">
-          <p className="text-background">
-            Join our newsletter to stay up to date on future releases.
-          </p>
-          <NewsletterForm />
-        </div>
-
-        <SocialLinks />
-
-        <div className="flex flex-col items-center gap-4">
-          <FooterSection title="Address">
-            <address className="not-italic">
-              Level 12, 447 Collins Street, Melbourne VIC 3000
-            </address>
-          </FooterSection>
-
-          <FooterSection title="Contact">
-            <div className="flex flex-col items-center gap-1">
-              {FOOTER_CONTENT.contact_links.map((item) => (
-                <Link key={item.href} href={item.href} className="underline">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </FooterSection>
-        </div>
-        <Separator />
-        <FooterLinks />
+            <FooterSection title="Contact">
+              <Stack className="items-center" gap="xs">
+                {FOOTER_CONTENT.contact_links.map((item) => (
+                  <Link key={item.href} href={item.href} className="underline">
+                    {item.label}
+                  </Link>
+                ))}
+              </Stack>
+            </FooterSection>
+          </Stack>
+          <Separator />
+          <FooterLinks />
+        </Stack>
       </Container>
     </footer>
   );

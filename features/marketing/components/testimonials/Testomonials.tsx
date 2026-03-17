@@ -2,6 +2,7 @@
 import React from "react";
 
 import Container from "@/components/layout/Container";
+import Stack from "@/components/layout/Stack";
 import {
   Carousel,
   CarouselContent,
@@ -11,7 +12,9 @@ import {
 } from "@/components/ui/carousel";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import StarIcon from "@/assets/star.svg";
+
 import TESTIMONIALS_CONTENT from "@/features/marketing/components/testimonials/testiomonials.copy";
+import Section from "@/components/layout/Section";
 
 interface TestimonialItemProps {
   rating: number;
@@ -37,9 +40,13 @@ function TestimonialItem({
         ))}
       </div>
       <div>
-        <div className={"flex max-w-4xl flex-col gap-8"}>
+        <Stack className={"max-w-4xl"} gap="lg">
           <p className="text-center text-4xl">{review}</p>
-          <div className="flex flex-row items-center justify-center gap-2">
+          <Stack
+            className="items-center justify-center"
+            orientation="horizontal"
+            gap="sm"
+          >
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
             </Avatar>
@@ -47,16 +54,17 @@ function TestimonialItem({
               <p className="font-semibold">{name}</p>
               <p>{occupationAndLocation}</p>
             </span>
-          </div>
-        </div>
+          </Stack>
+        </Stack>
       </div>
     </CarouselItem>
   );
 }
 
-function Testimonials() {
+// Testimonial bg colour exposed via className for now as well
+function Testimonials({ className }: { className: string }) {
   return (
-    <Container>
+    <Section className={className}>
       <Carousel
         opts={{
           loop: true,
@@ -77,7 +85,7 @@ function Testimonials() {
         <CarouselPrevious size="lg" />
         <CarouselNext size="lg" />
       </Carousel>
-    </Container>
+    </Section>
   );
 }
 

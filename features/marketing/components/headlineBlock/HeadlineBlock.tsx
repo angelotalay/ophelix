@@ -1,7 +1,9 @@
 import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import Container from "@/components/layout/Container";
+import Stack from "@/components/layout/Stack";
 import { BaseHeadlineCTAProps } from "@/features/marketing/types";
+import Section from "@/components/layout/Section";
 
 const headlineBlockVariants = cva("", {
   variants: {
@@ -28,17 +30,15 @@ type HeadlineBlockProps = BaseHeadlineCTAProps &
 
 function HeadlineBlock({ tag, title, text, intent }: HeadlineBlockProps) {
   return (
-    <div className={headlineBlockVariants({ intent })} data-intent={intent}>
-      <Container
-        className={"flex flex-col items-center justify-center gap-6"}
-        data-intent
-      >
-        <p className="font-semibold text-foreground">{tag}</p>
-
-        <h2 className={headlineBlockTitleVariants({ intent })}>{title}</h2>
-        <p className="max-w-xl text-center text-xl text-foreground">{text}</p>
+    <Section className={headlineBlockVariants({ intent })} data-intent={intent}>
+      <Container>
+        <Stack className={"items-center justify-center"} data-intent>
+          <p className="font-semibold text-foreground">{tag}</p>
+          <h2 className={headlineBlockTitleVariants({ intent })}>{title}</h2>
+          <p className="max-w-xl text-center text-xl text-foreground">{text}</p>
+        </Stack>
       </Container>
-    </div>
+    </Section>
   );
 }
 

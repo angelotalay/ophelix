@@ -3,18 +3,14 @@ import Image from "next/image";
 
 import Container from "@/components/layout/Container";
 import RoundedButton from "@/components/buttons/RoundedButton";
-import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta/splitCta.copy";
+import Section from "@/components/layout/Section";
+import Stack from "@/components/layout/Stack";
 import { BaseHeadlineCTAProps } from "@/features/marketing/types";
 
-const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_2.png";
+import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta/splitCta.copy";
+import { cva, VariantProps } from "class-variance-authority";
 
-type SplitCTAProps = Omit<BaseHeadlineCTAProps, "text"> & {
-  tag: string;
-  title: string;
-  descriptions?: string[];
-  src?: string;
-  intent: "primary" | "extra-dark";
-};
+const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_2.png";
 
 type CTAContentProps = Omit<SplitCTAProps, "src" | "intent">;
 
@@ -28,23 +24,21 @@ function CTAContent({
   descriptions = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.description,
 }: CTAContentProps) {
   return (
-    <>
-      <div className={"flex flex-col gap-y-4 text-foreground"}>
-        <p className="font-bold text-foreground">{tag}</p>
-        <h2 className="text font-display text-5xl">{title}</h2>
-        {descriptions.map((description, idx) => (
-          <p key={idx}> {description}</p>
-        ))}
-        <div className="flex flex-row gap-2">
-          <RoundedButton size="lg" intent={"primary"}>
-            Shop Jewel
-          </RoundedButton>
-          <RoundedButton variant="outline" size={"lg"} intent={"background"}>
-            Join the insider list
-          </RoundedButton>
-        </div>
-      </div>
-    </>
+    <Stack className={"text-foreground"} gap={"md"}>
+      <p className="font-bold text-foreground">{tag}</p>
+      <h2 className="text font-display text-5xl">{title}</h2>
+      {descriptions.map((description, idx) => (
+        <p key={idx}> {description}</p>
+      ))}
+      <Stack orientation="horizontal" gap="sm">
+        <RoundedButton size="lg" intent={"primary"}>
+          Shop Jewel
+        </RoundedButton>
+        <RoundedButton variant="outline" size={"lg"} intent={"background"}>
+          Join the insider list
+        </RoundedButton>
+      </Stack>
+    </Stack>
   );
 }
 
@@ -56,25 +50,45 @@ function CTAImage({ src = PLACEHOLDER_IMAGE_PATH }: CTAImageProps) {
   );
 }
 
-function SplitCTA({
-  intent = "extra-dark",
-  title,
-  tag,
-  descriptions,
-  src,
-}: SplitCTAProps) {
+const splitCTAVariants = cva("", {
+  variants: {
+    intent: {
+      primary: "bg-primary",
+      background: "bg-background",
+      "extra-dark": "bg-extra-dark",
+    },
+  },
+  defaultVariants: {
+    intent: "background",
+  },
+});
+
+type SplitCTAProps = Omit<BaseHeadlineCTAProps, "text"> & {
+  tag: string;
+  title: string;
+  descriptions?: string[];
+  src?: string;
+} & VariantProps<typeof splitCTAVariants>;
+
+function SplitCTA({ title, tag, descriptions, src, intent }: SplitCTAProps) {
   return (
-    <Container
-      className={"flex w-full flex-row items-center gap-y-4"}
-      data-intent={intent}
-    >
-      <div className="w-1/2">
-        <CTAContent title={title} tag={tag} descriptions={descriptions} />
-      </div>
-      <div className={"w-1/2"}>
-        <CTAImage src={src} />
-      </div>
-    </Container>
+    <Section className={splitCTAVariants({ intent })}>
+      <Container data-intent={intent}>
+        <Stack
+          orientation="horizontal"
+          data-intent={intent}
+          gap="md"
+          className="items-center"
+        >
+          <div className="w-1/2">
+            <CTAContent title={title} tag={tag} descriptions={descriptions} />
+          </div>
+          <div className={"w-1/2"}>
+            <CTAImage src={src} />
+          </div>
+        </Stack>
+      </Container>
+    </Section>
   );
 }
 
