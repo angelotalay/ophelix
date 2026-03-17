@@ -3,25 +3,27 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import Container from "@/components/layout/Container";
+import Section from "@/components/layout/Section";
 
 interface FeatureImageProps {
   src?: string; //For now this will be a src string - we will integrate with a cms later
-  color: "primary" | "background"; // We should put this into a types file as we are referencing it a lot
+  intent: "primary" | "background"; // We should put this into a types file as we are referencing it a lot
   className?: string;
 }
 function FeatureImage({
   src = "/images/placeholder_image_1.png",
-  color = "background",
+  intent = "background",
   className,
 }: FeatureImageProps) {
   return (
-    <div
+    <Section
       className={cn(className, {
-        "bg-primary text-primary-foreground": color === "primary",
-        "bg-background text-primary": color === "background",
+        "bg-primary text-primary-foreground": intent === "primary",
+        "bg-background text-primary": intent === "background",
       })}
+      paddingY="md"
     >
-      <Container className={"py-16"}>
+      <Container>
         <div className={"relative"}>
           <Image
             src={src}
@@ -32,7 +34,7 @@ function FeatureImage({
           />
         </div>
       </Container>
-    </div>
+    </Section>
   );
 }
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/app/globals.css";
 import localFont from "next/font/local";
 import { Inter_Tight } from "next/font/google";
 
@@ -25,34 +25,34 @@ const ppEditorialNew: NextFontWithVariable = localFont({
   display: "swap",
   src: [
     {
-      path: "../public/fonts/pp-editorial-new/PPEditorialNew-Ultralight.otf",
+      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Ultralight.otf",
       weight: "200",
       style: "normal",
     },
     {
-      path: "../public/fonts/pp-editorial-new/PPEditorialNew-UltralightItalic.otf",
+      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-UltralightItalic.otf",
       weight: "200",
       style: "italic",
     },
 
     {
-      path: "../public/fonts/pp-editorial-new/PPEditorialNew-Regular.otf",
+      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/pp-editorial-new/PPEditorialNew-Italic.otf",
+      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Italic.otf",
       weight: "400",
       style: "italic",
     },
 
     {
-      path: "../public/fonts/pp-editorial-new/PPEditorialNew-Ultrabold.otf",
+      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Ultrabold.otf",
       weight: "800",
       style: "normal",
     },
     {
-      path: "../public/fonts/pp-editorial-new/PPEditorialNew-UltraboldItalic.otf",
+      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-UltraboldItalic.otf",
       weight: "800",
       style: "italic",
     },
