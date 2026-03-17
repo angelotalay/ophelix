@@ -1,17 +1,19 @@
 import {defineType, defineField} from "sanity";
+import {PanelLeftIcon} from '@sanity/icons'
 
 const navigationHeaderDocument = defineType({
   name: "navigationHeader",
   title: "Navigation Bar Content",
   description: "All the content in the navigation bar",
   type: "document",
+  icon: PanelLeftIcon,
   fields: [
     defineField({
-      name: "companyDetails",
+      name: "company",
       title: "Company Details",
       type: "reference",
       to: {
-       type: "companyDetails"
+       type: "company"
       }
     }),
     defineField({

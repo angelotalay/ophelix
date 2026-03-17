@@ -7,24 +7,40 @@ import pageDocumentType from "@/sanity/schemaTypes/documents/pageDocumentType";
 import navigationObjectType from "@/sanity/schemaTypes/objects/navigationObjectType";
 import splitCtaObjectType from "@/sanity/schemaTypes/objects/splitCtaObjectType";
 import ctaObjectType from "@/sanity/schemaTypes/objects/ctaObjectType";
-import {userStoryInstanceObjectType, userStoryObjectType} from "@/sanity/schemaTypes/objects/userStoryObjectType";
-import testimonialObjectType from "@/sanity/schemaTypes/objects/testimonial";
+import {
+  userStoryInstanceObjectType,
+  userStoryObjectType,
+} from "@/sanity/schemaTypes/objects/userStoryObjectType";
+import testimonialObjectType from "@/sanity/schemaTypes/objects/testimonialObjectType";
 import footerDocumentType from "@/sanity/schemaTypes/documents/footerDocumentType";
 import navigationHeaderDocument from "@/sanity/schemaTypes/documents/navigationHeaderDocument";
+import siteSettingsDocumentType from "@/sanity/schemaTypes/documents/siteSettingsDocumentType";
+import richTextObjectType from "@/sanity/schemaTypes/objects/richTextObjectType";
 
 type arraySanityTypes = Array<SchemaTypeDefinition>;
 
-const documentTypes: arraySanityTypes = [pageDocumentType,
-  companyDocumentType, footerDocumentType, navigationHeaderDocument
+const documentTypes: arraySanityTypes = [
+  pageDocumentType,
+  companyDocumentType,
+  footerDocumentType,
+  navigationHeaderDocument,
+  siteSettingsDocumentType,
+];
 
-]
-
-const pageSections: arraySanityTypes = [heroObjectType, splitCtaObjectType, ctaObjectType, userStoryObjectType, userStoryInstanceObjectType, testimonialObjectType];
+const pageSections: arraySanityTypes = [
+  heroObjectType,
+  splitCtaObjectType,
+  ctaObjectType,
+  userStoryObjectType,
+  userStoryInstanceObjectType,
+  testimonialObjectType,
+  richTextObjectType,
+];
 
 const informationTypes: arraySanityTypes = [
   addressObjectType,
   socialMediaObjectType,
-  navigationObjectType
+  navigationObjectType,
 ];
 
 export const schema: { types: SchemaTypeDefinition[] } = {

@@ -1,5 +1,5 @@
 import { defineType, defineField } from "sanity";
-
+import { BlockElementIcon } from "@sanity/icons";
 
 const heroObjectType = defineType({
   name: "heroSection",
@@ -8,11 +8,12 @@ const heroObjectType = defineType({
     "Hero section of a webpage that introduces the content with text " +
     "overlaid on either an image or video",
   type: "object",
+  icon: BlockElementIcon,
   fields: [
     defineField({
       name: "title",
       title: "Hero Title",
-      type: "string",
+      type: "text",
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -24,7 +25,8 @@ const heroObjectType = defineType({
     defineField({
       name: "heroImage",
       title: "Hero Image",
-      description: "The hero image displayed at the top of the page with a title.",
+      description:
+        "The hero image displayed at the top of the page with a title.",
       type: "image",
       options: { hotspot: true },
       hidden: ({ parent, value }) => !value && !!parent?.muxVideo,
@@ -32,7 +34,8 @@ const heroObjectType = defineType({
     defineField({
       name: "muxVideo",
       title: "Hero Mux Video",
-      description: "The hero video displayed at the top of the page with a title.",
+      description:
+        "The hero video displayed at the top of the page with a title.",
       type: "mux.video",
       hidden: ({ parent, value }) => !value && !!parent?.heroImage,
     }),
@@ -52,6 +55,12 @@ const heroObjectType = defineType({
 
       return true;
     }),
+  preview: {
+    select: {
+      title: "title",
+      media: "image",
+    },
+  },
 });
 
 export default heroObjectType;

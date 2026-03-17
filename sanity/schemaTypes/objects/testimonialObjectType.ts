@@ -1,33 +1,32 @@
-import {defineType, defineField} from "sanity";
-
-// Validations:
-// Rating must be 1-5 DONE
-// All fields required DONE
+import { defineType, defineField } from "sanity";
+import { BlockElementIcon } from "@sanity/icons";
 
 const testimonialObjectType = defineType({
   name: "testimonialSection",
   title: "Testimonial Section",
   description: "Positive review section of a particular customer",
   type: "object",
+  icon: BlockElementIcon,
   fields: [
     defineField({
       name: "rating",
       title: "Customer rating",
       type: "number",
-      validation: rule => rule.max(5).min(1).error("The rating must be between 1 and 5")
+      validation: (rule) =>
+        rule.max(5).min(1).error("The rating must be between 1 and 5"),
     }),
     defineField({
       name: "testimonialText",
       title: "Testimonial Text",
       description: "Given testimonial of the customer",
       type: "text",
-      validation: rule => rule.required()
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "name",
       title: "Customer Name",
       type: "string",
-      validation: rule => rule.required()
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "occupation",
@@ -38,9 +37,9 @@ const testimonialObjectType = defineType({
       name: "location",
       title: "Customer Location",
       type: "string",
-      validation: rule => rule.required()
-    })
-  ]
+      validation: (rule) => rule.required(),
+    }),
+  ],
 });
 
 export default testimonialObjectType;
