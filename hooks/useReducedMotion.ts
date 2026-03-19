@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function useReducedMotion() {
   const [state, setState] = useState<boolean | null>(null);

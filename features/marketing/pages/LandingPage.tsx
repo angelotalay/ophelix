@@ -1,5 +1,4 @@
 import React from "react";
-import Section from "@/components/layout/Section";
 import Hero from "@/features/marketing/components/hero/Hero";
 import FeatureImage from "@/features/marketing/components/featureImage/FeatureImage";
 import SplitCTA from "@/features/marketing/components/splitCta/SplitCTA";

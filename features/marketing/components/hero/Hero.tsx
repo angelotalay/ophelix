@@ -5,6 +5,7 @@ import Container from "@/components/layout/Container";
 import RoundedButton from "@/components/buttons/RoundedButton";
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
+import Image from "next/image";
 
 function HeaderButtons() {
   return (
@@ -25,7 +26,7 @@ function HeroHeader() {
       <Stack gap="md">
         <Stack className={"font-display text-6xl text-background"} gap="sm">
           <h1> Wear It Everyday.</h1>
-          <h1>We'll Take Care Of It.</h1>
+          <h1>We&#39;ll Take Care Of It.</h1>
         </Stack>
         <Stack gap="sm" className={"text-2xl text-background"}>
           <p>Warranty repair dispatched in 30 days and £50 back.</p>
@@ -53,7 +54,7 @@ function Hero() {
             "https://stream.mux.com/02FPOtBxVE7ud402hmeGe6YaUJC5bVMe4QCsQc4vJWkNU.m3u8"
           }
         >
-          <img
+          <Image
             className="h-full w-full object-cover"
             src="https://image.mux.com/02FPOtBxVE7ud402hmeGe6YaUJC5bVMe4QCsQc4vJWkNU/thumbnail.webp?time=0"
             alt="Hero Background"
