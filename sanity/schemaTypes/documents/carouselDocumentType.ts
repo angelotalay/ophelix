@@ -28,10 +28,10 @@ const imageCarouselDocumentType = defineType({
           name: "carouselImage",
           title: "Carousel Image",
           type: COMMON_OBJECTS.imageAsset,
-          validation: (rule) =>
-            rule.min(1).error("At least one image is required."),
         }),
       ],
+      validation: (rule) =>
+        rule.min(1).error("At least one image is required."),
     }),
   ],
 });
