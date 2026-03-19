@@ -9,7 +9,7 @@
     "lint": "eslint",
     "test": "vitest"
   },
-    "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.24.0",
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@mux/mux-background-video": "^0.2.0",
@@ -27,7 +27,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-fast-marquee": "^1.6.5",
-    "sanity": "^4.22.0",
+    "sanity": "^5.17.1",
     "sanity-plugin-documents-pane": "^3.0.2",
     "sanity-plugin-mux-input": "^2.17.0",
     "styled-components": "^6.3.11",
