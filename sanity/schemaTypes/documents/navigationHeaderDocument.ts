@@ -1,5 +1,9 @@
-import {defineType, defineField} from "sanity";
-import {PanelLeftIcon} from '@sanity/icons'
+import { defineType, defineField } from "sanity";
+import { PanelLeftIcon } from "@sanity/icons";
+import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+
+const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
+const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
 
 const navigationHeaderDocument = defineType({
   name: "navigationHeader",
@@ -13,21 +17,18 @@ const navigationHeaderDocument = defineType({
       title: "Company Details",
       type: "reference",
       to: {
-       type: "company"
-      }
+        type: DOCUMENTS.company,
+      },
     }),
     defineField({
       name: "navigationLinks",
       title: "Navigation Links",
-      description: "The buttons or links on the navigation bar that links to other resources",
+      description:
+        "The buttons or links on the navigation bar that links to other resources",
       type: "array",
-      of: [
-        {type: "navigation"}
-      ],
-      validation: rule => rule.max(3)
-    })
-
-  ]
-
+      of: [{ type: COMMON_OBJECTS.navigationLink }],
+      validation: (rule) => rule.max(3),
+    }),
+  ],
 });
-  export default navigationHeaderDocument;
+export default navigationHeaderDocument;

@@ -1,9 +1,11 @@
-import {defineType, defineField} from "sanity";
-import {EditIcon} from '@sanity/icons'
+import { defineType, defineField } from "sanity";
+import { EditIcon } from "@sanity/icons";
+import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
 
+const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
 
 const footerDocumentType = defineType({
-  name: "footer",
+  name: DOCUMENTS.footer,
   title: "Footer Content",
   description: "The content of the page footer",
   type: "document",
@@ -14,11 +16,11 @@ const footerDocumentType = defineType({
       title: "Company Details",
       type: "reference",
       to: {
-        type: "company"
+        type: DOCUMENTS.company,
       },
-      validation: rule => rule.required()
-    })
-  ]
+      validation: (rule) => rule.required(),
+    }),
+  ],
 });
 
 export default footerDocumentType;

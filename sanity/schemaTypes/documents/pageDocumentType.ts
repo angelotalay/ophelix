@@ -1,6 +1,11 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { BlockElementIcon, EarthGlobeIcon } from "@sanity/icons";
+import { EarthGlobeIcon } from "@sanity/icons";
 import { CalendarIcon } from "@sanity/icons";
+import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+
+const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
+const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
+const OBJECTS = DOCUMENT_OBJECTS.OBJECTS;
 
 const PAGE_TYPES = {
   LANDING: "landing",
@@ -80,13 +85,13 @@ const pageDocumentType = defineType({
       title: "Page Sections",
       type: "array",
       of: [
-        defineArrayMember({ type: "image", icon: BlockElementIcon }),
-        defineArrayMember({ type: "heroSection" }),
-        defineArrayMember({ type: "splitCtaSection" }),
-        defineArrayMember({ type: "richText" }),
-        defineArrayMember({ type: "ctaSection" }),
-        defineArrayMember({ type: "userStorySection" }),
-        defineArrayMember({ type: "testimonialSection" }),
+        defineArrayMember({ type: OBJECTS.hero }),
+        defineArrayMember({ type: OBJECTS.cta }),
+        defineArrayMember({ type: OBJECTS.splitCta }),
+        defineArrayMember({ type: DOCUMENTS.userStory }),
+        defineArrayMember({ type: DOCUMENTS.testimonial }),
+        defineArrayMember({ type: COMMON_OBJECTS.imageAsset }),
+        defineArrayMember({ type: DOCUMENTS.carousel }),
       ],
       validation: (Rule) =>
         Rule.custom((sections, context) => {

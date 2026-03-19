@@ -1,11 +1,11 @@
 import { defineType, defineField } from "sanity";
 import { BlockElementIcon } from "@sanity/icons";
 
-const testimonialObjectType = defineType({
-  name: "testimonialSection",
-  title: "Testimonial Section",
-  description: "Positive review section of a particular customer",
-  type: "object",
+const testimonialDocumentType = defineType({
+  name: "testimonial",
+  title: "Testimonial",
+  description: "Positive review of a particular customer",
+  type: "document",
   icon: BlockElementIcon,
   fields: [
     defineField({
@@ -42,4 +42,4 @@ const testimonialObjectType = defineType({
   ],
 });
 
-export default testimonialObjectType;
+export default testimonialDocumentType;
