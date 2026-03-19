@@ -1,10 +1,16 @@
 import { defineType, defineField } from "sanity";
+import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+import { ImageIcon } from "@sanity/icons";
 
-const imageCarouselObjectType = defineType({
-  name: "imageCarouselSection",
-  title: "Image Carousel Section",
-  description: "A carousel section that can store any amount of images.",
-  type: "object",
+const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
+const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
+
+const imageCarouselDocumentType = defineType({
+  name: DOCUMENTS.carousel,
+  title: "Media Carousel",
+  description: "Carousel content that can store any amount of images.",
+  type: "document",
+  icon: ImageIcon,
   fields: [
     defineField({
       name: "headline",
@@ -21,7 +27,7 @@ const imageCarouselObjectType = defineType({
         defineField({
           name: "carouselImage",
           title: "Carousel Image",
-          type: "imageAsset",
+          type: COMMON_OBJECTS.imageAsset,
           validation: (rule) =>
             rule.min(1).error("At least one image is required."),
         }),
@@ -30,4 +36,4 @@ const imageCarouselObjectType = defineType({
   ],
 });
 
-export default imageCarouselObjectType;
+export default imageCarouselDocumentType;

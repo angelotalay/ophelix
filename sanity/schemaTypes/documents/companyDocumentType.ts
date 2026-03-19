@@ -1,7 +1,11 @@
 import { defineField, defineType } from "sanity";
+import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+
+const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
+const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
 
 const companyDocumentType = defineType({
-  name: "company",
+  name: DOCUMENTS.company,
   title: "Company",
   type: "document",
   description: "Informational details about the company",
@@ -22,7 +26,7 @@ const companyDocumentType = defineType({
     defineField({
       name: "address",
       title: "Address",
-      type: "address",
+      type: COMMON_OBJECTS.address,
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -34,7 +38,7 @@ const companyDocumentType = defineType({
       name: "socialMediaLinks",
       title: "Social Media",
       type: "array",
-      of: [{ type: "socialMedia" }],
+      of: [{ type: COMMON_OBJECTS.socialMedia }],
     }),
     defineField({
       name: "logos",

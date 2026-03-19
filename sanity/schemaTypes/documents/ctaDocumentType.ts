@@ -1,12 +1,13 @@
 import { defineType, defineField } from "sanity";
-import { BlockElementIcon } from "@sanity/icons";
+import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
 
-const splitCtaObjectType = defineType({
-  name: "splitCtaSection",
-  title: "Split CTA",
-  description: "A 2 column CTA section with optional button navigation.",
-  type: "object",
-  icon: BlockElementIcon,
+const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
+const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
+
+const cta = defineType({
+  name: DOCUMENTS.cta,
+  title: "CTA",
+  type: "document",
   fieldsets: [
     {
       name: "navigationButtons",
@@ -25,6 +26,12 @@ const splitCtaObjectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "eyebrow",
+      title: "Eyebrow",
+      description: "Short tag describing the essence of the CTA",
+      type: "string",
+    }),
+    defineField({
       name: "text",
       title: "CTA Text",
       description: "The CTA description text",
@@ -34,19 +41,19 @@ const splitCtaObjectType = defineType({
       name: "ctaImage",
       title: "CTA Image",
       description: "The CTA Image",
-      type: "imageAsset",
+      type: COMMON_OBJECTS.imageAsset,
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: "ctaNavigation1",
       title: "CTA Navigation Link 1",
-      type: "navigation",
+      type: COMMON_OBJECTS.navigationLink,
       fieldset: "navigationButtons",
     }),
     defineField({
       name: "ctaNavigation2",
       title: "CTA Navigation Link 2",
-      type: "navigation",
+      type: COMMON_OBJECTS.navigationLink,
       fieldset: "navigationButtons",
     }),
   ],
@@ -58,4 +65,4 @@ const splitCtaObjectType = defineType({
   },
 });
 
-export default splitCtaObjectType;
+export default cta;

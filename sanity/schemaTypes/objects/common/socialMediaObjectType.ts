@@ -1,8 +1,10 @@
 import { defineType, defineField } from "sanity";
+import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
 
+const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
 
 const socialMediaObjectType = defineType({
-  name: "socialMedia",
+  name: COMMON_OBJECTS.socialMedia,
   title: "Social Media",
   description: "Social Media Link",
   type: "object",

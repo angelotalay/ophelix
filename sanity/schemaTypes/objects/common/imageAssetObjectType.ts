@@ -1,8 +1,11 @@
 import { defineType, defineField } from "sanity";
 import { ImageIcon } from "@sanity/icons";
+import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+
+const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
 
 const imageAssetObjectType = defineType({
-  name: "imageAsset",
+  name: COMMON_OBJECTS.imageAsset,
   title: "Image Asset",
   type: "object",
   icon: ImageIcon,

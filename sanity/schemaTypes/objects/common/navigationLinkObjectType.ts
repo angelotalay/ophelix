@@ -1,7 +1,10 @@
 import { defineType, defineField } from "sanity";
+import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+
+const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
 
 const navigationLinkObjectType = defineType({
-  name: "navigation",
+  name: COMMON_OBJECTS.navigationLink,
   title: "Navigation",
   description: "The title and link for all buttons or links",
   type: "object",
@@ -14,24 +17,38 @@ const navigationLinkObjectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "slug",
-      title: "Navigation Slug",
+      name: "type",
+      title: "Link type",
+      description: "Does the link lead to an internal or external page?",
+      type: "string",
+      options: {
+        list: [
+          { title: "Internal", value: "internal" },
+          { title: "External", value: "external" },
+        ],
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "internalLink",
+      title: "Internal Link",
       description: "The link of the button for internal navigation",
-      type: "slug",
+      type: "string",
       hidden: ({ parent, value }) => !value && !!parent?.link,
+      //   At some point we should maybe do some zod validation here?
     }),
     defineField({
       name: "link",
       title: "Navigation Link",
       description: "The link of the button for external navigation",
       type: "url",
-      hidden: ({ parent, value }) => !value && !!parent?.slug,
+      hidden: ({ parent, value }) => !value && !!parent?.internalLink,
     }),
   ],
   validation: (rule) =>
     rule.custom((fields) => {
       const hasLink = !!fields?.link;
-      const hasSlug = !!fields?.slug;
+      const hasSlug = !!fields?.internalLink;
       if (hasLink && hasSlug) {
         return "Only a link or a slug can be set for a navigation object.";
       }
