@@ -5,7 +5,6 @@ import { cva, VariantProps } from "class-variance-authority";
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
 import Container from "@/components/layout/Container";
-import RoundedButton from "@/components/buttons/RoundedButton";
 import CTA_CONTENT from "@/features/marketing/components/cta/cta.copy";
 
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_4.jpg";

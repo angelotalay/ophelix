@@ -10,14 +10,14 @@ type LogoProps = {
 function OphelixFull({ className }: { className?: string }) {
   return (
     <OphelixLogoFull
-      className={"block sm:h-8 md:h-12 w-auto"}
+      className={"block w-auto sm:h-8 md:h-12" + { className }}
       aria-label="Ophelix"
     />
   );
 }
 
 function OphelixText() {
-  return <OphelixLogoText className={"block md:h-8 w-auto"} />;
+  return <OphelixLogoText className={"block w-auto md:h-8"} />;
 }
 
 function OphelixShort({ className }: LogoProps) {
