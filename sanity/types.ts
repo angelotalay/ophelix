@@ -22,6 +22,7 @@ export type Carousel = {
   _updatedAt: string;
   _rev: string;
   headline: string;
+  headlineSubText?: string;
   carouselImages?: Array<
     {
       _key: string;
@@ -222,6 +223,7 @@ export type Page = {
       } & ImageAsset)
     | {
         headline: string;
+        headlineSubText?: string;
         carouselImages?: Array<
           {
             _key: string;
@@ -620,6 +622,7 @@ export type LandingPageQueryResult = {
         _type: "carousel";
         _key: string;
         headline: string;
+        headlineSubText?: string;
         carouselImages?: Array<
           {
             _key: string;

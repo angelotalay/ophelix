@@ -3,13 +3,10 @@ import React from "react";
 import Hero from "@/features/marketing/components/hero/Hero";
 import FeatureImage from "@/features/marketing/components/featureImage/FeatureImage";
 import SplitCTA from "@/features/marketing/components/cta/SplitCTA";
-import SPLIT_CTA_CONTENT from "@/features/marketing/components/cta/splitCta.copy";
 import CustomerStory from "@/features/marketing/components/customerStory/CustomerStory";
 import CarouselHeadline from "@/features/marketing/components/carouselHeadline/CarouselHeadline";
 import Testimonials from "@/features/marketing/components/testimonials/Testomonials";
 import CTA from "@/features/marketing/components/cta/CTA";
-import Stack from "@/components/layout/Stack";
-import RoundedButton from "@/components/buttons/RoundedButton";
 import getLandingPageQueryResult from "@/sanity/lib/fetch/landingPage";
 import { LandingPageQueryResult, ImageAsset } from "@/sanity/types";
 import {
@@ -62,6 +59,17 @@ function renderComponents(section: LandingPageSection) {
           customerStoryBlocks={section.storyBlocks}
         />
       );
+    case DOCUMENTS.carousel:
+      return (
+        <CarouselHeadline
+          key={section._key}
+          headline={section.headline}
+          subtext={section.headlineSubText}
+          carouselImages={section.carouselImages}
+        />
+      );
+    case DOCUMENTS.testimonial:
+      return;
   }
 }
 // This is responsible for the layout only

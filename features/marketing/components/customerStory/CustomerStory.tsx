@@ -5,12 +5,7 @@ import Stack from "@/components/layout/Stack";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import { UserStorySection, UserStoryInstance } from "@/sanity/types";
-import { BaseHeadlineCTAProps } from "@/features/marketing/types";
-
-import CUSTOMER_STORY_CONTENT from "@/features/marketing/components/customerStory/customerStory.copy";
 import { urlFor } from "@/sanity/lib/image";
-
-const PLACE_HOLDER_IMAGE_PATH = "/images/placeholder_image_3.png";
 
 interface StoryImageProps {
   storyImage: UserStoryInstance["userStoryImage"];

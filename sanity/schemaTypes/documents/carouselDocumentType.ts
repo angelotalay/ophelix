@@ -17,6 +17,11 @@ const imageCarouselDocumentType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "headlineSubText",
+      title: "Sub-text",
+      type: "text",
+    }),
+    defineField({
       name: "carouselImages",
       title: "Carousel Images",
       type: "array",

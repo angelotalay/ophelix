@@ -41,6 +41,13 @@
         },
         "optional": false
       },
+      "headlineSubText": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "carouselImages": {
         "type": "objectAttribute",
         "value": {
@@ -1097,6 +1104,13 @@
                       "type": "string"
                     },
                     "optional": false
+                  },
+                  "headlineSubText": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    },
+                    "optional": true
                   },
                   "carouselImages": {
                     "type": "objectAttribute",
