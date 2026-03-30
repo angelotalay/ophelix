@@ -16,7 +16,7 @@ const roundedButtonVariants = cva("rounded-full", {
   },
 });
 
-type RoundedButtonProps = {
+export type RoundedButtonProps = {
   children: React.ReactNode;
   className?: string;
   size?:

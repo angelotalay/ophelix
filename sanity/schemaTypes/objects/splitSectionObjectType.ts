@@ -1,8 +1,7 @@
 import { defineType, defineField } from "sanity";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+import intentField from "@/sanity/schemaTypes/objects/common/intentField";
+import { OBJECTS } from "@/sanity/schemaTypes/constants";
 import { BlockElementIcon } from "@sanity/icons";
-
-const OBJECTS = DOCUMENT_OBJECTS.OBJECTS;
 
 const splitSectionObjectType = defineType({
   name: OBJECTS.splitCta,
@@ -29,10 +28,16 @@ const splitSectionObjectType = defineType({
         ],
       },
     }),
+
+    defineField({
+      ...intentField,
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {
       title: "content.title",
+      media: "content.ctaImage.image",
     },
   },
 });

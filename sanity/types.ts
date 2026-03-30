@@ -14,14 +14,14 @@
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
-// Source: src/sanity/extract.json
+// Source: schema.json
 export type Carousel = {
   _id: string;
   _type: "carousel";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  headline?: string;
+  headline: string;
   carouselImages?: Array<
     {
       _key: string;
@@ -36,10 +36,10 @@ export type Testimonial = {
   _updatedAt: string;
   _rev: string;
   rating?: number;
-  testimonialText?: string;
-  name?: string;
+  testimonialText: string;
+  name: string;
   occupation?: string;
-  location?: string;
+  location: string;
 };
 
 export type UserStorySection = {
@@ -48,9 +48,9 @@ export type UserStorySection = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  title: string;
   subtext?: string;
-  headlineImage?: ImageAsset;
+  headlineImage: ImageAsset;
   storyBlocks?: Array<
     {
       _key: string;
@@ -117,7 +117,7 @@ export type Footer = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  companyDetails?: CompanyReference;
+  companyDetails: CompanyReference;
 };
 
 export type SanityImageAssetReference = {
@@ -133,9 +133,9 @@ export type Company = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
-  yearEstablished?: string;
-  address?: Address;
+  name: string;
+  yearEstablished: string;
+  address: Address;
   phone?: string;
   socialMediaLinks?: Array<
     {
@@ -154,25 +154,25 @@ export type Company = {
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
 };
 
 export type SanityImageHotspot = {
   _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 };
 
 export type Address = {
   _type: "address";
-  streetName?: string;
-  streetNumber?: string;
-  postCode?: string;
+  streetName: string;
+  streetNumber: string;
+  postCode: string;
 };
 
 export type Page = {
@@ -182,7 +182,7 @@ export type Page = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  slug?: Slug;
+  slug: Slug;
   pageType?: "landing" | "documentation";
   publishedAt?: string;
   updatedAt?: string;
@@ -197,9 +197,9 @@ export type Page = {
         _key: string;
       } & SplitSection)
     | {
-        title?: string;
+        title: string;
         subtext?: string;
-        headlineImage?: ImageAsset;
+        headlineImage: ImageAsset;
         storyBlocks?: Array<
           {
             _key: string;
@@ -210,10 +210,10 @@ export type Page = {
       }
     | {
         rating?: number;
-        testimonialText?: string;
-        name?: string;
+        testimonialText: string;
+        name: string;
         occupation?: string;
-        location?: string;
+        location: string;
         _type: "testimonial";
         _key: string;
       }
@@ -221,7 +221,7 @@ export type Page = {
         _key: string;
       } & ImageAsset)
     | {
-        headline?: string;
+        headline: string;
         carouselImages?: Array<
           {
             _key: string;
@@ -235,21 +235,21 @@ export type Page = {
 
 export type ImageAsset = {
   _type: "imageAsset";
-  image?: {
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  alt?: string;
+  alt: string;
   caption?: string;
   attribution?: string;
 };
 
 export type Slug = {
   _type: "slug";
-  current?: string;
+  current: string;
   source?: string;
 };
 
@@ -262,8 +262,8 @@ export type CtaReference = {
 
 export type CtaSection = {
   _type: "ctaSection";
-  content?: CtaReference;
-  contentAlignment?: Alignment;
+  content: CtaReference;
+  contentAlignment: Alignment;
   backgroundImage?: ImageAsset;
   theme?: "primary" | "background" | "dark";
 };
@@ -275,14 +275,15 @@ export type Alignment = {
 
 export type SplitSection = {
   _type: "splitSection";
-  content?: CtaReference;
+  content: CtaReference;
   layout?: "image-left" | "image-right";
+  intent: "primary" | "muted" | "dark" | "neutral" | "white";
 };
 
 export type UserStoryInstance = {
   _type: "userStoryInstance";
-  storyText?: string;
-  userStoryImage?: ImageAsset;
+  storyText: string;
+  userStoryImage: ImageAsset;
 };
 
 export type Cta = {
@@ -291,18 +292,18 @@ export type Cta = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  title: string;
   eyebrow?: string;
   text?: string;
-  ctaImage?: ImageAsset;
+  ctaImage: ImageAsset;
   ctaNavigation1?: Navigation;
   ctaNavigation2?: Navigation;
 };
 
 export type Navigation = {
   _type: "navigation";
-  title?: string;
-  type?: "internal" | "external";
+  title: string;
+  type: "internal" | "external";
   internalLink?: string;
   link?: string;
 };
@@ -316,7 +317,7 @@ export type HeroReference = {
 
 export type HeroSection = {
   _type: "heroSection";
-  hero?: HeroReference;
+  hero: HeroReference;
   alignment?: Alignment;
 };
 
@@ -326,7 +327,7 @@ export type Hero = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  title: string;
   heroText?: string;
   heroImage?: ImageAsset;
   muxVideo?: MuxVideo;
@@ -370,8 +371,8 @@ export type RichText = {
 
 export type SocialMedia = {
   _type: "socialMedia";
-  socialMediaTitle?: string;
-  socialMediaLink?: string;
+  socialMediaTitle: string;
+  socialMediaLink: string;
 };
 
 export type MuxVideoAsset = {
@@ -486,9 +487,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
+  height: number;
+  width: number;
+  aspectRatio: number;
 };
 
 export type SanityImageMetadata = {
@@ -514,14 +515,14 @@ export type SanityFileAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
+  sha1hash: string;
+  extension: string;
+  mimeType: string;
+  size: number;
+  assetId: string;
   uploadId?: string;
-  path?: string;
-  url?: string;
+  path: string;
+  url: string;
   source?: SanityAssetSourceData;
 };
 
@@ -543,14 +544,14 @@ export type SanityImageAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
+  sha1hash: string;
+  extension: string;
+  mimeType: string;
+  size: number;
+  assetId: string;
   uploadId?: string;
-  path?: string;
-  url?: string;
+  path: string;
+  url: string;
   metadata?: SanityImageMetadata;
   source?: SanityAssetSourceData;
 };
@@ -610,63 +611,87 @@ export type AllSanitySchemaTypes =
   | SanityImageAsset
   | Geopoint;
 
-// Source: sanity/lib/queries.ts
+// Source: sanity/lib/queries/landingPage.ts
 // Variable: landingPageQuery
-// Query: *[_type == "siteSettings"][0]{  landingPage -> {    pageSections  }}
+// Query: *[_type == "siteSettings"][0]{  "pageSections": landingPage->pageSections[]{    _type,    _key,    _type == "heroSection" => {      "title": hero->title,      "text": hero->heroText,      "heroNavigation1": hero->heroNavigation1,      "heroNavigation2": hero->heroNavigation2,      "muxVideo": hero->muxVideo {        "playbackId":asset->playbackId,      },      "heroImage": hero->heroImage    },    _type == "splitSection" => {      "eyebrow": content->eyebrow,      "title": content->title,      "ctaText": content->text,      "ctaImage": content->ctaImage,      "ctaNavigation1": content->ctaNavigation1,      "ctaNavigation2": content->ctaNavigation2,      layout,       intent    }, _type == "imageAsset" => {  ...,  "dimensions": image.asset->metadata.dimensions,  },  _type == "userStorySection" => {    ...  },   _type == "carousel" => {    ...  }  }}
 export type LandingPageQueryResult = {
-  landingPage: {
-    pageSections: Array<
-      | ({
-          _key: string;
-        } & CtaSection)
-      | ({
-          _key: string;
-        } & HeroSection)
-      | ({
-          _key: string;
-        } & ImageAsset)
-      | ({
-          _key: string;
-        } & SplitSection)
-      | {
-          headline?: string;
-          carouselImages?: Array<
-            {
-              _key: string;
-            } & ImageAsset
-          >;
-          _type: "carousel";
-          _key: string;
-        }
-      | {
-          rating?: number;
-          testimonialText?: string;
-          name?: string;
-          occupation?: string;
-          location?: string;
-          _type: "testimonial";
-          _key: string;
-        }
-      | {
-          title?: string;
-          subtext?: string;
-          headlineImage?: ImageAsset;
-          storyBlocks?: Array<
-            {
-              _key: string;
-            } & UserStoryInstance
-          >;
-          _type: "userStorySection";
-          _key: string;
-        }
-    > | null;
-  } | null;
+  pageSections: Array<
+    | {
+        _type: "carousel";
+        _key: string;
+        headline: string;
+        carouselImages?: Array<
+          {
+            _key: string;
+          } & ImageAsset
+        >;
+      }
+    | {
+        _type: "ctaSection";
+        _key: string;
+      }
+    | {
+        _type: "heroSection";
+        _key: string;
+        title: string;
+        text: string | null;
+        heroNavigation1: Navigation | null;
+        heroNavigation2: Navigation | null;
+        muxVideo: {
+          playbackId: string | null;
+        } | null;
+        heroImage: ImageAsset | null;
+      }
+    | {
+        _type: "imageAsset";
+        _key: string;
+        image: {
+          asset?: SanityImageAssetReference;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+        };
+        alt: string;
+        caption?: string;
+        attribution?: string;
+        dimensions: SanityImageDimensions | null;
+      }
+    | {
+        _type: "splitSection";
+        _key: string;
+        eyebrow: string | null;
+        title: string;
+        ctaText: string | null;
+        ctaImage: ImageAsset;
+        ctaNavigation1: Navigation | null;
+        ctaNavigation2: Navigation | null;
+        layout: "image-left" | "image-right" | null;
+        intent: "dark" | "muted" | "neutral" | "primary" | "white";
+      }
+    | {
+        _type: "testimonial";
+        _key: string;
+      }
+    | {
+        _type: "userStorySection";
+        _key: string;
+        title: string;
+        subtext?: string;
+        headlineImage: ImageAsset;
+        storyBlocks?: Array<
+          {
+            _key: string;
+          } & UserStoryInstance
+        >;
+      }
+  > | null;
 } | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "siteSettings"][0]{\n  landingPage -> {\n    pageSections\n  }\n}': LandingPageQueryResult;
+    '\n*[_type == "siteSettings"][0]{\n  "pageSections": landingPage->pageSections[]{\n    _type,\n    _key,\n    _type == "heroSection" => {\n      "title": hero->title,\n      "text": hero->heroText,\n      "heroNavigation1": hero->heroNavigation1,\n      "heroNavigation2": hero->heroNavigation2,\n      "muxVideo": hero->muxVideo {\n        "playbackId":asset->playbackId,\n      },\n      "heroImage": hero->heroImage\n    },\n    _type == "splitSection" => {\n      "eyebrow": content->eyebrow,\n      "title": content->title,\n      "ctaText": content->text,\n      "ctaImage": content->ctaImage,\n      "ctaNavigation1": content->ctaNavigation1,\n      "ctaNavigation2": content->ctaNavigation2,\n      layout, \n      intent\n    }, \n_type == "imageAsset" => {\n  ...,\n  "dimensions": image.asset->metadata.dimensions,\n  \n},\n  _type == "userStorySection" => {\n    ...\n  }, \n  _type == "carousel" => {\n    ...\n  }\n  }\n}\n': LandingPageQueryResult;
   }
 }

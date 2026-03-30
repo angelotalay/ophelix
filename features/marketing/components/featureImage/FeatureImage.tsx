@@ -4,29 +4,20 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
+import { ImageAsset } from "@/sanity/types";
+import { urlFor } from "@/sanity/lib/image";
 
 interface FeatureImageProps {
-  src?: string; //For now this will be a src string - we will integrate with a cms later
-  intent: "primary" | "background"; // We should put this into a types file as we are referencing it a lot
+  image: ImageAsset["image"];
   className?: string;
 }
-function FeatureImage({
-  src = "/images/placeholder_image_1.png",
-  intent = "background",
-  className,
-}: FeatureImageProps) {
+function FeatureImage({ image, className }: FeatureImageProps) {
   return (
-    <Section
-      className={cn(className, {
-        "bg-primary text-primary-foreground": intent === "primary",
-        "bg-background text-primary": intent === "background",
-      })}
-      paddingY="md"
-    >
+    <Section paddingY="md" className={className}>
       <Container>
         <div className={"relative"}>
           <Image
-            src={src}
+            src={urlFor(image).url()}
             alt={"Placeholder image of the ophelix watch"}
             className={"object-contain"}
             width={1280}

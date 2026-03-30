@@ -1,11 +1,11 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 import { EarthGlobeIcon } from "@sanity/icons";
 import { CalendarIcon } from "@sanity/icons";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
-
-const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
-const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
-const OBJECTS = DOCUMENT_OBJECTS.OBJECTS;
+import {
+  DOCUMENTS,
+  COMMON_OBJECTS,
+  OBJECTS,
+} from "@/sanity/schemaTypes/constants";
 
 const PAGE_TYPES = {
   LANDING: "landing",

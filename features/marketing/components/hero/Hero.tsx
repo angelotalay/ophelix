@@ -1,70 +1,112 @@
 import React from "react";
-import { MuxBackgroundVideo } from "@mux/mux-background-video/react";
-
-import Container from "@/components/layout/Container";
-import RoundedButton from "@/components/buttons/RoundedButton";
-import Section from "@/components/layout/Section";
-import Stack from "@/components/layout/Stack";
+import MuxPlayer from "@mux/mux-player-react";
 import Image from "next/image";
 
-function HeaderButtons() {
-  return (
-    <>
-      <RoundedButton size={"lg"} intent={"primary"}>
-        Shop Jewel
-      </RoundedButton>
-      <RoundedButton size={"lg"} intent={"background"} variant={"default"}>
-        Join the insider list
-      </RoundedButton>
-    </>
-  );
+import Container from "@/components/layout/Container";
+import NavigationButtons from "@/features/marketing/components/buttons/NavigationButtons";
+import Section from "@/components/layout/Section";
+import Stack from "@/components/layout/Stack";
+import {
+  Hero as HeroType,
+  MuxPlaybackId,
+  ImageAsset,
+  Navigation,
+} from "@/sanity/types";
+import { urlFor } from "@/sanity/lib/image";
+
+interface HeroProps {
+  title: HeroType["title"];
+  text: HeroType["heroText"];
+  muxVideo: MuxPlaybackId["id"] | null;
+  image: ImageAsset["image"] | null;
+  navigationButton1: Navigation | null;
+  navigationButton2: Navigation | null;
 }
 
-function HeroHeader() {
+type HeroHeaderProps = Pick<
+  HeroProps,
+  "title" | "text" | "navigationButton1" | "navigationButton2"
+>;
+
+function HeroHeader({
+  title,
+  text,
+  navigationButton1,
+  navigationButton2,
+}: HeroHeaderProps) {
+  const hasButtons = navigationButton1 || navigationButton2;
+
   return (
     <Container>
       <Stack gap="md">
-        <Stack className={"font-display text-6xl text-background"} gap="sm">
-          <h1> Wear It Everyday.</h1>
-          <h1>We&#39;ll Take Care Of It.</h1>
+        <Stack
+          className="font-display text-6xl whitespace-pre-wrap text-background"
+          gap="sm"
+        >
+          <h1>{title}</h1>
         </Stack>
-        <Stack gap="sm" className={"text-2xl text-background"}>
-          <p>Warranty repair dispatched in 30 days and £50 back.</p>
-          <p>First run limited to 100 watches.</p>
+
+        <Stack gap="sm" className="text-2xl text-background">
+          <p className="whitespace-pre-wrap">{text}</p>
         </Stack>
-        <Stack orientation="horizontal" gap="sm">
-          <HeaderButtons />
-        </Stack>
+
+        {hasButtons && (
+          <Stack orientation="horizontal" gap="sm">
+            <NavigationButtons
+              navigationButton1={navigationButton1}
+              navigationButton2={navigationButton2}
+              size="default"
+              intent1="primary"
+              intent2="background"
+            />
+          </Stack>
+        )}
       </Stack>
     </Container>
   );
 }
 
-function Hero() {
+function Hero({
+  title,
+  text,
+  muxVideo,
+  image,
+  navigationButton1,
+  navigationButton2,
+}: HeroProps) {
   return (
     <Section
-      className={"relative h-dvh w-full overflow-hidden"}
+      className="relative h-full w-full overflow-hidden"
       as="section"
       paddingY="md"
     >
-      <div className="absolute inset-0 z-0">
-        <MuxBackgroundVideo
-          className="h-full w-full object-cover"
-          src={
-            "https://stream.mux.com/02FPOtBxVE7ud402hmeGe6YaUJC5bVMe4QCsQc4vJWkNU.m3u8"
-          }
-        >
-          <Image
-            className="h-full w-full object-cover"
-            src="https://image.mux.com/02FPOtBxVE7ud402hmeGe6YaUJC5bVMe4QCsQc4vJWkNU/thumbnail.webp?time=0"
-            alt="Hero Background"
+      <div className="absolute inset-0 z-0 h-full">
+        {muxVideo ? (
+          <MuxPlayer
+            className="heroMuxPlayer h-full w-full"
+            playbackId={muxVideo}
+            loop
+            muted
+            autoPlay
+            playsInline
           />
-        </MuxBackgroundVideo>
+        ) : image ? (
+          <Image
+            src={urlFor(image).url()}
+            alt=""
+            fill
+            className="object-cover"
+          />
+        ) : null}
       </div>
 
-      {/* 2. Content Overlay using Flexbox for alignment */}
-      <div className={"relative z-10 flex h-full items-end"}>
-        <HeroHeader />
+      <div className="relative z-10 flex h-full items-end">
+        <HeroHeader
+          title={title}
+          text={text}
+          navigationButton1={navigationButton1}
+          navigationButton2={navigationButton2}
+        />
       </div>
     </Section>
   );

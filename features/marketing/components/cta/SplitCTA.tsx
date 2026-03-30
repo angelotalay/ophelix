@@ -6,30 +6,28 @@ import RoundedButton from "@/components/buttons/RoundedButton";
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
 import { BaseHeadlineCTAProps } from "@/features/marketing/types";
+import { ImageAsset, SplitSection } from "@/sanity/types";
+import { urlFor } from "@/sanity/lib/image";
 
-import SPLIT_CTA_CONTENT from "@/features/marketing/components/splitCta/splitCta.copy";
+import SPLIT_CTA_CONTENT from "@/features/marketing/components/cta/splitCta.copy";
 import { cva, VariantProps } from "class-variance-authority";
 
-const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_2.png";
-
-type CTAContentProps = Omit<SplitCTAProps, "src" | "intent">;
+type CTAContentProps = Omit<SplitCTAProps, "image" | "intent">;
 
 interface CTAImageProps {
-  src?: string;
+  image: ImageAsset | null;
 }
 
 function CTAContent({
   tag = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.tag,
   title = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.title,
-  descriptions = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.description,
+  text = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.description,
 }: CTAContentProps) {
   return (
     <Stack className={"text-foreground"} gap={"md"}>
       <p className="font-bold text-foreground">{tag}</p>
       <h2 className="text font-display text-5xl">{title}</h2>
-      {descriptions.map((description, idx) => (
-        <p key={idx}> {description}</p>
-      ))}
+      <p className="whitespace-pre-wrap">{text}</p>
       <Stack orientation="horizontal" gap="sm">
         <RoundedButton size="lg" intent={"primary"}>
           Shop Jewel
@@ -42,38 +40,46 @@ function CTAContent({
   );
 }
 
-function CTAImage({ src = PLACEHOLDER_IMAGE_PATH }: CTAImageProps) {
-  return (
-    <div>
-      <Image src={src} width={720} height={751} alt="Placeholder image 2" />
-    </div>
-  );
+function CTAImage({ image }: CTAImageProps) {
+  if (image?.image)
+    return (
+      <div>
+        <Image
+          src={urlFor(image.image).url()}
+          width={720}
+          height={751}
+          alt="Placeholder image 2"
+        />
+      </div>
+    );
 }
 
 const splitCTAVariants = cva("", {
   variants: {
     intent: {
       primary: "bg-primary",
-      background: "bg-background",
-      "extra-dark": "bg-extra-dark",
+      muted: "bg-muted",
+      neutral: "bg-neutral",
+      white: "bg-white",
+      dark: "bg-dark",
     },
   },
   defaultVariants: {
-    intent: "background",
+    intent: "neutral",
   },
 });
 
-type SplitCTAProps = Omit<BaseHeadlineCTAProps, "text"> & {
-  tag: string;
-  title: string;
-  descriptions?: string[];
-  src?: string;
+type SplitCTAProps = Omit<BaseHeadlineCTAProps, "src"> & {
+  tag: string | null;
+  title: string | null;
+  image: ImageAsset | null;
+  intent: NonNullable<SplitSection["intent"]>;
 } & VariantProps<typeof splitCTAVariants>;
 
-function SplitCTA({ title, tag, descriptions, src, intent }: SplitCTAProps) {
+function SplitCTA({ title, tag, text, image, intent }: SplitCTAProps) {
   return (
     <Section className={splitCTAVariants({ intent })}>
-      <Container data-intent={intent}>
+      <Container>
         <Stack
           orientation="horizontal"
           data-intent={intent}
@@ -81,10 +87,10 @@ function SplitCTA({ title, tag, descriptions, src, intent }: SplitCTAProps) {
           className="items-center"
         >
           <div className="w-1/2">
-            <CTAContent title={title} tag={tag} descriptions={descriptions} />
+            <CTAContent title={title} tag={tag} text={text} />
           </div>
           <div className={"w-1/2"}>
-            <CTAImage src={src} />
+            <CTAImage image={image} />
           </div>
         </Stack>
       </Container>

@@ -10,7 +10,10 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "mux.video" }],
+    remotePatterns: [
+      { protocol: "https", hostname: "mux.video" },
+      { protocol: "https", hostname: "cdn.sanity.io" },
+    ],
   },
 };
 

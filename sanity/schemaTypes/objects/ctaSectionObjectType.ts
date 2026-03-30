@@ -1,8 +1,6 @@
 import { defineType, defineField } from "sanity";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+import { OBJECTS } from "@/sanity/schemaTypes/constants";
 import { BlockElementIcon } from "@sanity/icons";
-
-const OBJECTS = DOCUMENT_OBJECTS.OBJECTS;
 
 const ctaSectionObjectType = defineType({
   name: OBJECTS.cta,

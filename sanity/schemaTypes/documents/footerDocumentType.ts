@@ -1,8 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { EditIcon } from "@sanity/icons";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
-
-const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
+import { DOCUMENTS } from "@/sanity/schemaTypes/constants";
 
 const footerDocumentType = defineType({
   name: DOCUMENTS.footer,
