@@ -11,16 +11,23 @@ import {
 } from "@/components/ui/carousel";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import StarIcon from "@/assets/star.svg";
+import { Testimonial, TestimonialsSection } from "@/sanity/types";
 
 import TESTIMONIALS_CONTENT from "@/features/marketing/components/testimonials/testiomonials.copy";
 import Section from "@/components/layout/Section";
 
 interface TestimonialItemProps {
-  rating: number;
-  review: string;
-  name: string;
-  occupation: string;
-  location: string;
+  rating: Testimonial["rating"];
+  review: Testimonial["testimonialText"];
+  name: Testimonial["name"];
+  occupation: Testimonial["occupation"];
+  location: Testimonial["location"];
+}
+
+interface TestimonialsProps {
+  title: TestimonialsSection["title"];
+  subtext: TestimonialsSection["subtext"];
+  testimonials: TestimonialsSection["testimonialList"];
 }
 
 function TestimonialItem({
@@ -61,25 +68,45 @@ function TestimonialItem({
 }
 
 // Testimonial bg colour exposed via className for now as well
-function Testimonials({ className }: { className: string }) {
+function Testimonials({ title, subtext, testimonials }: TestimonialsProps) {
   return (
-    <Section className={className}>
+    <Section>
+      {title ||
+        (subtext && (
+          <Stack>
+            <h2> {title} </h2>
+            <p>{subtext}</p>
+          </Stack>
+        ))}
+
       <Carousel
         opts={{
           loop: true,
         }}
       >
         <CarouselContent>
-          {TESTIMONIALS_CONTENT.map((testimonial, index) => (
-            <TestimonialItem
-              key={index}
-              rating={5}
-              review={testimonial.review}
-              name={testimonial.name}
-              occupation={testimonial.occupation}
-              location={testimonial.location}
-            />
-          ))}
+          {testimonials &&
+            testimonials.map((testimonial) => (
+              <TestimonialItem
+                key={testimonial._key}
+                rating={testimonial.rating}
+                review={testimonial.testimonialText}
+                name={testimonial.name}
+                occupation={testimonial.occupation}
+                location={testimonial.location}
+              />
+            ))}
+          {!testimonials &&
+            TESTIMONIALS_CONTENT.map((testimonial, index) => (
+              <TestimonialItem
+                key={index}
+                rating={5}
+                review={testimonial.review}
+                name={testimonial.name}
+                occupation={testimonial.occupation}
+                location={testimonial.location}
+              />
+            ))}
         </CarouselContent>
         <CarouselPrevious size="lg" />
         <CarouselNext size="lg" />

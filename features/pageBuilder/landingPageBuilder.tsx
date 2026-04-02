@@ -7,24 +7,21 @@ import CustomerStory from "@/features/marketing/components/customerStory/Custome
 import CarouselHeadline from "@/features/marketing/components/carouselHeadline/CarouselHeadline";
 import Testimonials from "@/features/marketing/components/testimonials/Testomonials";
 import CTA from "@/features/marketing/components/cta/CTA";
-import getLandingPageQueryResult from "@/sanity/lib/fetch/landingPage";
-import { LandingPageQueryResult, ImageAsset } from "@/sanity/types";
+
 import {
   COMMON_OBJECTS,
   DOCUMENTS,
   OBJECTS,
 } from "@/sanity/schemaTypes/constants";
-import NavBar from "@/components/nav/NavBar";
+import { LandingPageQueryResult } from "@/sanity/types";
 
-// Later this should just be page query result
-type LandingPageSection = NonNullable<
+export type LandingPageSection = NonNullable<
   NonNullable<LandingPageQueryResult>["pageSections"]
 >[number];
 
 function renderComponents(section: LandingPageSection) {
   switch (section._type) {
     case OBJECTS.hero:
-      // Error boundary here
       return (
         <Hero
           title={section.title || "DEFAULT TITLE"}
@@ -68,34 +65,30 @@ function renderComponents(section: LandingPageSection) {
           carouselImages={section.carouselImages}
         />
       );
-    case DOCUMENTS.testimonial:
-      return;
+    case OBJECTS.testimonials:
+      return (
+        <Testimonials
+          key={section._key}
+          title={section.title}
+          subtext={section.subtext}
+          testimonials={section.testimonialList}
+        />
+      );
+    case "ctaSection":
+      console.log(section);
+      return (
+        <CTA
+          key={section._key}
+          backgroundImage={section.ctaImage}
+          intent={section.theme}
+          align={section.alignment}
+          title={section.ctaTitle}
+          text={section.ctaText}
+        >
+          <h1>Hello??</h1>
+        </CTA>
+      );
   }
 }
-// This is responsible for the layout only
-async function LandingPageBuilder() {
-  const landingPageQuery: LandingPageQueryResult =
-    await getLandingPageQueryResult();
 
-  // We need an error boundary here// Basic guard clause
-  if (!landingPageQuery?.pageSections) {
-    return null; // Or a 404/Error view
-  }
-  const pageSections = landingPageQuery.pageSections;
-  if (!pageSections.length) return;
-  const [firstSection, ...remainingSections] = pageSections;
-
-  return (
-    <main className="">
-      {/**/}
-      <div className="landing-page__first-section">
-        {renderComponents(firstSection)}
-      </div>
-      {remainingSections.map((section: LandingPageSection) => {
-        return renderComponents(section);
-      })}
-    </main>
-  );
-}
-
-export default LandingPageBuilder;
+export default renderComponents;

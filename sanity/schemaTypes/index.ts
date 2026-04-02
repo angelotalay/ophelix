@@ -19,9 +19,11 @@ import HeroDocumentType from "@/sanity/schemaTypes/documents/heroDocumentType";
 import alignmentObjectType from "@/sanity/schemaTypes/objects/common/alignmentObjectType";
 import ctaSectionObjectType from "@/sanity/schemaTypes/objects/ctaSectionObjectType";
 import imageCarouselDocumentType from "@/sanity/schemaTypes/documents/carouselDocumentType";
+import testimonialsObjectType from "@/sanity/schemaTypes/objects/testiomonialsObjectType";
 
 type arraySanityTypes = Array<SchemaTypeDefinition>;
 
+// Rather than split by sanity doc/obj type maybe we split by features?
 const documentTypes: arraySanityTypes = [
   pageDocumentType,
   companyDocumentType,
@@ -40,6 +42,7 @@ const objectTypes: arraySanityTypes = [
   userStoryInstanceObjectType,
   splitSectionObjectType,
   ctaSectionObjectType,
+  testimonialsObjectType,
 ];
 
 const commonObjectTypes: arraySanityTypes = [

@@ -21,6 +21,7 @@ const alignmentObjectType = defineType({
         list: [...ALIGNMENT_TYPES],
         layout: "radio",
       },
+      validation: (rule) => rule.required(),
     }),
   ],
 });

@@ -24,11 +24,6 @@ const ctaSectionObjectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "backgroundImage",
-      title: "Background Image",
-      type: "imageAsset",
-    }),
-    defineField({
       name: "theme",
       title: "Background Theme",
       description:
@@ -41,6 +36,7 @@ const ctaSectionObjectType = defineType({
           { title: "dark", value: "dark" },
         ],
       },
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

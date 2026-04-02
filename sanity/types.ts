@@ -209,15 +209,9 @@ export type Page = {
         _type: "userStorySection";
         _key: string;
       }
-    | {
-        rating?: number;
-        testimonialText: string;
-        name: string;
-        occupation?: string;
-        location: string;
-        _type: "testimonial";
+    | ({
         _key: string;
-      }
+      } & TestimonialsSection)
     | ({
         _key: string;
       } & ImageAsset)
@@ -255,6 +249,21 @@ export type Slug = {
   source?: string;
 };
 
+export type TestimonialsSection = {
+  _type: "testimonialsSection";
+  title?: string;
+  subtext?: string;
+  testimonialList: Array<{
+    rating?: number;
+    testimonialText: string;
+    name: string;
+    occupation?: string;
+    location: string;
+    _type: "testimonial";
+    _key: string;
+  }>;
+};
+
 export type CtaReference = {
   _ref: string;
   _type: "reference";
@@ -266,13 +275,12 @@ export type CtaSection = {
   _type: "ctaSection";
   content: CtaReference;
   contentAlignment: Alignment;
-  backgroundImage?: ImageAsset;
-  theme?: "primary" | "background" | "dark";
+  theme: "primary" | "background" | "dark";
 };
 
 export type Alignment = {
   _type: "alignment";
-  alignmentType?: "left" | "right" | "center";
+  alignmentType: "left" | "right" | "center";
 };
 
 export type SplitSection = {
@@ -304,8 +312,8 @@ export type Cta = {
 
 export type Navigation = {
   _type: "navigation";
-  title: string;
-  type: "internal" | "external";
+  title?: string;
+  type?: "internal" | "external";
   internalLink?: string;
   link?: string;
 };
@@ -584,6 +592,7 @@ export type AllSanitySchemaTypes =
   | Page
   | ImageAsset
   | Slug
+  | TestimonialsSection
   | CtaReference
   | CtaSection
   | Alignment
@@ -615,7 +624,7 @@ export type AllSanitySchemaTypes =
 
 // Source: sanity/lib/queries/landingPage.ts
 // Variable: landingPageQuery
-// Query: *[_type == "siteSettings"][0]{  "pageSections": landingPage->pageSections[]{    _type,    _key,    _type == "heroSection" => {      "title": hero->title,      "text": hero->heroText,      "heroNavigation1": hero->heroNavigation1,      "heroNavigation2": hero->heroNavigation2,      "muxVideo": hero->muxVideo {        "playbackId":asset->playbackId,      },      "heroImage": hero->heroImage    },    _type == "splitSection" => {      "eyebrow": content->eyebrow,      "title": content->title,      "ctaText": content->text,      "ctaImage": content->ctaImage,      "ctaNavigation1": content->ctaNavigation1,      "ctaNavigation2": content->ctaNavigation2,      layout,       intent    }, _type == "imageAsset" => {  ...,  "dimensions": image.asset->metadata.dimensions,  },  _type == "userStorySection" => {    ...  },   _type == "carousel" => {    ...  }  }}
+// Query: *[_type == "siteSettings"][0]{  "pageSections": landingPage->pageSections[]{    _type,    _key,    _type == "heroSection" => {      "title": hero->title,      "text": hero->heroText,      "heroNavigation1": hero->heroNavigation1,      "heroNavigation2": hero->heroNavigation2,      "muxVideo": hero->muxVideo {        "playbackId":asset->playbackId,      },      "heroImage": hero->heroImage    },    _type == "splitSection" => {      "eyebrow": content->eyebrow,      "title": content->title,      "ctaText": content->text,      "ctaImage": content->ctaImage,      "ctaNavigation1": content->ctaNavigation1,      "ctaNavigation2": content->ctaNavigation2,      layout,       intent    }, _type == "imageAsset" => {  ...,  image},  _type == "userStorySection" => {    ...  },   _type == "carousel" => {    ...  },   _type == "testimonialsSection" => {    ...  },   _type == "ctaSection" => {    "alignment":contentAlignment.alignmentType,    theme,    "ctaImage": content -> ctaImage,    "ctaNavigation1": content -> ctaNavigation1,     "ctaNavigation2": content->ctaNavigation2,     "ctaText": content->text,     "ctaTitle": content->title,        }  }}
 export type LandingPageQueryResult = {
   pageSections: Array<
     | {
@@ -632,6 +641,13 @@ export type LandingPageQueryResult = {
     | {
         _type: "ctaSection";
         _key: string;
+        alignment: "center" | "left" | "right";
+        theme: "background" | "dark" | "primary";
+        ctaImage: ImageAsset;
+        ctaNavigation1: Navigation | null;
+        ctaNavigation2: Navigation | null;
+        ctaText: string | null;
+        ctaTitle: string;
       }
     | {
         _type: "heroSection";
@@ -658,7 +674,6 @@ export type LandingPageQueryResult = {
         alt: string;
         caption?: string;
         attribution?: string;
-        dimensions: SanityImageDimensions | null;
       }
     | {
         _type: "splitSection";
@@ -673,8 +688,19 @@ export type LandingPageQueryResult = {
         intent: "dark" | "muted" | "neutral" | "primary" | "white";
       }
     | {
-        _type: "testimonial";
+        _type: "testimonialsSection";
         _key: string;
+        title?: string;
+        subtext?: string;
+        testimonialList: Array<{
+          rating?: number;
+          testimonialText: string;
+          name: string;
+          occupation?: string;
+          location: string;
+          _type: "testimonial";
+          _key: string;
+        }>;
       }
     | {
         _type: "userStorySection";
@@ -695,6 +721,6 @@ export type LandingPageQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n*[_type == "siteSettings"][0]{\n  "pageSections": landingPage->pageSections[]{\n    _type,\n    _key,\n    _type == "heroSection" => {\n      "title": hero->title,\n      "text": hero->heroText,\n      "heroNavigation1": hero->heroNavigation1,\n      "heroNavigation2": hero->heroNavigation2,\n      "muxVideo": hero->muxVideo {\n        "playbackId":asset->playbackId,\n      },\n      "heroImage": hero->heroImage\n    },\n    _type == "splitSection" => {\n      "eyebrow": content->eyebrow,\n      "title": content->title,\n      "ctaText": content->text,\n      "ctaImage": content->ctaImage,\n      "ctaNavigation1": content->ctaNavigation1,\n      "ctaNavigation2": content->ctaNavigation2,\n      layout, \n      intent\n    }, \n_type == "imageAsset" => {\n  ...,\n  "dimensions": image.asset->metadata.dimensions,\n  \n},\n  _type == "userStorySection" => {\n    ...\n  }, \n  _type == "carousel" => {\n    ...\n  }\n  }\n}\n': LandingPageQueryResult;
+    '\n*[_type == "siteSettings"][0]{\n  "pageSections": landingPage->pageSections[]{\n    _type,\n    _key,\n    _type == "heroSection" => {\n      "title": hero->title,\n      "text": hero->heroText,\n      "heroNavigation1": hero->heroNavigation1,\n      "heroNavigation2": hero->heroNavigation2,\n      "muxVideo": hero->muxVideo {\n        "playbackId":asset->playbackId,\n      },\n      "heroImage": hero->heroImage\n    },\n    _type == "splitSection" => {\n      "eyebrow": content->eyebrow,\n      "title": content->title,\n      "ctaText": content->text,\n      "ctaImage": content->ctaImage,\n      "ctaNavigation1": content->ctaNavigation1,\n      "ctaNavigation2": content->ctaNavigation2,\n      layout, \n      intent\n    }, \n_type == "imageAsset" => {\n  ...,\n  image\n},\n  _type == "userStorySection" => {\n    ...\n  }, \n  _type == "carousel" => {\n    ...\n  }, \n  _type == "testimonialsSection" => {\n    ...\n  }, \n  _type == "ctaSection" => {\n    "alignment":contentAlignment.alignmentType,\n    theme,\n    "ctaImage": content -> ctaImage,\n    "ctaNavigation1": content -> ctaNavigation1, \n    "ctaNavigation2": content->ctaNavigation2, \n    "ctaText": content->text, \n    "ctaTitle": content->title,\n      \n  }\n  }\n}\n': LandingPageQueryResult;
   }
 }

@@ -89,7 +89,7 @@ const pageDocumentType = defineType({
         defineArrayMember({ type: OBJECTS.cta }),
         defineArrayMember({ type: OBJECTS.splitCta }),
         defineArrayMember({ type: DOCUMENTS.userStory }),
-        defineArrayMember({ type: DOCUMENTS.testimonial }),
+        defineArrayMember({ type: OBJECTS.testimonials }),
         defineArrayMember({ type: COMMON_OBJECTS.imageAsset }),
         defineArrayMember({ type: DOCUMENTS.carousel }),
       ],

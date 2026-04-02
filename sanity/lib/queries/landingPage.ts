@@ -27,14 +27,26 @@ export const landingPageQuery = defineQuery(`
     }, 
 _type == "imageAsset" => {
   ...,
-  "dimensions": image.asset->metadata.dimensions,
-  
+  image
 },
   _type == "userStorySection" => {
     ...
   }, 
   _type == "carousel" => {
     ...
+  }, 
+  _type == "testimonialsSection" => {
+    ...
+  }, 
+  _type == "ctaSection" => {
+    "alignment":contentAlignment.alignmentType,
+    theme,
+    "ctaImage": content -> ctaImage,
+    "ctaNavigation1": content -> ctaNavigation1, 
+    "ctaNavigation2": content->ctaNavigation2, 
+    "ctaText": content->text, 
+    "ctaTitle": content->title,
+      
   }
   }
 }

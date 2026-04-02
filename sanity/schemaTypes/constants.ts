@@ -26,6 +26,7 @@ export const OBJECTS = {
   hero: "heroSection",
   splitCta: "splitSection",
   userStory: "userStoryInstance",
+  testimonials: "testimonialsSection",
 } as const satisfies Record<string, string>;
 
 export const PAGE_TYPES = {
