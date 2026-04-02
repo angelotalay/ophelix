@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 
 import { BaseHeadlineCTAProps } from "@/features/marketing/types";
 
-type PageHeroProps = BaseHeadlineCTAProps;
+type PageHeroProps = Omit<BaseHeadlineCTAProps, "tag">;
 
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_4.jpg";
 
