@@ -7,10 +7,10 @@ import Stack from "@/components/layout/Stack";
 import Container from "@/components/layout/Container";
 import CTA_CONTENT from "@/features/marketing/components/cta/cta.copy";
 import { CtaSection, Cta } from "@/sanity/types";
+import { urlFor } from "@/sanity/lib/image";
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_4.jpg";
 
 type CTAAlign = NonNullable<VariantProps<typeof ctaVariants>["align"]>;
-type CMSAlignment = CtaSection["contentAlignment"]["alignmentType"];
 
 const ctaVariants = cva(" relative z-10 h-full text-background", {
   variants: {
@@ -36,25 +36,12 @@ type CTAProps = {
   text: Cta["text"] | null;
 } & VariantProps<typeof ctaVariants>;
 
-function mapAlignmentToCTAAlign(alignment?: CMSAlignment): CTAAlign {
-  switch (alignment) {
-    case "center":
-      return "center";
-    case "left":
-      return "left";
-    case "right":
-      return "left"; // or "center", depending on your design choice
-    default:
-      return "left";
-  }
-}
-
 function CTA({
   children,
-  title,
-  text,
+  title = CTA_CONTENT.title,
+  text = CTA_CONTENT.text,
   align,
-  intent,
+  intent = "background",
   backgroundImage,
 }: CTAProps) {
   return (
@@ -63,7 +50,9 @@ function CTA({
         {backgroundImage && (
           <div className="absolute inset-0 z-0 brightness-50">
             <Image
-              src={PLACEHOLDER_IMAGE_PATH}
+              src={
+                urlFor(backgroundImage.image).url() || PLACEHOLDER_IMAGE_PATH
+              }
               fill
               className="object-cover"
               alt="Placeholder image"
