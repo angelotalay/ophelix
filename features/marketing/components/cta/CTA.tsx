@@ -45,7 +45,7 @@ function CTA({
   backgroundImage,
 }: CTAProps) {
   return (
-    <Section className="relative overflow-hidden md:h-100" data-intent={intent}>
+    <Section className="relative overflow-hidden md:h-175" data-intent={intent}>
       <Container className="h-full">
         {backgroundImage && (
           <div className="absolute inset-0 z-0 brightness-50">
