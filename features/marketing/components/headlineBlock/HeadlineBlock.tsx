@@ -25,7 +25,7 @@ const headlineBlockTitleVariants = cva("text-5xl font-display", {
   },
 });
 
-type HeadlineBlockProps = BaseHeadlineCTAProps &
+type HeadlineBlockProps = Omit<BaseHeadlineCTAProps, "src"> &
   VariantProps<typeof headlineBlockVariants>;
 
 function HeadlineBlock({ tag, title, text, intent }: HeadlineBlockProps) {
