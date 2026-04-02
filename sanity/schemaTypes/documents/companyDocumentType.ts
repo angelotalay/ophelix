@@ -1,8 +1,5 @@
 import { defineField, defineType } from "sanity";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
-
-const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
-const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
+import { DOCUMENTS, COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
 
 const companyDocumentType = defineType({
   name: DOCUMENTS.company,

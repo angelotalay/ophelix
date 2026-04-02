@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 import localFont from "next/font/local";
 import { Inter_Tight } from "next/font/google";
-
-import NavBar from "@/components/nav/NavBar";
-import MarqueeAnnouncementBar from "@/features/marketing/components/announcementBar/AnnouncementBar";
 import React from "react";
-import { NextFontWithVariable } from "next/dist/compiled/@next/font";
+
 import Footer from "@/components/footer/Footer";
+import NavBar from "@/components/nav/NavBar";
 
 export const metadata: Metadata = {
   title: "Ophelix",
@@ -20,7 +18,7 @@ const interTight = Inter_Tight({
   subsets: ["latin"],
 });
 
-const ppEditorialNew: NextFontWithVariable = localFont({
+const ppEditorialNew = localFont({
   variable: "--font-pp-editorial",
   display: "swap",
   src: [
@@ -34,7 +32,6 @@ const ppEditorialNew: NextFontWithVariable = localFont({
       weight: "200",
       style: "italic",
     },
-
     {
       path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Regular.otf",
       weight: "400",
@@ -45,7 +42,6 @@ const ppEditorialNew: NextFontWithVariable = localFont({
       weight: "400",
       style: "italic",
     },
-
     {
       path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Ultrabold.otf",
       weight: "800",
@@ -61,16 +57,13 @@ const ppEditorialNew: NextFontWithVariable = localFont({
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
       className={`${ppEditorialNew.variable} ${interTight.variable}`}
     >
-      <body className={`w-dvw antialiased`}>
-        <MarqueeAnnouncementBar />
+      <body className="min-h-dvh antialiased">
         <NavBar />
         {children}
         <Footer />

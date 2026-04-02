@@ -1,8 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { BlockElementIcon } from "@sanity/icons";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
-
-const OBJECTS = DOCUMENT_OBJECTS.OBJECTS;
+import { OBJECTS } from "@/sanity/schemaTypes/constants";
 
 const heroObjectType = defineType({
   name: OBJECTS.hero,

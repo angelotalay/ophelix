@@ -1,8 +1,6 @@
 import { defineType, defineField } from "sanity";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+import { OBJECTS } from "@/sanity/schemaTypes/constants";
 import { BlockElementIcon } from "@sanity/icons";
-
-const OBJECTS = DOCUMENT_OBJECTS.OBJECTS;
 
 const ctaSectionObjectType = defineType({
   name: OBJECTS.cta,
@@ -26,11 +24,6 @@ const ctaSectionObjectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "backgroundImage",
-      title: "Background Image",
-      type: "imageAsset",
-    }),
-    defineField({
       name: "theme",
       title: "Background Theme",
       description:
@@ -43,6 +36,7 @@ const ctaSectionObjectType = defineType({
           { title: "dark", value: "dark" },
         ],
       },
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

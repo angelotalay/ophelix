@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { OphelixText } from "@/components/icons/OphelixLogo";
 import {
@@ -30,10 +30,34 @@ function UserButton() {
 }
 
 export default function NavBar() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const setHeight = (): void => {
+      const height: number | undefined = ref.current?.offsetHeight;
+      if (height) {
+        document.documentElement.style.setProperty(
+          "--navbar-height",
+          `${height}px`,
+        );
+      }
+    };
+
+    setHeight();
+
+    const resizeObserver = new ResizeObserver(setHeight);
+    resizeObserver.observe(ref.current);
+
+    return () => resizeObserver.disconnect();
+  }, []);
+
   return (
     <NavigationMenu
       color="primary"
       className="sticky top-0 z-50 w-full bg-primary"
+      ref={ref}
     >
       <div className="mx-auto w-full max-w-7xl md:px-12 md:py-4">
         <NavigationMenuList className="flex w-full items-center justify-between">

@@ -1,7 +1,5 @@
 import { defineField, defineType } from "sanity";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
-
-const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
+import { COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
 
 const addressObjectType = defineType({
   name: COMMON_OBJECTS.address,

@@ -1,7 +1,5 @@
 import { defineType, defineField } from "sanity";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
-
-const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
+import { COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
 
 export const ALIGNMENT_TYPES = [
   { title: "Left", value: "left" },
@@ -23,6 +21,7 @@ const alignmentObjectType = defineType({
         list: [...ALIGNMENT_TYPES],
         layout: "radio",
       },
+      validation: (rule) => rule.required(),
     }),
   ],
 });

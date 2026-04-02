@@ -42,19 +42,18 @@ const SOCIAL_LINKS = [
 function SocialLinks() {
   return (
     <nav aria-label="Social media">
-      <ul className="flex items-center gap-4">
+      <Stack className="flex flex-row items-center gap-4">
         {SOCIAL_LINKS.map((social) => (
-          <li key={social.name}>
-            <Link
-              href={social.href}
-              aria-label={social.name}
-              className="inline-flex items-center justify-center"
-            >
-              {social.icon}
-            </Link>
-          </li>
+          <Link
+            href={social.href}
+            aria-label={social.name}
+            className="inline-flex items-center justify-center"
+            key={social.name}
+          >
+            {social.icon}
+          </Link>
         ))}
-      </ul>
+      </Stack>
     </nav>
   );
 }
@@ -77,7 +76,7 @@ function FooterSection({
 function NewsletterForm() {
   return (
     <div className="w-full max-w-xl">
-      <Field orientation="horizontal">
+      <Field orientation="horizontal" className="flex flex-row gap-4">
         <Input type="email" placeholder="Enter your email" />
         <RoundedButton intent="background" size="lg" variant="outline">
           Subscribe

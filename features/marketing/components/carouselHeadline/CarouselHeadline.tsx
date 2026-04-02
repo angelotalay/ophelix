@@ -11,18 +11,21 @@ import {
 import Container from "@/components/layout/Container";
 import Stack from "@/components/layout/Stack";
 import Section from "@/components/layout/Section";
+import { Carousel as CarouselType } from "@/sanity/types";
+import { urlFor } from "@/sanity/lib/image";
 
-const DEFAULT_CAROUSEL_IMAGE_PATH = "/images/placeholder_image_1.png";
+interface CarouselHeadlineProps {
+  headline: CarouselType["headline"];
+  subtext: CarouselType["headlineSubText"];
+  carouselImages: CarouselType["carouselImages"];
+}
+type CarouselImageItem = NonNullable<CarouselType["carouselImages"]>[number];
 
-function CarouselImage({
-  src = DEFAULT_CAROUSEL_IMAGE_PATH,
-}: {
-  src?: string;
-}) {
+function CarouselImage({ item }: { item: CarouselImageItem }) {
   return (
     <CarouselItem>
       <Image
-        src={src}
+        src={urlFor(item.image).url()}
         height={738}
         width={1280}
         className={"aspect-video rounded-md object-cover"}
@@ -33,14 +36,18 @@ function CarouselImage({
 }
 
 // For now we expose className to change the section colour. Once the designer has used this for other colours we then include variants
-function CarouselHeadline({ className }: { className?: string }) {
+function CarouselHeadline({
+  headline,
+  subtext,
+  carouselImages,
+}: CarouselHeadlineProps) {
   return (
-    <Section className={className}>
+    <Section>
       <Container>
-        <Stack>
-          <Stack className="w-full items-center justify-center" gap="sm">
-            <h2 className="font-display text-5xl">Headline</h2>
-            <p> Watches built for moments. </p>
+        <Stack gap="lg">
+          <Stack className="w-full items-center justify-center" gap="md">
+            <h2 className="font-display text-5xl"> {headline} </h2>
+            {subtext && <p>{subtext}</p>}
           </Stack>
           <div>
             <Carousel
@@ -49,9 +56,11 @@ function CarouselHeadline({ className }: { className?: string }) {
               }}
             >
               <CarouselContent>
-                <CarouselImage />
-                <CarouselImage />
-                <CarouselImage />
+                {carouselImages &&
+                  carouselImages.length > 0 &&
+                  carouselImages.map((item) => (
+                    <CarouselImage key={item._key} item={item} />
+                  ))}
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />

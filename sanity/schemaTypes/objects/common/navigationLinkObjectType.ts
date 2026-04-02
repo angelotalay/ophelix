@@ -1,7 +1,5 @@
 import { defineType, defineField } from "sanity";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
-
-const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
+import { COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
 
 const navigationLinkObjectType = defineType({
   name: COMMON_OBJECTS.navigationLink,
@@ -12,9 +10,10 @@ const navigationLinkObjectType = defineType({
     defineField({
       name: "title",
       title: "Navigation Title",
-      description: "The title of the button or link",
+      description:
+        "The title of the button or link (Leave blank to skip this link)",
       type: "string",
-      validation: (rule) => rule.required(),
+      // Removed rule.required() to allow the object to be optional
     }),
     defineField({
       name: "type",
@@ -27,34 +26,47 @@ const navigationLinkObjectType = defineType({
           { title: "External", value: "external" },
         ],
       },
-      validation: (rule) => rule.required(),
+      // Validation logic moved to the object level to allow "all or nothing"
     }),
     defineField({
       name: "internalLink",
       title: "Internal Link",
       description: "The link of the button for internal navigation",
       type: "string",
-      hidden: ({ parent, value }) => !value && !!parent?.link,
-      //   At some point we should maybe do some zod validation here?
+      hidden: ({ parent }) => parent?.type !== "internal",
     }),
     defineField({
       name: "link",
       title: "Navigation Link",
       description: "The link of the button for external navigation",
       type: "url",
-      hidden: ({ parent, value }) => !value && !!parent?.internalLink,
+      hidden: ({ parent }) => parent?.type !== "external",
     }),
   ],
   validation: (rule) =>
     rule.custom((fields) => {
+      // 1. If there is no title, we assume the user wants to skip this navigation entirely.
+      if (!fields?.title) {
+        return true;
+      }
+
+      // 2. If a title exists, enforce the rest of the rules.
       const hasLink = !!fields?.link;
-      const hasSlug = !!fields?.internalLink;
-      if (hasLink && hasSlug) {
-        return "Only a link or a slug can be set for a navigation object.";
+      const hasInternal = !!fields?.internalLink;
+      const hasType = !!fields?.type;
+
+      if (!hasType) {
+        return "Please select a Link Type (Internal or External).";
       }
-      if (!hasLink && !hasSlug) {
-        return "Either a link or a slug must be provided.";
+
+      if (hasLink && hasInternal) {
+        return "Only a link or an internal link can be set.";
       }
+
+      if (!hasLink && !hasInternal) {
+        return "A link must be provided if a title is set.";
+      }
+
       return true;
     }),
 });

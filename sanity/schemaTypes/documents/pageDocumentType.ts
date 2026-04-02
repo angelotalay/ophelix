@@ -1,11 +1,11 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 import { EarthGlobeIcon } from "@sanity/icons";
 import { CalendarIcon } from "@sanity/icons";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
-
-const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
-const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
-const OBJECTS = DOCUMENT_OBJECTS.OBJECTS;
+import {
+  DOCUMENTS,
+  COMMON_OBJECTS,
+  OBJECTS,
+} from "@/sanity/schemaTypes/constants";
 
 const PAGE_TYPES = {
   LANDING: "landing",
@@ -89,7 +89,7 @@ const pageDocumentType = defineType({
         defineArrayMember({ type: OBJECTS.cta }),
         defineArrayMember({ type: OBJECTS.splitCta }),
         defineArrayMember({ type: DOCUMENTS.userStory }),
-        defineArrayMember({ type: DOCUMENTS.testimonial }),
+        defineArrayMember({ type: OBJECTS.testimonials }),
         defineArrayMember({ type: COMMON_OBJECTS.imageAsset }),
         defineArrayMember({ type: DOCUMENTS.carousel }),
       ],

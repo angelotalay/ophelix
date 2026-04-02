@@ -1,8 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { BlockElementIcon } from "@sanity/icons";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
-
-const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
+import { COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
 
 const richTextObjectType = defineType({
   name: COMMON_OBJECTS.richText,

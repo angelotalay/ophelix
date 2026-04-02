@@ -1,9 +1,6 @@
 import { defineType, defineField } from "sanity";
-import DOCUMENT_OBJECTS from "@/sanity/schemaTypes/constants";
+import { DOCUMENTS, COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
 import { ImageIcon } from "@sanity/icons";
-
-const DOCUMENTS = DOCUMENT_OBJECTS.DOCUMENTS;
-const COMMON_OBJECTS = DOCUMENT_OBJECTS.COMMON_OBJECTS;
 
 const imageCarouselDocumentType = defineType({
   name: DOCUMENTS.carousel,
@@ -18,6 +15,11 @@ const imageCarouselDocumentType = defineType({
       description: "Large title above the carousel",
       type: "string",
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "headlineSubText",
+      title: "Sub-text",
+      type: "text",
     }),
     defineField({
       name: "carouselImages",

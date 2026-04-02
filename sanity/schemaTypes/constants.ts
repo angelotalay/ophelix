@@ -1,4 +1,4 @@
-const DOCUMENTS = {
+export const DOCUMENTS = {
   carousel: "carousel",
   company: "company",
   cta: "cta",
@@ -11,7 +11,7 @@ const DOCUMENTS = {
   userStory: "userStorySection",
 } as const satisfies Record<string, string>;
 
-const COMMON_OBJECTS = {
+export const COMMON_OBJECTS = {
   address: "address",
   alignment: "alignment",
   imageAsset: "imageAsset",
@@ -20,16 +20,15 @@ const COMMON_OBJECTS = {
   socialMedia: "socialMedia",
 } as const satisfies Record<string, string>;
 
-const OBJECTS = {
+export const OBJECTS = {
   carousel: "carouselSection",
   cta: "ctaSection",
   hero: "heroSection",
   splitCta: "splitSection",
   userStory: "userStoryInstance",
+  testimonials: "testimonialsSection",
 } as const satisfies Record<string, string>;
 
-export default {
-  DOCUMENTS,
-  COMMON_OBJECTS,
-  OBJECTS,
-} as const;
+export const PAGE_TYPES = {
+  landing: "landingPage",
+} as const satisfies Record<string, string>;
