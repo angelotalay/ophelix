@@ -13,6 +13,7 @@ import { muxInput } from "sanity-plugin-mux-input";
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schemaTypes";
 import { structureResolver } from "@/sanity/structureResolver";
+import { presentationTool } from "sanity/presentation";
 
 export default defineConfig({
   basePath: "/studio",
@@ -26,5 +27,12 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     muxInput(),
+    presentationTool({
+      previewUrl: {
+        previewMode: {
+          enable: "/api/draft-mode/enable",
+        },
+      },
+    }),
   ],
 });
