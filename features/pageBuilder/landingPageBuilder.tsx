@@ -74,7 +74,7 @@ function renderComponents(section: LandingPageSection) {
           testimonials={section.testimonialList}
         />
       );
-    case "ctaSection":
+    case OBJECTS.cta:
       console.log(section);
       return (
         <CTA
@@ -84,9 +84,9 @@ function renderComponents(section: LandingPageSection) {
           align={section.alignment}
           title={section.ctaTitle}
           text={section.ctaText}
-        >
-          <h1>Hello??</h1>
-        </CTA>
+          navigation1={section.ctaNavigation1 ?? undefined}
+          navigation2={section.ctaNavigation2 ?? undefined}
+        />
       );
   }
 }

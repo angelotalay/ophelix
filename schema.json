@@ -1627,6 +1627,13 @@
           "name": "navigation"
         },
         "optional": true
+      },
+      "supportingNote": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
       }
     }
   },
