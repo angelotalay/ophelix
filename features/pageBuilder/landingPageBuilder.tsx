@@ -27,9 +27,9 @@ function renderComponents(section: LandingPageSection) {
           title={section.title || "DEFAULT TITLE"}
           text={section.text || "DEFAULT TEXT"}
           muxVideo={section.muxVideo?.playbackId || null}
-          image={section.heroImage?.image || null}
-          navigationButton1={section.heroNavigation1 || null}
-          navigationButton2={section.heroNavigation2 || null}
+          image={section.heroImage ?? undefined}
+          navigationButton1={section.heroNavigation1 ?? undefined}
+          navigationButton2={section.heroNavigation2 ?? undefined}
           key={section._key}
         />
       );

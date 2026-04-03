@@ -14,7 +14,7 @@ interface HeroProps {
   title: HeroType["title"];
   text: HeroType["heroText"];
   muxVideo: MuxPlaybackId["id"] | null;
-  image: ImageAsset["image"] | null;
+  image: Get<HeroType, "heroImage">;
   navigationButton1: Get<HeroType, "heroNavigation1">;
   navigationButton2: Get<HeroType, "heroNavigation2">;
 }
@@ -88,7 +88,7 @@ function Hero({
           />
         ) : image ? (
           <Image
-            src={urlFor(image).url()}
+            src={urlFor(image.image).url()}
             alt=""
             fill
             className="object-cover"
