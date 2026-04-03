@@ -1,9 +1,10 @@
 import { landingPageQuery } from "@/sanity/lib/queries/landingPage";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { LandingPageQueryResult } from "@/sanity/types";
 
 async function getLandingPageQueryResult(): Promise<LandingPageQueryResult> {
-  return client.fetch(landingPageQuery);
+  const { data } = await sanityFetch({ query: landingPageQuery });
+  return data;
 }
 
 export default getLandingPageQueryResult;

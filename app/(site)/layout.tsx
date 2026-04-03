@@ -3,9 +3,13 @@ import "@/app/globals.css";
 import localFont from "next/font/local";
 import { Inter_Tight } from "next/font/google";
 import React from "react";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
+import { DisableDraftMode } from "@/components/disableDraftMode";
 
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/nav/NavBar";
+import { SanityLive } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Ophelix",
@@ -55,7 +59,7 @@ const ppEditorialNew = localFont({
   ],
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -64,6 +68,13 @@ export default function RootLayout({
       className={`${ppEditorialNew.variable} ${interTight.variable}`}
     >
       <body className="min-h-dvh antialiased">
+        <SanityLive />
+        {(await draftMode()).isEnabled && (
+          <>
+            <DisableDraftMode />
+            <VisualEditing />
+          </>
+        )}
         <NavBar />
         {children}
         <Footer />
