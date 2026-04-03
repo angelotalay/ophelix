@@ -6,21 +6,17 @@ import Container from "@/components/layout/Container";
 import NavigationButtons from "@/features/marketing/components/buttons/NavigationButtons";
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
-import {
-  Hero as HeroType,
-  MuxPlaybackId,
-  ImageAsset,
-  Navigation,
-} from "@/sanity/types";
+import { Hero as HeroType, MuxPlaybackId, ImageAsset } from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
+import type { Get } from "@sanity/codegen";
 
 interface HeroProps {
   title: HeroType["title"];
   text: HeroType["heroText"];
   muxVideo: MuxPlaybackId["id"] | null;
-  image: ImageAsset["image"] | null;
-  navigationButton1: Navigation | null;
-  navigationButton2: Navigation | null;
+  image: Get<HeroType, "heroImage">;
+  navigationButton1: Get<HeroType, "heroNavigation1">;
+  navigationButton2: Get<HeroType, "heroNavigation2">;
 }
 
 type HeroHeaderProps = Pick<
@@ -92,7 +88,7 @@ function Hero({
           />
         ) : image ? (
           <Image
-            src={urlFor(image).url()}
+            src={urlFor(image.image).url()}
             alt=""
             fill
             className="object-cover"

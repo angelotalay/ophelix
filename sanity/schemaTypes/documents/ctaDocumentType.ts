@@ -53,6 +53,12 @@ const cta = defineType({
       type: COMMON_OBJECTS.navigationLink,
       fieldset: "navigationButtons",
     }),
+    defineField({
+      name: "supportingNote",
+      title: "Supporting Note",
+      description: "A supporting statement that lies at the end of the CTA",
+      type: "string",
+    }),
   ],
   preview: {
     select: {

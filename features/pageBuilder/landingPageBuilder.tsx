@@ -27,9 +27,9 @@ function renderComponents(section: LandingPageSection) {
           title={section.title || "DEFAULT TITLE"}
           text={section.text || "DEFAULT TEXT"}
           muxVideo={section.muxVideo?.playbackId || null}
-          image={section.heroImage?.image || null}
-          navigationButton1={section.heroNavigation1 || null}
-          navigationButton2={section.heroNavigation2 || null}
+          image={section.heroImage ?? undefined}
+          navigationButton1={section.heroNavigation1 ?? undefined}
+          navigationButton2={section.heroNavigation2 ?? undefined}
           key={section._key}
         />
       );
@@ -74,7 +74,7 @@ function renderComponents(section: LandingPageSection) {
           testimonials={section.testimonialList}
         />
       );
-    case "ctaSection":
+    case OBJECTS.cta:
       console.log(section);
       return (
         <CTA
@@ -84,9 +84,9 @@ function renderComponents(section: LandingPageSection) {
           align={section.alignment}
           title={section.ctaTitle}
           text={section.ctaText}
-        >
-          <h1>Hello??</h1>
-        </CTA>
+          navigation1={section.ctaNavigation1 ?? undefined}
+          navigation2={section.ctaNavigation2 ?? undefined}
+        />
       );
   }
 }

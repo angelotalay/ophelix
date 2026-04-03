@@ -6,8 +6,8 @@ import React from "react";
 import { Navigation } from "@/sanity/types";
 
 interface NavigationButtonPairProps {
-  navigationButton1: Navigation | null;
-  navigationButton2: Navigation | null;
+  navigationButton1?: Navigation;
+  navigationButton2?: Navigation;
   size: RoundedButtonProps["size"];
   intent1: RoundedButtonProps["intent"];
   intent2: RoundedButtonProps["intent"];
@@ -22,6 +22,9 @@ function NavigationButtons({
   intent2 = "primary",
   variant,
 }: NavigationButtonPairProps) {
+  if (!navigationButton1 && !navigationButton2) {
+    return;
+  }
   if (navigationButton1 && navigationButton2) {
     return (
       <>

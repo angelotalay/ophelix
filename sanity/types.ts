@@ -308,6 +308,7 @@ export type Cta = {
   ctaImage: ImageAsset;
   ctaNavigation1?: Navigation;
   ctaNavigation2?: Navigation;
+  supportingNote?: string;
 };
 
 export type Navigation = {
