@@ -29,6 +29,4 @@ export const OBJECTS = {
   testimonials: "testimonialsSection",
 } as const satisfies Record<string, string>;
 
-export const PAGE_TYPES = {
-  landing: "landingPage",
-} as const satisfies Record<string, string>;
+

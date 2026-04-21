@@ -1,8 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { ControlsIcon } from "@sanity/icons";
 
-import { PAGE_TYPES } from "@/sanity/schemaTypes/constants";
-
 const siteSettingsDocumentType = defineType({
   name: "siteSettings",
   title: "Website Settings",
@@ -11,13 +9,13 @@ const siteSettingsDocumentType = defineType({
   icon: ControlsIcon,
   fields: [
     defineField({
-      name: PAGE_TYPES.landing,
+      name: "landingPage",
       title: "Landing Page",
       description:
         "Assign a page to be the landing page. Please note that the first page section will fill to the height of the device screen. It's recommended that the first page section be a hero.",
       type: "reference",
       to: {
-        type: "page",
+        type: "marketingPage",
       },
     }),
     defineField({
@@ -39,6 +37,14 @@ const siteSettingsDocumentType = defineType({
       },
     }),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: "Global Website Settings",
+        subtitle: "Manage your landing page, header, and footer",
+      };
+    },
+  },
 });
 
 export default siteSettingsDocumentType;

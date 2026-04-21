@@ -6,7 +6,7 @@ export const structureResolver: StructureResolver = (S) =>
     .title("Content")
     .items([
       S.divider().title("Website Content"),
-      S.documentTypeListItem("page").title("Website Pages"),
+      S.documentTypeListItem("marketingPage").title("Website Marketing Pages"),
       S.documentTypeListItem("footer").title("Footer Content"),
       S.documentTypeListItem("navigationHeader").title("Navbar Header"),
       S.divider().title("Settings"),

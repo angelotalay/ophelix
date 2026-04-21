@@ -1,14 +1,26 @@
 import React from "react";
 import MuxPlayer from "@mux/mux-player-react";
 import Image from "next/image";
+import { cva, VariantProps } from "class-variance-authority";
 
 import Container from "@/components/layout/Container";
 import NavigationButtons from "@/features/marketing/components/buttons/NavigationButtons";
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
-import { Hero as HeroType, MuxPlaybackId, ImageAsset } from "@/sanity/types";
+import { Hero as HeroType, MuxPlaybackId, HeroSection } from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
 import type { Get } from "@sanity/codegen";
+
+type HeroAlign = NonNullable<VariantProps<typeof heroVariants>["align"]>;
+
+const heroVariants = cva("h-full", {
+  variants: {
+    align: {
+      center: "justify-center items-center",
+      left: "justify-center items-start",
+      right: "justify-center items-end",
+    },}
+})
 
 interface HeroProps {
   title: HeroType["title"];
@@ -17,24 +29,28 @@ interface HeroProps {
   image: Get<HeroType, "heroImage">;
   navigationButton1: Get<HeroType, "heroNavigation1">;
   navigationButton2: Get<HeroType, "heroNavigation2">;
+  align: HeroAlign;
 }
+
+
 
 type HeroHeaderProps = Pick<
   HeroProps,
   "title" | "text" | "navigationButton1" | "navigationButton2"
->;
+> & VariantProps<typeof heroVariants>;
 
 function HeroHeader({
   title,
   text,
   navigationButton1,
   navigationButton2,
+  align = "center"
 }: HeroHeaderProps) {
   const hasButtons = navigationButton1 || navigationButton2;
 
   return (
-    <Container>
-      <Stack gap="md">
+    <Container className="h-full">
+      <Stack gap="md" className={heroVariants({align: align})}>
         <Stack
           className="font-display text-6xl whitespace-pre-wrap text-background"
           gap="sm"
@@ -43,7 +59,7 @@ function HeroHeader({
         </Stack>
 
         <Stack gap="sm" className="text-2xl text-background">
-          <p className="whitespace-pre-wrap">{text}</p>
+          <p className="whitespace-pre-wrap text-center">{text}</p>
         </Stack>
 
         {hasButtons && (

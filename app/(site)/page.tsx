@@ -2,8 +2,8 @@ import React from "react";
 
 import getLandingPageQueryResult from "@/sanity/lib/fetch/landingPage";
 import { LandingPageQueryResult } from "@/sanity/types";
-import renderComponents from "@/features/pageBuilder/landingPageBuilder";
-import type { LandingPageSection } from "@/features/pageBuilder/landingPageBuilder";
+import renderComponents from "@/features/pageBuilder/marketingPageBuilder";
+import type { LandingPageSection } from "@/features/pageBuilder/marketingPageBuilder";
 
 async function LandingPage() {
   const landingPageQuery: LandingPageQueryResult =

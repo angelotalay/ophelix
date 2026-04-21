@@ -178,3 +178,7 @@
 .landing-page__first-section {
   height: calc(100dvh - var(--navbar-height));
 }
+
+.marketing-page__first-section {
+  height: calc(100dvh - var(--navbar-height));
+}
