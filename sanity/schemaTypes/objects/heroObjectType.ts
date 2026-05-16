@@ -1,6 +1,7 @@
 import { defineType, defineField } from "sanity";
 import { BlockElementIcon } from "@sanity/icons";
 import { OBJECTS } from "@/sanity/schemaTypes/constants";
+import alignmentField from "@/sanity/schemaTypes/fields/alignmentField";
 
 const heroObjectType = defineType({
   name: OBJECTS.hero,
@@ -18,13 +19,7 @@ const heroObjectType = defineType({
       to: { type: "hero" },
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: "alignment",
-      title: "Content alignment",
-      description: "Set how the content is aligned to its container.",
-      type: "alignment",
-      initialValue: "center",
-    }),
+    defineField({...alignmentField}),
   ],
 
   preview: {

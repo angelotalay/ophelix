@@ -2,7 +2,7 @@ import React from "react";
 import getMarketingPageQueryResult from "@/sanity/lib/fetch/marketingPage";
 import {MarketingPageQueryResult} from "@/sanity/types";
 import renderComponents, {
-  type LandingPageSection,
+  type MarketingPageSection,
 } from "@/features/pageBuilder/marketingPageBuilder";
 
 
@@ -24,7 +24,7 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
       <div className="marketing-page__first-section">
         {renderComponents(firstSection)}
       </div>
-      {remainingSections.map((section: LandingPageSection) => {
+      {remainingSections.map((section: MarketingPageSection) => {
         return renderComponents(section);
       })}
     </main>

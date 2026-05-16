@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import type {FilterByType, Get} from "@sanity/codegen";
 
 import Stack from "@/components/layout/Stack";
 import {
@@ -11,23 +12,26 @@ import {
 } from "@/components/ui/carousel";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import StarIcon from "@/assets/star.svg";
-import { Testimonial, TestimonialsSection } from "@/sanity/types";
+import { MarketingPageSectionType } from "@/features/marketing/types";
 
 import TESTIMONIALS_CONTENT from "@/features/marketing/components/testimonials/testiomonials.copy";
 import Section from "@/components/layout/Section";
 
+type TestimonialSectionType = FilterByType<MarketingPageSectionType, "testimonialsSection">;
+type TestimonialItem = Get<TestimonialSectionType, "testimonialList", number>;
+
 interface TestimonialItemProps {
-  rating: Testimonial["rating"];
-  review: Testimonial["testimonialText"];
-  name: Testimonial["name"];
-  occupation: Testimonial["occupation"];
-  location: Testimonial["location"];
+  rating: TestimonialItem["rating"];
+  review: TestimonialItem["testimonialText"];
+  name: TestimonialItem["name"];
+  occupation: TestimonialItem["occupation"];
+  location: TestimonialItem["location"];
 }
 
 interface TestimonialsProps {
-  title: TestimonialsSection["title"];
-  subtext: TestimonialsSection["subtext"];
-  testimonials: TestimonialsSection["testimonialList"];
+  title: TestimonialSectionType["title"];
+  subtext: TestimonialSectionType["subtext"];
+  testimonials: TestimonialSectionType["testimonialList"];
 }
 
 function TestimonialItem({

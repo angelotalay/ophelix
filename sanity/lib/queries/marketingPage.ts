@@ -1,4 +1,4 @@
-import { defineQuery } from "next-sanity";
+import { defineQuery} from "next-sanity";
 import marketingPageContentFragment from "@/sanity/lib/queries/fragments/marketingPageContentFragment";
 
 const marketingPageQuery = defineQuery(`

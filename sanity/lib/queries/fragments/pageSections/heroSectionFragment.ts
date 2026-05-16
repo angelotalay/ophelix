@@ -7,7 +7,8 @@ const heroSectionFragment: string = `
       "muxVideo": hero->muxVideo {
         "playbackId":asset->playbackId,
       },
-      "heroImage": hero->heroImage
+      "heroImage": hero->heroImage,
+      alignment
     }`;
 
 export default heroSectionFragment;

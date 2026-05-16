@@ -1,5 +1,4 @@
 export const DOCUMENTS = {
-  carousel: "carousel",
   company: "company",
   cta: "cta",
   footer: "footer",
@@ -9,7 +8,8 @@ export const DOCUMENTS = {
   siteSettings: "siteSettings",
   testimonial: "testimonial",
   userStory: "userStorySection",
-} as const satisfies Record<string, string>;
+  headline: "headline",
+} as const;
 
 export const COMMON_OBJECTS = {
   address: "address",
@@ -18,15 +18,17 @@ export const COMMON_OBJECTS = {
   navigationLink: "navigation",
   richText: "richText",
   socialMedia: "socialMedia",
-} as const satisfies Record<string, string>;
+} as const;
 
 export const OBJECTS = {
   carousel: "carouselSection",
   cta: "ctaSection",
   hero: "heroSection",
-  splitCta: "splitSection",
+  splitCta: "splitCtaSection",
   userStory: "userStoryInstance",
   testimonials: "testimonialsSection",
-} as const satisfies Record<string, string>;
+  headline: "headlineSection",
+  splitSection: "splitSection",
+} as const;
 
 

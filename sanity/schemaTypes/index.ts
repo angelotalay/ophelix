@@ -14,12 +14,13 @@ import testimonialDocumentType from "@/sanity/schemaTypes/documents/content/test
 import ctaDocumentType from "@/sanity/schemaTypes/documents/content/ctaDocumentType";
 import userStoryDocumentType from "@/sanity/schemaTypes/documents/content/userStoryDocumentType";
 import userStoryInstanceObjectType from "@/sanity/schemaTypes/objects/userStoryObjectType";
-import splitSectionObjectType from "@/sanity/schemaTypes/objects/splitSectionObjectType";
+import splitCtaSectionObjectType from "@/sanity/schemaTypes/objects/splitCtaSectionObjectType";
 import HeroDocumentType from "@/sanity/schemaTypes/documents/content/heroDocumentType";
-import alignmentObjectType from "@/sanity/schemaTypes/objects/common/alignmentObjectType";
 import ctaSectionObjectType from "@/sanity/schemaTypes/objects/ctaSectionObjectType";
-import imageCarouselDocumentType from "@/sanity/schemaTypes/documents/content/carouselDocumentType";
 import testimonialsObjectType from "@/sanity/schemaTypes/objects/testiomonialsObjectType";
+import headlineObjectType from "@/sanity/schemaTypes/objects/headlineObjectType";
+import splitSectionObjectType from "@/sanity/schemaTypes/objects/splitSectionObjectType";
+import carouselSectionObjectType from "@/sanity/schemaTypes/objects/carouselSectionObjectType";
 
 type arraySanityTypes = Array<SchemaTypeDefinition>;
 
@@ -33,16 +34,18 @@ const documentTypes: arraySanityTypes = [
   userStoryDocumentType,
   HeroDocumentType,
   testimonialDocumentType,
-  imageCarouselDocumentType,
 ];
 
 const objectTypes: arraySanityTypes = [
   heroObjectType,
   ctaDocumentType,
   userStoryInstanceObjectType,
-  splitSectionObjectType,
+  splitCtaSectionObjectType,
   ctaSectionObjectType,
   testimonialsObjectType,
+  headlineObjectType,
+  splitSectionObjectType,
+  carouselSectionObjectType
 ];
 
 const commonObjectTypes: arraySanityTypes = [
@@ -51,7 +54,6 @@ const commonObjectTypes: arraySanityTypes = [
   navigationLinkObjectType,
   imageAssetObjectType,
   richTextObjectType,
-  alignmentObjectType,
 ];
 
 export const schema: { types: SchemaTypeDefinition[] } = {

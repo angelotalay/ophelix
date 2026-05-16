@@ -51,7 +51,7 @@
 
   /* Fonts */
   --font-sans: var(--font-inter-tight);
-  --font-display: var(--font-pp-editorial);
+  --font-display: var(--font-playfair-display);
 
 }
 
@@ -96,7 +96,7 @@
 
   /* Fallback Fonts */
   --font-inter-tight: system-ui;
-  --font-pp-editorial: serif;
+  --font-playfair-display: serif;
 
   /*Fall back navbar value*/
   --navbar-height: 80px;
@@ -142,7 +142,7 @@
 
   /* Fallback fonts */
   --font-inter-tight: system-ui;
-  --font-pp-editorial: serif;
+  --font-playfair-display: serif;
 }
 
 @layer base {

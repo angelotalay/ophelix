@@ -1,27 +1,32 @@
-import heroSectionFragment from "@/sanity/lib/queries/fragments/pageSections/heroSectionFragment";
-import splitSectionFragment from "@/sanity/lib/queries/fragments/pageSections/splitSectionFragment";
-import ctaSectionFragment from "@/sanity/lib/queries/fragments/pageSections/ctaSectionFragment";
+import {ctaSectionFragment, heroSectionFragment, splitSectionFragment, headlineSectionFragment} from "@/sanity/lib/queries/fragments/pageSections"
+import {OBJECTS, COMMON_OBJECTS, DOCUMENTS} from "@/sanity/schemaTypes/constants";
 
 const marketingPageContentFragment: string = `{
-    _type,
-    _key,
-    _type == "heroSection" => ${heroSectionFragment},
-    _type == "splitSection" => ${splitSectionFragment}, 
-_type == "imageAsset" => {
-  ...,
-  image
-},
-  _type == "userStorySection" => {
+  _type,
+  _key,
+
+  _type == "${OBJECTS.hero}" => ${heroSectionFragment},
+  _type == "${OBJECTS.splitCta}" => ${splitSectionFragment},
+  _type == "${OBJECTS.cta}" => ${ctaSectionFragment},
+
+  _type == "${COMMON_OBJECTS.imageAsset}" => {
+    ...,
+    image
+  },
+
+  _type == "${DOCUMENTS.userStory}" => {
     ...
-  }, 
-  _type == "carousel" => {
+  },
+
+  _type == "${OBJECTS.carousel}" => {
     ...
-  }, 
-  _type == "testimonialsSection" => {
+  },
+
+  _type == "${OBJECTS.testimonials}" => {
     ...
-  }, 
-  _type == "ctaSection" => ${ctaSectionFragment}
-  }
-`;
+  },
+
+  _type == "${OBJECTS.headline}" => ${headlineSectionFragment}
+}`;
 
 export default marketingPageContentFragment

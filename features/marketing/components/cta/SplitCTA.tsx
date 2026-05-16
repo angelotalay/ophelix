@@ -1,31 +1,36 @@
 import React from "react";
 import Image from "next/image";
+import type {FilterByType, Get} from "@sanity/codegen";
 
 import Container from "@/components/layout/Container";
 import RoundedButton from "@/components/buttons/RoundedButton";
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
-import { BaseHeadlineCTAProps } from "@/features/marketing/types";
-import { ImageAsset, SplitSection } from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
-
+import { MarketingPageSectionType } from "@/features/marketing/types";
 import SPLIT_CTA_CONTENT from "@/features/marketing/components/cta/splitCta.copy";
 import { cva, VariantProps } from "class-variance-authority";
 
-type CTAContentProps = Omit<SplitCTAProps, "image" | "intent">;
 
-interface CTAImageProps {
-  image: ImageAsset | null;
-}
+type SplitCtaSectionType = FilterByType<MarketingPageSectionType, "splitCtaSection">;
+
+type SplitCtaSectionProps = {
+  eyebrow : SplitCtaSectionType["eyebrow"];
+  title: SplitCtaSectionType["title"];
+  text: SplitCtaSectionType["ctaText"];
+  ctaImage: Get<SplitCtaSectionType, "ctaImage">;
+  intent: SplitCtaSectionType["intent"];
+} & VariantProps<typeof splitCTAVariants>;
+
 
 function CTAContent({
-  tag = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.tag,
+  eyebrow = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.tag,
   title = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.title,
   text = SPLIT_CTA_CONTENT.SPLIT_CTA_CONTENT.description,
-}: CTAContentProps) {
+}: Omit<SplitCtaSectionProps, "ctaImage" | "intent">) {
   return (
     <Stack className={"text-foreground"} gap={"md"}>
-      <p className="font-bold text-foreground">{tag}</p>
+      {eyebrow && <p className="font-bold text-foreground">{eyebrow}</p> }
       <h2 className="text font-display text-5xl">{title}</h2>
       <p className="whitespace-pre-wrap">{text}</p>
       <Stack orientation="horizontal" gap="sm">
@@ -38,20 +43,6 @@ function CTAContent({
       </Stack>
     </Stack>
   );
-}
-
-function CTAImage({ image }: CTAImageProps) {
-  if (image?.image)
-    return (
-      <div>
-        <Image
-          src={urlFor(image.image).url()}
-          width={720}
-          height={751}
-          alt="Placeholder image 2"
-        />
-      </div>
-    );
 }
 
 const splitCTAVariants = cva("", {
@@ -69,14 +60,7 @@ const splitCTAVariants = cva("", {
   },
 });
 
-type SplitCTAProps = Omit<BaseHeadlineCTAProps, "src"> & {
-  tag: string | null;
-  title: string | null;
-  image: ImageAsset | null;
-  intent: NonNullable<SplitSection["intent"]>;
-} & VariantProps<typeof splitCTAVariants>;
-
-function SplitCTA({ title, tag, text, image, intent }: SplitCTAProps) {
+function SplitCTA({ title, eyebrow, text, ctaImage, intent }: SplitCtaSectionProps) {
   return (
     <Section className={splitCTAVariants({ intent })}>
       <Container>
@@ -87,10 +71,17 @@ function SplitCTA({ title, tag, text, image, intent }: SplitCTAProps) {
           className="items-center"
         >
           <div className="w-1/2">
-            <CTAContent title={title} tag={tag} text={text} />
+            <CTAContent title={title} eyebrow={eyebrow} text={text} />
           </div>
           <div className={"w-1/2"}>
-            <CTAImage image={image} />
+            {ctaImage && (
+              <Image
+                src={urlFor(ctaImage.image).url()}
+                width={720}
+                height={751}
+                alt="Placeholder image 2"
+              />
+            )}
           </div>
         </Stack>
       </Container>

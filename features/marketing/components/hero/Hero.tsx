@@ -7,35 +7,35 @@ import Container from "@/components/layout/Container";
 import NavigationButtons from "@/features/marketing/components/buttons/NavigationButtons";
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
-import { Hero as HeroType, MuxPlaybackId, HeroSection } from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
-import type { Get } from "@sanity/codegen";
-
-type HeroAlign = NonNullable<VariantProps<typeof heroVariants>["align"]>;
+import type { Get, FilterByType } from "@sanity/codegen";
+import { MarketingPageSectionType } from "@/features/marketing/types";
 
 const heroVariants = cva("h-full", {
   variants: {
     align: {
       center: "justify-center items-center",
-      left: "justify-center items-start",
-      right: "justify-center items-end",
+      left: "justify-end items-start",
+      right: "justify-end items-end",
     },}
-})
+});
 
-interface HeroProps {
-  title: HeroType["title"];
-  text: HeroType["heroText"];
-  muxVideo: MuxPlaybackId["id"] | null;
-  image: Get<HeroType, "heroImage">;
-  navigationButton1: Get<HeroType, "heroNavigation1">;
-  navigationButton2: Get<HeroType, "heroNavigation2">;
-  align: HeroAlign;
+type HeroSectionType = FilterByType<MarketingPageSectionType, "heroSection">;
+
+interface HeroSectionProps {
+  title: HeroSectionType["title"];
+  text: HeroSectionType["text"];
+  muxVideo: Get<HeroSectionType, "muxVideo", "playbackId">
+  image: HeroSectionType["heroImage"];
+  navigationButton1: HeroSectionType["heroNavigation1"]
+  navigationButton2: HeroSectionType["heroNavigation2"];
+  align: HeroSectionType["alignment"];
 }
 
 
 
 type HeroHeaderProps = Pick<
-  HeroProps,
+  HeroSectionProps,
   "title" | "text" | "navigationButton1" | "navigationButton2"
 > & VariantProps<typeof heroVariants>;
 
@@ -85,7 +85,8 @@ function Hero({
   image,
   navigationButton1,
   navigationButton2,
-}: HeroProps) {
+  align
+}: HeroSectionProps) {
   return (
     <Section
       className="relative h-full w-full overflow-hidden"
@@ -118,6 +119,7 @@ function Hero({
           text={text}
           navigationButton1={navigationButton1}
           navigationButton2={navigationButton2}
+          align={align}
         />
       </div>
     </Section>

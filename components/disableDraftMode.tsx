@@ -8,6 +8,7 @@ export function DisableDraftMode() {
   if (isPresentationTool) return null;
 
   return (
+    // eslint-disable-next-line @next/next/no-html-link-for-pages
     <a
       href="/api/draft-mode/disable"
       className="fixed bottom-4 right-4 z-50 rounded-full bg-gray-900 px-4 py-2 text-sm text-white"

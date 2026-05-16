@@ -62,7 +62,9 @@ const marketingPageDocumentType = defineType({
         defineArrayMember({ type: DOCUMENTS.userStory }),
         defineArrayMember({ type: OBJECTS.testimonials }),
         defineArrayMember({ type: COMMON_OBJECTS.imageAsset }),
-        defineArrayMember({ type: DOCUMENTS.carousel }),
+        defineArrayMember({ type: OBJECTS.carousel }),
+        defineArrayMember({type: OBJECTS.headline}),
+        defineArrayMember({type: OBJECTS.splitSection})
       ],
      validation: rule => rule.min(1).required()
     }),

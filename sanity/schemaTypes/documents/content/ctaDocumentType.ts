@@ -1,5 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { DOCUMENTS, COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
+import eyebrowField from "@/sanity/schemaTypes/fields/eyebrowField";
 
 const cta = defineType({
   name: DOCUMENTS.cta,
@@ -22,24 +23,12 @@ const cta = defineType({
       type: "text",
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: "eyebrow",
-      title: "Eyebrow",
-      description: "Short tag describing the essence of the CTA",
-      type: "string",
-    }),
+    defineField({...eyebrowField}),
     defineField({
       name: "text",
       title: "CTA Text",
       description: "The CTA description text",
       type: "text",
-    }),
-    defineField({
-      name: "ctaImage",
-      title: "CTA Image",
-      description: "The CTA Image",
-      type: COMMON_OBJECTS.imageAsset,
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "ctaNavigation1",

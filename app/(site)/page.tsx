@@ -3,7 +3,7 @@ import React from "react";
 import getLandingPageQueryResult from "@/sanity/lib/fetch/landingPage";
 import { LandingPageQueryResult } from "@/sanity/types";
 import renderComponents from "@/features/pageBuilder/marketingPageBuilder";
-import type { LandingPageSection } from "@/features/pageBuilder/marketingPageBuilder";
+import type { MarketingPageSection } from "@/features/pageBuilder/marketingPageBuilder";
 
 async function LandingPage() {
   const landingPageQuery: LandingPageQueryResult =
@@ -22,7 +22,7 @@ async function LandingPage() {
       <div className="landing-page__first-section">
         {renderComponents(firstSection)}
       </div>
-      {remainingSections.map((section: LandingPageSection) => {
+      {remainingSections.map((section: MarketingPageSection) => {
         return renderComponents(section);
       })}
     </main>

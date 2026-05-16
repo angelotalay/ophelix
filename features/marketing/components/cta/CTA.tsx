@@ -1,18 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import { cva, VariantProps } from "class-variance-authority";
-import type { Get } from "@sanity/codegen";
+import type { Get, FilterByType } from "@sanity/codegen";
 
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
 import Container from "@/components/layout/Container";
 import CTA_CONTENT from "@/features/marketing/components/cta/cta.copy";
-import { CtaSection, Cta } from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
 import NavigationButtons from "@/features/marketing/components/buttons/NavigationButtons";
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_4.jpg";
-
-type CTAAlign = NonNullable<VariantProps<typeof ctaVariants>["align"]>;
+import { MarketingPageSectionType } from "@/features/marketing/types";
 
 const ctaVariants = cva(" relative z-10 h-full text-background", {
   variants: {
@@ -21,7 +19,7 @@ const ctaVariants = cva(" relative z-10 h-full text-background", {
       left: "justify-center items-start",
       right: "justify-center items-end",
     },
-    "text-align": {
+    textAlign: {
       center: "text-center",
       left: "text-start",
       right: "text-end",
@@ -29,27 +27,31 @@ const ctaVariants = cva(" relative z-10 h-full text-background", {
   },
 });
 
+type CtaSectionType = FilterByType<MarketingPageSectionType, "ctaSection">;
+
 type CTAProps = {
-  backgroundImage: Cta["ctaImage"];
-  intent: CtaSection["theme"];
-  align: CTAAlign;
-  title: Cta["title"];
-  text: Cta["text"] | null;
-  navigation1: Get<Cta, "ctaNavigation1">;
-  navigation2: Get<Cta, "ctaNavigation2">;
-  supportingNote?: Cta["supportingNote"];
+  backgroundImage: CtaSectionType["ctaImage"];
+  intent: CtaSectionType["intent"];
+  title: CtaSectionType["ctaTitle"];
+  text: CtaSectionType["ctaText"];
+  navigation1: Get<CtaSectionType, "ctaNavigation1">;
+  navigation2: Get<CtaSectionType, "ctaNavigation2">;
+  supportingNote?: CtaSectionType["supportingNote"];
+
 } & VariantProps<typeof ctaVariants>;
 
 function CTA({
   title = CTA_CONTENT.title,
   text = CTA_CONTENT.text,
   align,
-  intent = "background",
+  intent = "white",
   backgroundImage,
   navigation1,
   navigation2,
   supportingNote,
+  textAlign
 }: CTAProps) {
+  console.log(align);
   return (
     <Section className="relative overflow-hidden md:h-175" data-intent={intent}>
       <Container className="h-full">
@@ -65,7 +67,7 @@ function CTA({
             />
           </div>
         )}
-        <Stack className={ctaVariants({ align })} gap="md">
+        <Stack className={ctaVariants({ align, textAlign })} gap="md">
           <Stack>
             <h2 className="font-display text-5xl">{title}</h2>
             <p className="text-2xl">{text}</p>
