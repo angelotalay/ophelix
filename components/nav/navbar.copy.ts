@@ -1,7 +1,7 @@
 const MENU_LINKS: { label: string; link: string }[] = [
   {
     label: "Why Ophelix Exists",
-    link: "/why-ophelix",
+    link: "/why-we-exist",
   },
   {
     label: "Service Promise",

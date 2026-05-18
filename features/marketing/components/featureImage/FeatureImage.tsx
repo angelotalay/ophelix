@@ -3,12 +3,14 @@ import Image from "next/image";
 
 import Container from "@/components/layout/Container";
 import Section from "@/components/layout/Section";
-import { ImageAsset } from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
-import { Get } from "@sanity/codegen";
+import { Get,FilterByType} from "@sanity/codegen";
+import { MarketingPageSectionType } from "@/features/marketing/types";
+
+type FeatureImageSection = FilterByType<MarketingPageSectionType, "imageAsset">
 
 interface FeatureImageProps {
-  image: Get<ImageAsset, "image">;
+  image: Get<FeatureImageSection, "image">;
   className?: string;
 }
 function FeatureImage({ image, className }: FeatureImageProps) {

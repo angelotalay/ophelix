@@ -1,28 +1,28 @@
 import React from "react";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
+import {FilterByType, Get} from "@sanity/codegen";
 
 import Stack from "@/components/layout/Stack";
 import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
-import { UserStorySection, UserStoryInstance } from "@/sanity/types";
-import { urlFor } from "@/sanity/lib/image";
+import { MarketingPageSectionType } from "@/features/marketing/types";
 
-interface StoryImageProps {
-  storyImage: UserStoryInstance["userStoryImage"];
-  storyText: UserStoryInstance["storyText"];
+
+type UserStorySectionType = FilterByType<MarketingPageSectionType, "userStorySection">;
+type UserStoryInstanceType = Get<UserStorySectionType, "storyBlocks", number>;
+
+interface UserStoryProps  {
+  headlineTitle : UserStorySectionType["title"];
+  headlineText : UserStorySectionType["subtext"];
+  headlineImage: UserStorySectionType["headlineImage"];
+  userStoryBlocks : UserStoryInstanceType[];
 }
 
-type CustomerStoryProps = {
-  headlineTitle: UserStorySection["title"];
-  headlineText: UserStorySection["subtext"];
-  image: UserStorySection["headlineImage"];
-  customerStoryBlocks: UserStorySection["storyBlocks"];
-};
-
-type StoryImageHeadlineProps = Omit<CustomerStoryProps, "customerStoryBlocks">;
+type StoryImageHeadlineProps = Omit<UserStoryProps, "userStoryBlocks">;
 
 function StoryImageHeadline({
-  image,
+  headlineImage,
   headlineTitle,
   headlineText,
 }: StoryImageHeadlineProps) {
@@ -30,7 +30,7 @@ function StoryImageHeadline({
     <div className="relative md:h-100">
       <div className="absolute inset-0 z-0 h-full w-full">
         <Image
-          src={urlFor(image.image).url()}
+          src={urlFor(headlineImage.image).url()}
           alt={"Empty placeholder image"}
           fill
           className={"aspect-video object-cover"}
@@ -47,12 +47,12 @@ function StoryImageHeadline({
 }
 
 // Images have overlays that have titles,
-function StoryImage({ storyImage, storyText }: StoryImageProps) {
+function StoryImage({ userStoryImage, storyText }: Omit<UserStoryInstanceType, "_key" | "_type">) {
   return (
     <div className={"relative md:h-200"}>
       <div className="absolute inset-0 z-0 w-full">
         <Image
-          src={urlFor(storyImage.image).url()}
+          src={urlFor(userStoryImage.image).url()}
           alt={"Empty placeholder image"}
           fill
           className={"aspect-video object-cover"}
@@ -71,22 +71,22 @@ function StoryImage({ storyImage, storyText }: StoryImageProps) {
 function CustomerStory({
   headlineTitle,
   headlineText,
-  image,
-  customerStoryBlocks,
-}: CustomerStoryProps) {
+  headlineImage,
+  userStoryBlocks,
+}: UserStoryProps) {
   return (
     <Section className={"w-full"} paddingY="none">
       <StoryImageHeadline
-        headlineTitle={headlineTitle || "Default Title"}
-        image={image}
+        headlineTitle={headlineTitle}
+        headlineImage={headlineImage}
         headlineText={headlineText}
       />
-      {customerStoryBlocks &&
-        customerStoryBlocks.length > 0 &&
-        customerStoryBlocks.map((storyBlock) => (
+      {userStoryBlocks &&
+        userStoryBlocks.length > 0 &&
+        userStoryBlocks.map((storyBlock) => (
           <StoryImage
             key={storyBlock._key}
-            storyImage={storyBlock.userStoryImage}
+            userStoryImage={storyBlock.userStoryImage}
             storyText={storyBlock.storyText}
           />
         ))}

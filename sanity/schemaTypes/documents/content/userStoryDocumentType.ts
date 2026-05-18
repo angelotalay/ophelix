@@ -31,6 +31,7 @@ const userStoryDocumentType = defineType({
       name: "storyBlocks",
       type: "array",
       of: [{ type: "userStoryInstance" }],
+      validation: (rule) => rule.required().min(1),
     }),
   ],
   preview: {

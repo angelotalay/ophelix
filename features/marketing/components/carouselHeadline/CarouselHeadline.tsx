@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import type {FilterByType, Get} from "@sanity/codegen";
 
 import {
   Carousel,
@@ -11,16 +12,17 @@ import {
 import Container from "@/components/layout/Container";
 import Stack from "@/components/layout/Stack";
 import Section from "@/components/layout/Section";
-import { Carousel as CarouselType } from "@/sanity/types";
 import { urlFor } from "@/sanity/lib/image";
+import { MarketingPageSectionType } from "@/features/marketing/types";
+
+type CarouselHeadlineSectionType = FilterByType<MarketingPageSectionType, "carouselSection">;
+type CarouselImageItem = Get<CarouselHeadlineSectionType, "carouselImages", number>;
 
 interface CarouselHeadlineProps {
-  headline: CarouselType["headline"];
-  subtext: CarouselType["headlineSubText"];
-  carouselImages: CarouselType["carouselImages"];
+  headline: CarouselHeadlineSectionType["headline"];
+  subtext: CarouselHeadlineSectionType["headlineSubText"];
+  carouselImages: CarouselHeadlineSectionType["carouselImages"];
 }
-type CarouselImageItem = NonNullable<CarouselType["carouselImages"]>[number];
-
 function CarouselImage({ item }: { item: CarouselImageItem }) {
   return (
     <CarouselItem>

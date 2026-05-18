@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
-import localFont from "next/font/local";
-import { Inter_Tight } from "next/font/google";
+import { Inter_Tight, Playfair_Display } from "next/font/google";
 import React from "react";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
@@ -22,41 +21,11 @@ const interTight = Inter_Tight({
   subsets: ["latin"],
 });
 
-const ppEditorialNew = localFont({
-  variable: "--font-pp-editorial",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
   display: "swap",
-  src: [
-    {
-      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Ultralight.otf",
-      weight: "200",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-UltralightItalic.otf",
-      weight: "200",
-      style: "italic",
-    },
-    {
-      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Italic.otf",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-Ultrabold.otf",
-      weight: "800",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/pp-editorial-new/PPEditorialNew-UltraboldItalic.otf",
-      weight: "800",
-      style: "italic",
-    },
-  ],
+  subsets: ["latin"]
+
 });
 
 export default async function RootLayout({
@@ -65,7 +34,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${ppEditorialNew.variable} ${interTight.variable}`}
+      className={`${playfairDisplay.variable} ${interTight.variable}`}
     >
       <body className="min-h-dvh antialiased">
         <SanityLive />

@@ -13,33 +13,31 @@ import {
   DOCUMENTS,
   OBJECTS,
 } from "@/sanity/schemaTypes/constants";
-import { LandingPageQueryResult } from "@/sanity/types";
+import Headline from "@/features/marketing/components/headline/Headline";
+import {MarketingPageSectionType} from "@/features/marketing/types";
 
-export type LandingPageSection = NonNullable<
-  NonNullable<LandingPageQueryResult>["pageSections"]
->[number];
-
-function renderComponents(section: LandingPageSection) {
+function renderComponents(section: MarketingPageSectionType) {
   switch (section._type) {
     case OBJECTS.hero:
       return (
         <Hero
-          title={section.title || "DEFAULT TITLE"}
-          text={section.text || "DEFAULT TEXT"}
-          muxVideo={section.muxVideo?.playbackId || null}
-          image={section.heroImage ?? undefined}
-          navigationButton1={section.heroNavigation1 ?? undefined}
-          navigationButton2={section.heroNavigation2 ?? undefined}
+          title={section.title}
+          text={section.text}
+          muxVideo={section.muxVideo && section.muxVideo.playbackId}
+          image={section.heroImage}
+          navigationButton1={section.heroNavigation1}
+          navigationButton2={section.heroNavigation2}
           key={section._key}
+          align={section.alignment}
         />
       );
     case OBJECTS.splitCta:
       return (
         <SplitCTA
-          tag={section.eyebrow}
+          eyebrow={section.eyebrow}
           title={section.title}
           text={section.ctaText}
-          image={section.ctaImage}
+          ctaImage={section.ctaImage}
           key={section._key}
           intent={section.intent}
         />
@@ -52,11 +50,11 @@ function renderComponents(section: LandingPageSection) {
           key={section._key}
           headlineTitle={section.title}
           headlineText={section.subtext}
-          image={section.headlineImage}
-          customerStoryBlocks={section.storyBlocks}
+          headlineImage={section.headlineImage}
+          userStoryBlocks={section.storyBlocks}
         />
       );
-    case DOCUMENTS.carousel:
+    case OBJECTS.carousel:
       return (
         <CarouselHeadline
           key={section._key}
@@ -75,19 +73,23 @@ function renderComponents(section: LandingPageSection) {
         />
       );
     case OBJECTS.cta:
-      console.log(section);
       return (
         <CTA
           key={section._key}
           backgroundImage={section.ctaImage}
-          intent={section.theme}
+          intent={section.intent}
           align={section.alignment}
+          textAlign={section.textAlignment}
           title={section.ctaTitle}
           text={section.ctaText}
-          navigation1={section.ctaNavigation1 ?? undefined}
-          navigation2={section.ctaNavigation2 ?? undefined}
+          navigation1={section.ctaNavigation1}
+          navigation2={section.ctaNavigation2}
         />
       );
+    case OBJECTS.headline:
+      return(
+        <Headline key={section._key} intent={section.intent} eyebrow={section.eyebrow} title={section.title} text={section.text}/>
+      )
   }
 }
 

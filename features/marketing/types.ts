@@ -1,8 +1,5 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import type { Get } from "@sanity/codegen";
+import { MarketingPageQueryResult } from "@/sanity/types";
 
-export type BaseHeadlineCTAProps = {
-  tag: string | null;
-  title: string;
-  text: string | null;
-  src: string | StaticImport;
-};
+type NonNullableQueryResult = NonNullable<MarketingPageQueryResult>
+export type MarketingPageSectionType = Get<NonNullableQueryResult, "pageSections", number>;
