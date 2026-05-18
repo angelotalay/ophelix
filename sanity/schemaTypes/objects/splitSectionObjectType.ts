@@ -29,7 +29,7 @@ const splitSectionObjectType = defineType({
       description: "List of content to present in the right column",
       type: "array",
       of: columnArrayMembers,
-      validation: (rule) => rule.required().min((length = 1)),
+      validation: (rule) => rule.required().min(1),
     }),
     defineField({ ...intentField, validation: (rule) => rule.required() }),
   ],
