@@ -17,7 +17,18 @@ const heroVariants = cva("h-full", {
       center: "justify-center items-center",
       left: "justify-end items-start",
       right: "justify-end items-end",
-    },}
+    },
+  }
+});
+
+const subTextVariants = cva("text-2xl whitespace-pre-wrap", {
+  variants: {
+    align: {
+      center: "text-center",
+      left: "text-start",
+      right: "text-end",
+    },
+  },
 });
 
 type HeroSectionType = FilterByType<MarketingPageSectionType, "heroSection">;
@@ -30,13 +41,14 @@ interface HeroSectionProps {
   navigationButton1: HeroSectionType["heroNavigation1"]
   navigationButton2: HeroSectionType["heroNavigation2"];
   align: HeroSectionType["alignment"];
+  subTextAlign: HeroSectionType["subTextAlignment"];
 }
 
 
 
 type HeroHeaderProps = Pick<
   HeroSectionProps,
-  "title" | "text" | "navigationButton1" | "navigationButton2"
+  "title" | "text" | "navigationButton1" | "navigationButton2" | "subTextAlign"
 > & VariantProps<typeof heroVariants>;
 
 function HeroHeader({
@@ -44,7 +56,8 @@ function HeroHeader({
   text,
   navigationButton1,
   navigationButton2,
-  align = "center"
+  align = "center",
+  subTextAlign = "center"
 }: HeroHeaderProps) {
   const hasButtons = navigationButton1 || navigationButton2;
 
@@ -58,8 +71,8 @@ function HeroHeader({
           <h1>{title}</h1>
         </Stack>
 
-        <Stack gap="sm" className="text-2xl text-background">
-          <p className="whitespace-pre-wrap text-center">{text}</p>
+        <Stack gap="sm" className=" text-background">
+          <p className={subTextVariants({align: subTextAlign})}>{text}</p>
         </Stack>
 
         {hasButtons && (
@@ -85,7 +98,8 @@ function Hero({
   image,
   navigationButton1,
   navigationButton2,
-  align
+  align,
+  subTextAlign
 }: HeroSectionProps) {
   return (
     <Section
@@ -120,6 +134,7 @@ function Hero({
           navigationButton1={navigationButton1}
           navigationButton2={navigationButton2}
           align={align}
+          subTextAlign={subTextAlign}
         />
       </div>
     </Section>

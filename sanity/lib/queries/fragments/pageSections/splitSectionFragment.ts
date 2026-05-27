@@ -1,24 +1,24 @@
 import imageAssetFragment from "@/sanity/lib/queries/fragments/commonObjects/imageAsset";
 
+const splitSectionColumnFragment = `
+{
+  _type,
+  _key,
+  _type == "imageAsset" => ${imageAssetFragment},
+  _type == "richText" => {
+    ...
+  },
+  _type == "textColumns" => {
+    ...
+  },
+}
+`;
+
 const splitSectionFragment = `
 {
   _type == "splitSection" => {
-    "leftColumn": leftColumn[]{
-      _type,
-      _key,
-      _type == "imageAsset" => ${imageAssetFragment},
-      _type == "richText" => {
-        ...
-      }
-    },
-    "rightColumn": rightColumn[]{
-      _type,
-      _key,
-      _type == "imageAsset" => ${imageAssetFragment},
-      _type == "richText" => {
-        ...
-      }
-    }
+    "leftColumn": leftColumn[]${splitSectionColumnFragment},
+    "rightColumn": rightColumn[]${splitSectionColumnFragment},
   }
 }
 `;

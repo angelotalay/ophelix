@@ -30,6 +30,7 @@ function renderComponents(section: MarketingPageSectionType) {
           navigationButton2={section.heroNavigation2}
           key={section._key}
           align={section.alignment}
+          subTextAlign={section.subTextAlignment}
         />
       );
     case OBJECTS.splitCta:
@@ -91,7 +92,6 @@ function renderComponents(section: MarketingPageSectionType) {
       return(
         <Headline key={section._key} intent={section.intent} eyebrow={section.eyebrow} title={section.title} text={section.text}/>
       )
-
     case OBJECTS.splitSection:
       return(
         <SplitSection key={section._key} leftColumn={section.leftColumn} rightColumn={section.rightColumn}/>

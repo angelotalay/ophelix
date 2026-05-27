@@ -18,6 +18,7 @@ export const COMMON_OBJECTS = {
   navigationLink: "navigation",
   richText: "richText",
   socialMedia: "socialMedia",
+  textColumns: "textColumns",
 } as const;
 
 export const OBJECTS = {

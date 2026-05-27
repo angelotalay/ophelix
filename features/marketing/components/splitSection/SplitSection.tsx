@@ -18,6 +18,7 @@ type SplitSectionProps = {
 }
 
 
+// This would be a good spot for error boundaries.
 function renderContent({item}: {item: Get<SplitSectionType["leftColumn"], number>}){
   switch (item._type) {
     case COMMON_OBJECTS.imageAsset:
@@ -30,6 +31,18 @@ function renderContent({item}: {item: Get<SplitSectionType["leftColumn"], number
         return <PortableText key={item._key} value={item.richText} />;
       }
       break;
+    case COMMON_OBJECTS.textColumns:
+      return(
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4" key={item._key}>
+          <Stack orientation="vertical" gap="md" className="justify-center">
+            {item.leftColumn.map((columnItem) => <PortableText key={columnItem._key} value={columnItem.richText}/>)}
+          </Stack>
+          <Stack orientation="vertical" gap="md" className="justify-center">
+            {item.rightColumn.map((columnItem) => <PortableText key={columnItem._key} value={columnItem.richText}/>)}
+          </Stack>
+        </div>
+      )
+
 
   }
 }

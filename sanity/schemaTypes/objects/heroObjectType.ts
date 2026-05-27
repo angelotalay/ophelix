@@ -2,6 +2,8 @@ import { defineType, defineField } from "sanity";
 import { BlockElementIcon } from "@sanity/icons";
 import { OBJECTS } from "@/sanity/schemaTypes/constants";
 import alignmentField from "@/sanity/schemaTypes/fields/alignmentField";
+import { ALIGNMENT_TYPES } from "@/sanity/schemaTypes/fields/alignmentField";
+
 
 const heroObjectType = defineType({
   name: OBJECTS.hero,
@@ -18,6 +20,16 @@ const heroObjectType = defineType({
       type: "reference",
       to: { type: "hero" },
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name:"subTextAlignment",
+      title: "Sub-text Alignment",
+      type: "string",
+      options: {
+        layout: "radio",
+        list: ALIGNMENT_TYPES,
+      },
+      validation: rule => rule.required(),
     }),
     defineField({...alignmentField}),
   ],
