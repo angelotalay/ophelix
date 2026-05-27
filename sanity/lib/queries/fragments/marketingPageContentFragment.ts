@@ -1,4 +1,5 @@
-import {ctaSectionFragment, heroSectionFragment, splitSectionFragment, headlineSectionFragment} from "@/sanity/lib/queries/fragments/pageSections"
+import {ctaSectionFragment, heroSectionFragment, splitCtaSectionFragment, headlineSectionFragment, splitSectionFragment} from "@/sanity/lib/queries/fragments/pageSections"
+
 import {OBJECTS, COMMON_OBJECTS, DOCUMENTS} from "@/sanity/schemaTypes/constants";
 
 const marketingPageContentFragment: string = `{
@@ -6,7 +7,7 @@ const marketingPageContentFragment: string = `{
   _key,
 
   _type == "${OBJECTS.hero}" => ${heroSectionFragment},
-  _type == "${OBJECTS.splitCta}" => ${splitSectionFragment},
+  _type == "${OBJECTS.splitCta}" => ${splitCtaSectionFragment},
   _type == "${OBJECTS.cta}" => ${ctaSectionFragment},
 
   _type == "${COMMON_OBJECTS.imageAsset}" => {
@@ -26,7 +27,9 @@ const marketingPageContentFragment: string = `{
     ...
   },
 
-  _type == "${OBJECTS.headline}" => ${headlineSectionFragment}
+  _type == "${OBJECTS.headline}" => ${headlineSectionFragment}, 
+  
+  _type == "${OBJECTS.splitSection}" => ${splitSectionFragment}
 }`;
 
 export default marketingPageContentFragment

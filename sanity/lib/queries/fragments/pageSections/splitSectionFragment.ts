@@ -1,13 +1,26 @@
-const splitSectionFragment: string = `{
-      "eyebrow": content->eyebrow,
-      "title": content->title,
-      "ctaText": content->text,
-      ctaImage,
-      "ctaNavigation1": content->ctaNavigation1,
-      "ctaNavigation2": content->ctaNavigation2,
-      "supportingNote": content->supportingNote,
-      layout, 
-      intent
-    }`;
+import imageAssetFragment from "@/sanity/lib/queries/fragments/commonObjects/imageAsset";
 
-export default  splitSectionFragment;
+const splitSectionFragment = `
+{
+  _type == "splitSection" => {
+    "leftColumn": leftColumn[]{
+      _type,
+      _key,
+      _type == "imageAsset" => ${imageAssetFragment},
+      _type == "richText" => {
+        ...
+      }
+    },
+    "rightColumn": rightColumn[]{
+      _type,
+      _key,
+      _type == "imageAsset" => ${imageAssetFragment},
+      _type == "richText" => {
+        ...
+      }
+    }
+  }
+}
+`;
+
+export default splitSectionFragment;

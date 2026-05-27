@@ -15,6 +15,7 @@ import {
 } from "@/sanity/schemaTypes/constants";
 import Headline from "@/features/marketing/components/headline/Headline";
 import {MarketingPageSectionType} from "@/features/marketing/types";
+import SplitSection from "@/features/marketing/components/splitSection/SplitSection";
 
 function renderComponents(section: MarketingPageSectionType) {
   switch (section._type) {
@@ -89,6 +90,11 @@ function renderComponents(section: MarketingPageSectionType) {
     case OBJECTS.headline:
       return(
         <Headline key={section._key} intent={section.intent} eyebrow={section.eyebrow} title={section.title} text={section.text}/>
+      )
+
+    case OBJECTS.splitSection:
+      return(
+        <SplitSection key={section._key} leftColumn={section.leftColumn} rightColumn={section.rightColumn}/>
       )
   }
 }
