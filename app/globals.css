@@ -168,7 +168,6 @@
 [data-intent="muted"]{
   --foreground: var(--primary-foreground);
   --background: var(--muted);
-;
 }
 [data-intent="neutral"]{
   --foreground: var(--neutral-foreground);
