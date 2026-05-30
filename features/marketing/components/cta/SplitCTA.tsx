@@ -9,7 +9,7 @@ import Stack from "@/components/layout/Stack";
 import { urlFor } from "@/sanity/lib/image";
 import { MarketingPageSectionType } from "@/features/marketing/types";
 import SPLIT_CTA_CONTENT from "@/features/marketing/components/cta/splitCta.copy";
-import { cva, VariantProps } from "class-variance-authority";
+import { VariantProps } from "class-variance-authority";
 import intentVariants from "@/components/variants/intentVariants";
 
 const splitCTAVariants = intentVariants("");
