@@ -94,7 +94,7 @@ function renderComponents(section: MarketingPageSectionType) {
       )
     case OBJECTS.splitSection:
       return(
-        <SplitSection key={section._key} leftColumn={section.leftColumn} rightColumn={section.rightColumn}/>
+        <SplitSection key={section._key} leftColumn={section.leftColumn} rightColumn={section.rightColumn} intent={section.intent}/>
       )
   }
 }

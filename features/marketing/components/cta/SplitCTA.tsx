@@ -10,7 +10,9 @@ import { urlFor } from "@/sanity/lib/image";
 import { MarketingPageSectionType } from "@/features/marketing/types";
 import SPLIT_CTA_CONTENT from "@/features/marketing/components/cta/splitCta.copy";
 import { cva, VariantProps } from "class-variance-authority";
+import intentVariants from "@/components/variants/intentVariants";
 
+const splitCTAVariants = intentVariants("");
 
 type SplitCtaSectionType = FilterByType<MarketingPageSectionType, "splitCtaSection">;
 
@@ -44,21 +46,6 @@ function CTAContent({
     </Stack>
   );
 }
-
-const splitCTAVariants = cva("", {
-  variants: {
-    intent: {
-      primary: "bg-primary",
-      muted: "bg-muted",
-      neutral: "bg-neutral",
-      white: "bg-white",
-      dark: "bg-dark",
-    },
-  },
-  defaultVariants: {
-    intent: "neutral",
-  },
-});
 
 function SplitCTA({ title, eyebrow, text, ctaImage, intent }: SplitCtaSectionProps) {
   return (

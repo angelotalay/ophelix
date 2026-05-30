@@ -19,6 +19,7 @@ const splitSectionFragment = `
   _type == "splitSection" => {
     "leftColumn": leftColumn[]${splitSectionColumnFragment},
     "rightColumn": rightColumn[]${splitSectionColumnFragment},
+    intent
   }
 }
 `;
