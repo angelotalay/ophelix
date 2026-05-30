@@ -5,7 +5,8 @@ import {COMMON_OBJECTS, OBJECTS} from "@/sanity/schemaTypes/constants";
 
 const columnArrayMembers = [
   defineArrayMember({type: COMMON_OBJECTS.richText}),
-  defineArrayMember({type: COMMON_OBJECTS.imageAsset})
+  defineArrayMember({type: COMMON_OBJECTS.imageAsset}),
+  defineArrayMember({type: COMMON_OBJECTS.textColumns})
 ];
 
 const splitSectionObjectType = defineType({

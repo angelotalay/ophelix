@@ -21,6 +21,7 @@ import testimonialsObjectType from "@/sanity/schemaTypes/objects/testiomonialsOb
 import headlineObjectType from "@/sanity/schemaTypes/objects/headlineObjectType";
 import splitSectionObjectType from "@/sanity/schemaTypes/objects/splitSectionObjectType";
 import carouselSectionObjectType from "@/sanity/schemaTypes/objects/carouselSectionObjectType";
+import textColumnsObjectType from "@/sanity/schemaTypes/objects/common/textColumnsObjectType";
 
 type arraySanityTypes = Array<SchemaTypeDefinition>;
 
@@ -54,6 +55,7 @@ const commonObjectTypes: arraySanityTypes = [
   navigationLinkObjectType,
   imageAssetObjectType,
   richTextObjectType,
+  textColumnsObjectType,
 ];
 
 export const schema: { types: SchemaTypeDefinition[] } = {

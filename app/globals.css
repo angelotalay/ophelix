@@ -40,6 +40,7 @@
   --color-dark: var(--dark);
   --color-dark-foreground: var(--dark-foreground);
   --color-neutral: var(--neutral);
+  --color-neutral-foreground: var(--neutral-foreground);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -93,7 +94,7 @@
   --dark: oklch(0.2036 0.0716 305.83);
   --dark-foreground: oklch(0.7686 0.1386 91.59);
   --neutral: oklch(0.9702 0 0);
-
+  --neutral-foreground: oklch(0.205 0 0);
   /* Fallback Fonts */
   --font-inter-tight: system-ui;
   --font-playfair-display: serif;
@@ -163,6 +164,14 @@
 [data-intent="dark"] {
   --foreground: var(--primary-foreground);
   --background: var(--dark);
+}
+[data-intent="muted"]{
+  --foreground: var(--primary-foreground);
+  --background: var(--muted);
+}
+[data-intent="neutral"]{
+  --foreground: var(--neutral-foreground);
+  --background: var(--neutral);
 }
 
 /* Mux Player for Hero*/

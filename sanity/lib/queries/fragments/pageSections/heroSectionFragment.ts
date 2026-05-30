@@ -8,7 +8,8 @@ const heroSectionFragment: string = `
         "playbackId":asset->playbackId,
       },
       "heroImage": hero->heroImage,
-      alignment
+      alignment, 
+      subTextAlignment,
     }`;
 
 export default heroSectionFragment;
