@@ -24,8 +24,8 @@ type SplitSectionProps = {
 function renderContent({item}: {item: Get<SplitSectionType["leftColumn"], number>}){
   switch (item._type) {
     case COMMON_OBJECTS.imageAsset:
-      if(item.url){
-        return <Image className="h-auto" key={item._key} src={urlFor(item.url).url()} alt={item.alt} width={item.imageDimensions?.width} height={item.imageDimensions?.height} />;
+      if(item.url && item.imageDimensions){
+        return <Image className="h-auto" key={item._key} src={urlFor(item.url).url()} alt={item.alt} width={item.imageDimensions.width} height={item.imageDimensions?.height} />;
       }
       break;
     case COMMON_OBJECTS.richText:
