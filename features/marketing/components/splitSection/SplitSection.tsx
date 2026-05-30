@@ -50,7 +50,7 @@ function renderContent({item}: {item: Get<SplitSectionType["leftColumn"], number
             )}
           </Stack>
           <Stack orientation="vertical" gap="md" className="justify-center">
-            {item.leftColumn.map((columnItem) =>
+            {item.rightColumn.map((columnItem) =>
               columnItem.richText ? (
                 <RichText
                   richTextContent={columnItem.richText}
