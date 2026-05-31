@@ -9,6 +9,7 @@ export const DOCUMENTS = {
   testimonial: "testimonial",
   userStory: "userStorySection",
   headline: "headline",
+  faq: "faq",
 } as const;
 
 export const COMMON_OBJECTS = {
@@ -30,6 +31,7 @@ export const OBJECTS = {
   testimonials: "testimonialsSection",
   headline: "headlineSection",
   splitSection: "splitSection",
+  faqSection: "faqSection",
 } as const;
 
 

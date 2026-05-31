@@ -208,6 +208,9 @@ export type MarketingPage = {
     | ({
         _key: string;
       } & SplitSection)
+    | ({
+        _key: string;
+      } & FaqSection)
   >;
 };
 
@@ -229,6 +232,67 @@ export type Slug = {
   _type: "slug";
   current: string;
   source?: string;
+};
+
+export type FaqReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "faq";
+};
+
+export type FaqSection = {
+  _type: "faqSection";
+  title: string;
+  text?: string;
+  faqSet: FaqReference;
+  ctaNavigation?: Navigation;
+};
+
+export type Navigation = {
+  _type: "navigation";
+  title?: string;
+  type?: "internal" | "external";
+  internalLink?: string;
+  link?: string;
+};
+
+export type Faq = {
+  _id: string;
+  _type: "faq";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  faqSet: string;
+  text?: string;
+  faqItems: Array<{
+    question: string;
+    answer: RichText;
+    _type: "faqItem";
+    _key: string;
+  }>;
+};
+
+export type RichText = {
+  _type: "richText";
+  richText?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
 };
 
 export type CarouselSection = {
@@ -336,14 +400,6 @@ export type Cta = {
   supportingNote?: string;
 };
 
-export type Navigation = {
-  _type: "navigation";
-  title?: string;
-  type?: "internal" | "external";
-  internalLink?: string;
-  link?: string;
-};
-
 export type HeroReference = {
   _ref: string;
   _type: "reference";
@@ -396,28 +452,6 @@ export type TextColumns = {
       _key: string;
     } & RichText
   >;
-};
-
-export type RichText = {
-  _type: "richText";
-  richText?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
 };
 
 export type SocialMedia = {
@@ -632,6 +666,11 @@ export type AllSanitySchemaTypes =
   | MarketingPage
   | ImageAsset
   | Slug
+  | FaqReference
+  | FaqSection
+  | Navigation
+  | Faq
+  | RichText
   | CarouselSection
   | SplitSection
   | HeadlineSection
@@ -641,14 +680,12 @@ export type AllSanitySchemaTypes =
   | SplitCtaSection
   | UserStoryInstance
   | Cta
-  | Navigation
   | HeroReference
   | HeroSection
   | Hero
   | MuxVideoAssetReference
   | MuxVideo
   | TextColumns
-  | RichText
   | SocialMedia
   | MuxVideoAsset
   | MuxAssetData
@@ -667,7 +704,7 @@ export type AllSanitySchemaTypes =
 
 // Source: sanity/lib/queries/landingPage.ts
 // Variable: landingPageQuery
-// Query: *[_type == "siteSettings"][0]{  "pageSections": landingPage->pageSections[]{  _type,  _key,  _type == "heroSection" => {      "title": hero->title,      "text": hero->heroText,      "heroNavigation1": hero->heroNavigation1,      "heroNavigation2": hero->heroNavigation2,      "muxVideo": hero->muxVideo {        "playbackId":asset->playbackId,      },      "heroImage": hero->heroImage,      alignment,       subTextAlignment,    },  _type == "splitCtaSection" => {      "eyebrow": content->eyebrow,      "title": content->title,      "ctaText": content->text,      ctaImage,      "ctaNavigation1": content->ctaNavigation1,      "ctaNavigation2": content->ctaNavigation2,      "supportingNote": content->supportingNote,      layout,       intent    },  _type == "ctaSection" => {    alignment,    intent,    ctaImage,    "ctaNavigation1": content -> ctaNavigation1,     "ctaNavigation2": content->ctaNavigation2,     "ctaText": content->text,     "ctaTitle": content->title,    "supportingNote": content->supportingNote,    textAlignment,  },  _type == "imageAsset" => {    ...,    image  },  _type == "userStorySection" => {    ...  },  _type == "carouselSection" => {    ...  },  _type == "testimonialsSection" => {    ...  },  _type == "headlineSection" => {    eyebrow,    title,    text,     intent,  },     _type == "splitSection" => {  _type == "splitSection" => {    "leftColumn": leftColumn[]{  _type,  _key,  _type == "imageAsset" => {          alt,          caption,          attribution,          "url": image.asset->url,          "imageDimensions": image.asset->metadata.dimensions {            width,            height,            aspectRatio          }} ,  _type == "richText" => {    ...  },  _type == "textColumns" => {    ...  },},    "rightColumn": rightColumn[]{  _type,  _key,  _type == "imageAsset" => {          alt,          caption,          attribution,          "url": image.asset->url,          "imageDimensions": image.asset->metadata.dimensions {            width,            height,            aspectRatio          }} ,  _type == "richText" => {    ...  },  _type == "textColumns" => {    ...  },},    intent  }}}  }
+// Query: *[_type == "siteSettings"][0]{  "pageSections": landingPage->pageSections[]{  _type,  _key,  _type == "heroSection" => {      "title": hero->title,      "text": hero->heroText,      "heroNavigation1": hero->heroNavigation1,      "heroNavigation2": hero->heroNavigation2,      "muxVideo": hero->muxVideo {        "playbackId":asset->playbackId,      },      "heroImage": hero->heroImage,      alignment,       subTextAlignment,    },  _type == "splitCtaSection" => {      "eyebrow": content->eyebrow,      "title": content->title,      "ctaText": content->text,      ctaImage,      "ctaNavigation1": content->ctaNavigation1,      "ctaNavigation2": content->ctaNavigation2,      "supportingNote": content->supportingNote,      layout,       intent    },  _type == "ctaSection" => {    alignment,    intent,    ctaImage,    "ctaNavigation1": content -> ctaNavigation1,     "ctaNavigation2": content->ctaNavigation2,     "ctaText": content->text,     "ctaTitle": content->title,    "supportingNote": content->supportingNote,    textAlignment,  },  _type == "imageAsset" => {    ...,    image  },  _type == "userStorySection" => {    ...  },  _type == "carouselSection" => {    ...  },  _type == "testimonialsSection" => {    ...  },  _type == "headlineSection" => {    eyebrow,    title,    text,     intent,  },     _type == "splitSection" => {  _type == "splitSection" => {    "leftColumn": leftColumn[]{  _type,  _key,  _type == "imageAsset" => {          alt,          caption,          attribution,          "url": image.asset->url,          "imageDimensions": image.asset->metadata.dimensions {            width,            height,            aspectRatio          }} ,  _type == "richText" => {    ...  },  _type == "textColumns" => {    ...  },},    "rightColumn": rightColumn[]{  _type,  _key,  _type == "imageAsset" => {          alt,          caption,          attribution,          "url": image.asset->url,          "imageDimensions": image.asset->metadata.dimensions {            width,            height,            aspectRatio          }} ,  _type == "richText" => {    ...  },  _type == "textColumns" => {    ...  },},    intent  }},     _type == "faqSection" => {  title,  text,  "faqItems": faqSet->faqItems,  "navigation": ctaNavigation{    title,    type,    type == "internal" => {      internalLink    },    type == "external" => {      externalLink    }  }},}  }
 export type LandingPageQueryResult = {
   pageSections: Array<
     | {
@@ -693,6 +730,40 @@ export type LandingPageQueryResult = {
         ctaTitle: string;
         supportingNote: string | null;
         textAlignment: "center" | "left" | "right";
+      }
+    | {
+        _type: "faqSection";
+        _key: string;
+        title: string;
+        text: string | null;
+        faqItems: Array<{
+          question: string;
+          answer: RichText;
+          _type: "faqItem";
+          _key: string;
+        }>;
+        navigation:
+          | {
+              title: string | null;
+              type: "external" | "internal" | null;
+              internalLink: string | null;
+              externalLink: null;
+            }
+          | {
+              title: string | null;
+              type: "external" | "internal" | null;
+              externalLink: null;
+            }
+          | {
+              title: string | null;
+              type: "external" | "internal" | null;
+              internalLink: string | null;
+            }
+          | {
+              title: string | null;
+              type: "external" | "internal" | null;
+            }
+          | null;
       }
     | {
         _type: "headlineSection";
@@ -898,7 +969,7 @@ export type LandingPageQueryResult = {
 
 // Source: sanity/lib/queries/marketingPage.ts
 // Variable: marketingPageQuery
-// Query: *[_type == "marketingPage" && slug.current == $slug][0] {    "pageSections": pageSections[]       {  _type,  _key,  _type == "heroSection" => {      "title": hero->title,      "text": hero->heroText,      "heroNavigation1": hero->heroNavigation1,      "heroNavigation2": hero->heroNavigation2,      "muxVideo": hero->muxVideo {        "playbackId":asset->playbackId,      },      "heroImage": hero->heroImage,      alignment,       subTextAlignment,    },  _type == "splitCtaSection" => {      "eyebrow": content->eyebrow,      "title": content->title,      "ctaText": content->text,      ctaImage,      "ctaNavigation1": content->ctaNavigation1,      "ctaNavigation2": content->ctaNavigation2,      "supportingNote": content->supportingNote,      layout,       intent    },  _type == "ctaSection" => {    alignment,    intent,    ctaImage,    "ctaNavigation1": content -> ctaNavigation1,     "ctaNavigation2": content->ctaNavigation2,     "ctaText": content->text,     "ctaTitle": content->title,    "supportingNote": content->supportingNote,    textAlignment,  },  _type == "imageAsset" => {    ...,    image  },  _type == "userStorySection" => {    ...  },  _type == "carouselSection" => {    ...  },  _type == "testimonialsSection" => {    ...  },  _type == "headlineSection" => {    eyebrow,    title,    text,     intent,  },     _type == "splitSection" => {  _type == "splitSection" => {    "leftColumn": leftColumn[]{  _type,  _key,  _type == "imageAsset" => {          alt,          caption,          attribution,          "url": image.asset->url,          "imageDimensions": image.asset->metadata.dimensions {            width,            height,            aspectRatio          }} ,  _type == "richText" => {    ...  },  _type == "textColumns" => {    ...  },},    "rightColumn": rightColumn[]{  _type,  _key,  _type == "imageAsset" => {          alt,          caption,          attribution,          "url": image.asset->url,          "imageDimensions": image.asset->metadata.dimensions {            width,            height,            aspectRatio          }} ,  _type == "richText" => {    ...  },  _type == "textColumns" => {    ...  },},    intent  }}}   }
+// Query: *[_type == "marketingPage" && slug.current == $slug][0] {    "pageSections": pageSections[]       {  _type,  _key,  _type == "heroSection" => {      "title": hero->title,      "text": hero->heroText,      "heroNavigation1": hero->heroNavigation1,      "heroNavigation2": hero->heroNavigation2,      "muxVideo": hero->muxVideo {        "playbackId":asset->playbackId,      },      "heroImage": hero->heroImage,      alignment,       subTextAlignment,    },  _type == "splitCtaSection" => {      "eyebrow": content->eyebrow,      "title": content->title,      "ctaText": content->text,      ctaImage,      "ctaNavigation1": content->ctaNavigation1,      "ctaNavigation2": content->ctaNavigation2,      "supportingNote": content->supportingNote,      layout,       intent    },  _type == "ctaSection" => {    alignment,    intent,    ctaImage,    "ctaNavigation1": content -> ctaNavigation1,     "ctaNavigation2": content->ctaNavigation2,     "ctaText": content->text,     "ctaTitle": content->title,    "supportingNote": content->supportingNote,    textAlignment,  },  _type == "imageAsset" => {    ...,    image  },  _type == "userStorySection" => {    ...  },  _type == "carouselSection" => {    ...  },  _type == "testimonialsSection" => {    ...  },  _type == "headlineSection" => {    eyebrow,    title,    text,     intent,  },     _type == "splitSection" => {  _type == "splitSection" => {    "leftColumn": leftColumn[]{  _type,  _key,  _type == "imageAsset" => {          alt,          caption,          attribution,          "url": image.asset->url,          "imageDimensions": image.asset->metadata.dimensions {            width,            height,            aspectRatio          }} ,  _type == "richText" => {    ...  },  _type == "textColumns" => {    ...  },},    "rightColumn": rightColumn[]{  _type,  _key,  _type == "imageAsset" => {          alt,          caption,          attribution,          "url": image.asset->url,          "imageDimensions": image.asset->metadata.dimensions {            width,            height,            aspectRatio          }} ,  _type == "richText" => {    ...  },  _type == "textColumns" => {    ...  },},    intent  }},     _type == "faqSection" => {  title,  text,  "faqItems": faqSet->faqItems,  "navigation": ctaNavigation{    title,    type,    type == "internal" => {      internalLink    },    type == "external" => {      externalLink    }  }},}   }
 export type MarketingPageQueryResult = {
   pageSections: Array<
     | {
@@ -924,6 +995,40 @@ export type MarketingPageQueryResult = {
         ctaTitle: string;
         supportingNote: string | null;
         textAlignment: "center" | "left" | "right";
+      }
+    | {
+        _type: "faqSection";
+        _key: string;
+        title: string;
+        text: string | null;
+        faqItems: Array<{
+          question: string;
+          answer: RichText;
+          _type: "faqItem";
+          _key: string;
+        }>;
+        navigation:
+          | {
+              title: string | null;
+              type: "external" | "internal" | null;
+              internalLink: string | null;
+              externalLink: null;
+            }
+          | {
+              title: string | null;
+              type: "external" | "internal" | null;
+              externalLink: null;
+            }
+          | {
+              title: string | null;
+              type: "external" | "internal" | null;
+              internalLink: string | null;
+            }
+          | {
+              title: string | null;
+              type: "external" | "internal" | null;
+            }
+          | null;
       }
     | {
         _type: "headlineSection";
@@ -1131,7 +1236,7 @@ export type MarketingPageQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n*[_type == "siteSettings"][0]{\n  "pageSections": landingPage->pageSections[]{\n  _type,\n  _key,\n\n  _type == "heroSection" => \n{\n      "title": hero->title,\n      "text": hero->heroText,\n      "heroNavigation1": hero->heroNavigation1,\n      "heroNavigation2": hero->heroNavigation2,\n      "muxVideo": hero->muxVideo {\n        "playbackId":asset->playbackId,\n      },\n      "heroImage": hero->heroImage,\n      alignment, \n      subTextAlignment,\n    },\n  _type == "splitCtaSection" => {\n      "eyebrow": content->eyebrow,\n      "title": content->title,\n      "ctaText": content->text,\n      ctaImage,\n      "ctaNavigation1": content->ctaNavigation1,\n      "ctaNavigation2": content->ctaNavigation2,\n      "supportingNote": content->supportingNote,\n      layout, \n      intent\n    },\n  _type == "ctaSection" => {\n    alignment,\n    intent,\n    ctaImage,\n    "ctaNavigation1": content -> ctaNavigation1, \n    "ctaNavigation2": content->ctaNavigation2, \n    "ctaText": content->text, \n    "ctaTitle": content->title,\n    "supportingNote": content->supportingNote,\n    textAlignment,\n  },\n\n  _type == "imageAsset" => {\n    ...,\n    image\n  },\n\n  _type == "userStorySection" => {\n    ...\n  },\n\n  _type == "carouselSection" => {\n    ...\n  },\n\n  _type == "testimonialsSection" => {\n    ...\n  },\n\n  _type == "headlineSection" => {\n    eyebrow,\n    title,\n    text, \n    intent,\n  }, \n  \n  _type == "splitSection" => \n{\n  _type == "splitSection" => {\n    "leftColumn": leftColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    "rightColumn": rightColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    intent\n  }\n}\n\n}\n  }\n': LandingPageQueryResult;
-    '\n  *[_type == "marketingPage" && slug.current == $slug][0] {\n    "pageSections": pageSections[] \n      {\n  _type,\n  _key,\n\n  _type == "heroSection" => \n{\n      "title": hero->title,\n      "text": hero->heroText,\n      "heroNavigation1": hero->heroNavigation1,\n      "heroNavigation2": hero->heroNavigation2,\n      "muxVideo": hero->muxVideo {\n        "playbackId":asset->playbackId,\n      },\n      "heroImage": hero->heroImage,\n      alignment, \n      subTextAlignment,\n    },\n  _type == "splitCtaSection" => {\n      "eyebrow": content->eyebrow,\n      "title": content->title,\n      "ctaText": content->text,\n      ctaImage,\n      "ctaNavigation1": content->ctaNavigation1,\n      "ctaNavigation2": content->ctaNavigation2,\n      "supportingNote": content->supportingNote,\n      layout, \n      intent\n    },\n  _type == "ctaSection" => {\n    alignment,\n    intent,\n    ctaImage,\n    "ctaNavigation1": content -> ctaNavigation1, \n    "ctaNavigation2": content->ctaNavigation2, \n    "ctaText": content->text, \n    "ctaTitle": content->title,\n    "supportingNote": content->supportingNote,\n    textAlignment,\n  },\n\n  _type == "imageAsset" => {\n    ...,\n    image\n  },\n\n  _type == "userStorySection" => {\n    ...\n  },\n\n  _type == "carouselSection" => {\n    ...\n  },\n\n  _type == "testimonialsSection" => {\n    ...\n  },\n\n  _type == "headlineSection" => {\n    eyebrow,\n    title,\n    text, \n    intent,\n  }, \n  \n  _type == "splitSection" => \n{\n  _type == "splitSection" => {\n    "leftColumn": leftColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    "rightColumn": rightColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    intent\n  }\n}\n\n}\n   }   \n': MarketingPageQueryResult;
+    '\n*[_type == "siteSettings"][0]{\n  "pageSections": landingPage->pageSections[]{\n  _type,\n  _key,\n\n  _type == "heroSection" => \n{\n      "title": hero->title,\n      "text": hero->heroText,\n      "heroNavigation1": hero->heroNavigation1,\n      "heroNavigation2": hero->heroNavigation2,\n      "muxVideo": hero->muxVideo {\n        "playbackId":asset->playbackId,\n      },\n      "heroImage": hero->heroImage,\n      alignment, \n      subTextAlignment,\n    },\n  _type == "splitCtaSection" => {\n      "eyebrow": content->eyebrow,\n      "title": content->title,\n      "ctaText": content->text,\n      ctaImage,\n      "ctaNavigation1": content->ctaNavigation1,\n      "ctaNavigation2": content->ctaNavigation2,\n      "supportingNote": content->supportingNote,\n      layout, \n      intent\n    },\n  _type == "ctaSection" => {\n    alignment,\n    intent,\n    ctaImage,\n    "ctaNavigation1": content -> ctaNavigation1, \n    "ctaNavigation2": content->ctaNavigation2, \n    "ctaText": content->text, \n    "ctaTitle": content->title,\n    "supportingNote": content->supportingNote,\n    textAlignment,\n  },\n\n  _type == "imageAsset" => {\n    ...,\n    image\n  },\n\n  _type == "userStorySection" => {\n    ...\n  },\n\n  _type == "carouselSection" => {\n    ...\n  },\n\n  _type == "testimonialsSection" => {\n    ...\n  },\n\n  _type == "headlineSection" => {\n    eyebrow,\n    title,\n    text, \n    intent,\n  }, \n  \n  _type == "splitSection" => \n{\n  _type == "splitSection" => {\n    "leftColumn": leftColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    "rightColumn": rightColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    intent\n  }\n}\n, \n  \n  _type == "faqSection" => \n{\n  title,\n  text,\n  "faqItems": faqSet->faqItems,\n  "navigation": ctaNavigation{\n    title,\n    type,\n    type == "internal" => {\n      internalLink\n    },\n    type == "external" => {\n      externalLink\n    }\n  }\n}\n,\n}\n  }\n': LandingPageQueryResult;
+    '\n  *[_type == "marketingPage" && slug.current == $slug][0] {\n    "pageSections": pageSections[] \n      {\n  _type,\n  _key,\n\n  _type == "heroSection" => \n{\n      "title": hero->title,\n      "text": hero->heroText,\n      "heroNavigation1": hero->heroNavigation1,\n      "heroNavigation2": hero->heroNavigation2,\n      "muxVideo": hero->muxVideo {\n        "playbackId":asset->playbackId,\n      },\n      "heroImage": hero->heroImage,\n      alignment, \n      subTextAlignment,\n    },\n  _type == "splitCtaSection" => {\n      "eyebrow": content->eyebrow,\n      "title": content->title,\n      "ctaText": content->text,\n      ctaImage,\n      "ctaNavigation1": content->ctaNavigation1,\n      "ctaNavigation2": content->ctaNavigation2,\n      "supportingNote": content->supportingNote,\n      layout, \n      intent\n    },\n  _type == "ctaSection" => {\n    alignment,\n    intent,\n    ctaImage,\n    "ctaNavigation1": content -> ctaNavigation1, \n    "ctaNavigation2": content->ctaNavigation2, \n    "ctaText": content->text, \n    "ctaTitle": content->title,\n    "supportingNote": content->supportingNote,\n    textAlignment,\n  },\n\n  _type == "imageAsset" => {\n    ...,\n    image\n  },\n\n  _type == "userStorySection" => {\n    ...\n  },\n\n  _type == "carouselSection" => {\n    ...\n  },\n\n  _type == "testimonialsSection" => {\n    ...\n  },\n\n  _type == "headlineSection" => {\n    eyebrow,\n    title,\n    text, \n    intent,\n  }, \n  \n  _type == "splitSection" => \n{\n  _type == "splitSection" => {\n    "leftColumn": leftColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    "rightColumn": rightColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    intent\n  }\n}\n, \n  \n  _type == "faqSection" => \n{\n  title,\n  text,\n  "faqItems": faqSet->faqItems,\n  "navigation": ctaNavigation{\n    title,\n    type,\n    type == "internal" => {\n      internalLink\n    },\n    type == "external" => {\n      externalLink\n    }\n  }\n}\n,\n}\n   }   \n': MarketingPageQueryResult;
   }
 }

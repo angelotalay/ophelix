@@ -22,10 +22,11 @@ import headlineObjectType from "@/sanity/schemaTypes/objects/headlineObjectType"
 import splitSectionObjectType from "@/sanity/schemaTypes/objects/splitSectionObjectType";
 import carouselSectionObjectType from "@/sanity/schemaTypes/objects/carouselSectionObjectType";
 import textColumnsObjectType from "@/sanity/schemaTypes/objects/common/textColumnsObjectType";
+import faqDocumentType from "@/sanity/schemaTypes/documents/content/faqDocumentType";
+import faqSectionObjectType from "@/sanity/schemaTypes/objects/faqSectionObjectType";
 
 type arraySanityTypes = Array<SchemaTypeDefinition>;
 
-// Rather than split by sanity doc/obj type maybe we split by features?
 const documentTypes: arraySanityTypes = [
   marketingPageDocumentType,
   companyDocumentType,
@@ -35,6 +36,7 @@ const documentTypes: arraySanityTypes = [
   userStoryDocumentType,
   HeroDocumentType,
   testimonialDocumentType,
+  faqDocumentType,
 ];
 
 const objectTypes: arraySanityTypes = [
@@ -46,7 +48,8 @@ const objectTypes: arraySanityTypes = [
   testimonialsObjectType,
   headlineObjectType,
   splitSectionObjectType,
-  carouselSectionObjectType
+  carouselSectionObjectType,
+  faqSectionObjectType,
 ];
 
 const commonObjectTypes: arraySanityTypes = [

@@ -64,7 +64,8 @@ const marketingPageDocumentType = defineType({
         defineArrayMember({ type: COMMON_OBJECTS.imageAsset }),
         defineArrayMember({ type: OBJECTS.carousel }),
         defineArrayMember({type: OBJECTS.headline}),
-        defineArrayMember({type: OBJECTS.splitSection})
+        defineArrayMember({type: OBJECTS.splitSection}),
+        defineArrayMember({type: OBJECTS.faqSection}),
       ],
      validation: rule => rule.min(1).required()
     }),

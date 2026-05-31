@@ -9,8 +9,8 @@ import {
   CarouselNext,
   CarouselItem,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+} from "@/components/ui-library/carousel";
+import { Avatar, AvatarImage } from "@/components/ui-library/avatar";
 import StarIcon from "@/assets/star.svg";
 import { MarketingPageSectionType } from "@/features/marketing/types";
 

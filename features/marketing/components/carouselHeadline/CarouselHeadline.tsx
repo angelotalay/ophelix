@@ -8,7 +8,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/components/ui-library/carousel";
 import Container from "@/components/layout/Container";
 import Stack from "@/components/layout/Stack";
 import Section from "@/components/layout/Section";
