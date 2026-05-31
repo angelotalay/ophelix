@@ -16,6 +16,7 @@ import {
 import Headline from "@/features/marketing/components/headline/Headline";
 import {MarketingPageSectionType} from "@/features/marketing/types";
 import SplitSection from "@/features/marketing/components/splitSection/SplitSection";
+import FAQSection from "@/features/components/FAQSection";
 
 function renderComponents(section: MarketingPageSectionType) {
   switch (section._type) {
@@ -95,6 +96,10 @@ function renderComponents(section: MarketingPageSectionType) {
     case OBJECTS.splitSection:
       return(
         <SplitSection key={section._key} leftColumn={section.leftColumn} rightColumn={section.rightColumn} intent={section.intent}/>
+      )
+    case OBJECTS.faqSection:
+      return(
+        <FAQSection key={section._key} title={section.title} text={section.text} faqItems={section.faqItems} navigation={section.navigation}/>
       )
   }
 }

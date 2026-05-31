@@ -7,8 +7,8 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
+} from "@/components/ui-library/navigation-menu";
+import { Button } from "@/components/ui-library/button";
 import RoundedButton from "@/components/buttons/RoundedButton";
 import MENU_LINKS from "@/components/nav/navbar.copy";
 

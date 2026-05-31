@@ -5,9 +5,9 @@ import Link from "next/link";
 import RoundedButton from "@/components/buttons/RoundedButton";
 import Container from "@/components/layout/Container";
 import Stack from "@/components/layout/Stack";
-import { Field } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+import { Field } from "@/components/ui-library/field";
+import { Input } from "@/components/ui-library/input";
+import { Separator } from "@/components/ui-library/separator";
 import { OphelixShort } from "@/components/icons/OphelixLogo";
 
 import Instagram from "@/assets/instagram_white_glyph.svg";
