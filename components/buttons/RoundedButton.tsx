@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui-library/button";
 import { cva } from "class-variance-authority";
 import { VariantProps } from "class-variance-authority";
 
