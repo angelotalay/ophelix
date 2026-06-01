@@ -5,8 +5,8 @@ const documentationPageQuery = defineQuery(`
   *[_type == "documentationPage" && slug.current == $slug][0] {
     title,
     text,
-    created_at,
-    updated_at,
+    publishedAt,
+    updatedAt,
     "pageSections": pageSections[]${documentationPageContentFragment}
   }
 `);
