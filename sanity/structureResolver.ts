@@ -5,8 +5,10 @@ export const structureResolver: StructureResolver = (S) =>
   S.list()
     .title("Content")
     .items([
-      S.divider().title("Website Content"),
+      S.divider().title("Website Pages"),
       S.documentTypeListItem("marketingPage").title("Website Marketing Pages"),
+      S.documentTypeListItem("documentationPage").title("Documentation Pages"),
+      S.divider().title("Global Content"),
       S.documentTypeListItem("footer").title("Footer Content"),
       S.documentTypeListItem("navigationHeader").title("Navbar Header"),
       S.divider().title("Settings"),

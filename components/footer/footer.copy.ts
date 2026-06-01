@@ -2,19 +2,19 @@ const FOOTER_CONTENT = {
   links: [
     {
       title: "Shipping and Returns Policy",
-      href: "",
+      href: "/docs/shipping-and-returns",
     },
     {
       title: "Warranty",
-      href: "",
+      href: "/docs/warranty",
     },
     {
       title: "Privacy Policy",
-      href: "",
+      href: "/docs/privacy-policy",
     },
     {
-      title: "Terms of Service",
-      href: "",
+      title: "Terms and Conditions",
+      href: "/docs/terms-and-conditions",
     },
     {
       title: "Cookie Settings",

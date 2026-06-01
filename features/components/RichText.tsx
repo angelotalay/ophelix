@@ -1,6 +1,7 @@
 import React from "react";
 import { PortableText, PortableTextComponents } from "next-sanity";
 import { RichText as RichTextType } from "@/sanity/types";
+import Container from "@/components/layout/Container";
 
 const customComponents: PortableTextComponents = {
   block: {
@@ -86,9 +87,7 @@ type RichTextProps = NonNullable<RichTextType["richText"]>;
 
 function RichText({ richTextContent }: { richTextContent: RichTextProps }) {
   return (
-    <div className="space-y-4">
       <PortableText value={richTextContent} components={customComponents} />
-    </div>
   );
 }
 
