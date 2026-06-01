@@ -24,10 +24,12 @@ import carouselSectionObjectType from "@/sanity/schemaTypes/objects/carouselSect
 import textColumnsObjectType from "@/sanity/schemaTypes/objects/common/textColumnsObjectType";
 import faqDocumentType from "@/sanity/schemaTypes/documents/content/faqDocumentType";
 import faqSectionObjectType from "@/sanity/schemaTypes/objects/faqSectionObjectType";
+import documentationPageDocumentType from "@/sanity/schemaTypes/documents/pages/documentationPageDocumentType";
 
 type arraySanityTypes = Array<SchemaTypeDefinition>;
 
 const documentTypes: arraySanityTypes = [
+  documentationPageDocumentType,
   marketingPageDocumentType,
   companyDocumentType,
   footerDocumentType,

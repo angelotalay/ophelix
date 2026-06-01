@@ -124,7 +124,7 @@ function Footer() {
             <FooterSection title="Contact">
               <Stack className="items-center" gap="xs">
                 {FOOTER_CONTENT.contact_links.map((item) => (
-                  <Link key={item.href} href={item.href} className="underline">
+                  <Link key={item.href} href={item.href} className="underline" replace>
                     {item.label}
                   </Link>
                 ))}
