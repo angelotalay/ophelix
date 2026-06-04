@@ -11,6 +11,7 @@ import { urlFor } from "@/sanity/lib/image";
 import NavigationButtons from "@/features/marketing/components/buttons/NavigationButtons";
 const PLACEHOLDER_IMAGE_PATH = "/images/placeholder_image_4.jpg";
 import { MarketingPageSectionType } from "@/features/marketing/types";
+import Heading from "@/components/typography/Heading";
 
 const ctaVariants = cva(" relative z-10 h-full text-background", {
   variants: {
@@ -69,7 +70,7 @@ function CTA({
         )}
         <Stack className={ctaVariants({ align, textAlign })} gap="md">
           <Stack>
-            <h2 className="font-display text-5xl">{title}</h2>
+            <Heading as="h2" font="body">{title}</Heading>
             <p className="text-2xl">{text}</p>
           </Stack>
           <Stack orientation={"horizontal"}>

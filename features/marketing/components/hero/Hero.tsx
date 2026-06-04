@@ -10,6 +10,7 @@ import Stack from "@/components/layout/Stack";
 import { urlFor } from "@/sanity/lib/image";
 import type { Get, FilterByType } from "@sanity/codegen";
 import { MarketingPageSectionType } from "@/features/marketing/types";
+import Heading from "@/components/typography/Heading"
 
 const heroVariants = cva("h-full", {
   variants: {
@@ -65,10 +66,10 @@ function HeroHeader({
     <Container className="h-full">
       <Stack gap="md" className={heroVariants({align: align})}>
         <Stack
-          className="font-display text-6xl whitespace-pre-wrap text-background"
+          className="whitespace-pre-wrap text-background"
           gap="sm"
         >
-          <h1>{title}</h1>
+          <Heading as="h1" font="display">{title}</Heading>
         </Stack>
 
         <Stack gap="sm" className=" text-background">

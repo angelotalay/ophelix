@@ -11,6 +11,7 @@ import { MarketingPageSectionType } from "@/features/marketing/types";
 import SPLIT_CTA_CONTENT from "@/features/marketing/components/cta/splitCta.copy";
 import { VariantProps } from "class-variance-authority";
 import intentVariants from "@/components/variants/intentVariants";
+import Heading from "@/components/typography/Heading";
 
 const splitCTAVariants = intentVariants("");
 
@@ -32,8 +33,10 @@ function CTAContent({
 }: Omit<SplitCtaSectionProps, "ctaImage" | "intent">) {
   return (
     <Stack className={"text-foreground"} gap={"md"}>
-      {eyebrow && <p className="font-bold text-foreground">{eyebrow}</p> }
-      <h2 className="text font-display text-5xl">{title}</h2>
+      {eyebrow && <p className="font-bold text-foreground">{eyebrow}</p>}
+      <Heading as="h2" font="body">
+        {title}
+      </Heading>
       <p className="whitespace-pre-wrap">{text}</p>
       <Stack orientation="horizontal" gap="sm">
         <RoundedButton size="lg" intent={"primary"}>
