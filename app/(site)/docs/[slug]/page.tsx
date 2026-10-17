@@ -30,7 +30,7 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
             className="items-center justify-center"
           >
             <OphelixShort className="h-12 w-16" />
-            <h1 className="font-display text-5xl font-semibold">{title}</h1>
+            <h1 className="text-5xl">{title}</h1>
             <p>{text}</p>
           </Stack>
         </Container>
