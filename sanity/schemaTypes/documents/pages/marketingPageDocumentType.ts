@@ -66,6 +66,7 @@ const marketingPageDocumentType = defineType({
         defineArrayMember({type: OBJECTS.headline}),
         defineArrayMember({type: OBJECTS.splitSection}),
         defineArrayMember({type: OBJECTS.faqSection}),
+        defineArrayMember({type: DOCUMENTS.productSpecification}),
       ],
      validation: rule => rule.min(1).required()
     }),

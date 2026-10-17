@@ -1,7 +1,5 @@
-import { defineQuery } from "next-sanity";
-
-const productSpecificationQuery = defineQuery(`
-  *[_type == "productSpecification"][0] {
+const productSpecificationFragment = `
+  {
     _id,
     title,
     text,
@@ -24,6 +22,6 @@ const productSpecificationQuery = defineQuery(`
       }
     }
   }
-`);
+` as const;
 
-export default productSpecificationQuery;
+export default productSpecificationFragment;

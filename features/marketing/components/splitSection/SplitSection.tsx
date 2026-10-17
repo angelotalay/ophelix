@@ -7,7 +7,6 @@ import Stack from "@/components/layout/Stack";
 import { MarketingPageSectionType } from "@/features/marketing/types";
 import { FilterByType, Get } from "@sanity/codegen";
 import { COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
-import { urlFor } from "@/sanity/lib/image";
 import Container from "@/components/layout/Container";
 import RichText from "@/features/components/RichText";
 import intentVariants from "@/components/variants/intentVariants";

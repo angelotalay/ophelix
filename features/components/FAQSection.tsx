@@ -16,46 +16,59 @@ import {
 import RoundedButton from "@/components/buttons/RoundedButton";
 import Heading from "@/components/typography/Heading";
 
-
-type FAQSectionType = FilterByType<MarketingPageSectionType, "faqSection">
+type FAQSectionType = FilterByType<MarketingPageSectionType, "faqSection">;
 type FAQSectionProps = {
   title: FAQSectionType["title"];
   text: FAQSectionType["text"];
   navigation: FAQSectionType["navigation"];
   faqItems: FAQSectionType["faqItems"];
-}
+};
 
-type FAQItem= Get<FAQSectionProps["faqItems"], number>;
+type FAQItem = Get<FAQSectionProps["faqItems"], number>;
 type FAQItemProps = {
   key: FAQItem["_key"];
   itemKey: FAQItem["_key"];
   question: FAQItem["question"];
   answer: FAQItem["answer"];
-}
+};
 
-function FAQItem({itemKey,question, answer}: FAQItemProps){
+function FAQItem({ itemKey, question, answer }: FAQItemProps) {
   return (
-    <AccordionItem value={itemKey}>
-      <AccordionTrigger className="font-semibold">{question}</AccordionTrigger>
+    <AccordionItem value={itemKey} className="w-full">
+      <AccordionTrigger className="w-full font-semibold">
+        {question}
+      </AccordionTrigger>
       <AccordionContent>
-        {answer?.richText && (
-          <RichText richTextContent={answer.richText} />
-        )}
+        {answer?.richText && <RichText richTextContent={answer.richText} />}
       </AccordionContent>
     </AccordionItem>
   );
 }
 
-function FAQSection({title, text, faqItems, navigation}: FAQSectionProps) {
+function FAQSection({ title, text, faqItems, navigation }: FAQSectionProps) {
   return (
-    <Section as="section">
-      <Container>
-        <Stack orientation="vertical" gap="lg" className="justify-center items-center">
-          <Stack orientation="vertical" gap="md" className="justify-center items-center">
+    <Section as="section" className="w-full">
+      <Container className="w-full">
+        <Stack
+          orientation="vertical"
+          gap="lg"
+          className="w-full items-center justify-center"
+        >
+          <Stack
+            orientation="vertical"
+            gap="md"
+            className="w-full items-center justify-center"
+          >
             <OphelixShort className="h-12 w-16" />
-            <Heading as="h2" font="display">{title}</Heading>
+            <Heading as="h2" font="display">
+              {title}
+            </Heading>
             <p>{text}</p>
-            {navigation && <RoundedButton variant="outline" intent="background">{navigation.title}</RoundedButton>}
+            {navigation && (
+              <RoundedButton variant="outline" intent="background">
+                {navigation.title}
+              </RoundedButton>
+            )}
           </Stack>
           <Accordion type="single" collapsible className="w-full">
             {faqItems &&
@@ -73,6 +86,6 @@ function FAQSection({title, text, faqItems, navigation}: FAQSectionProps) {
       </Container>
     </Section>
   );
-};
+}
 
 export default FAQSection;

@@ -25,6 +25,7 @@ import textColumnsObjectType from "@/sanity/schemaTypes/objects/common/textColum
 import faqDocumentType from "@/sanity/schemaTypes/documents/content/faqDocumentType";
 import faqSectionObjectType from "@/sanity/schemaTypes/objects/faqSectionObjectType";
 import documentationPageDocumentType from "@/sanity/schemaTypes/documents/pages/documentationPageDocumentType";
+import productSpecificationDocumentType from "@/sanity/schemaTypes/documents/content/productSpecificationDocumentType";
 
 type arraySanityTypes = Array<SchemaTypeDefinition>;
 
@@ -39,6 +40,7 @@ const documentTypes: arraySanityTypes = [
   HeroDocumentType,
   testimonialDocumentType,
   faqDocumentType,
+  productSpecificationDocumentType,
 ];
 
 const objectTypes: arraySanityTypes = [

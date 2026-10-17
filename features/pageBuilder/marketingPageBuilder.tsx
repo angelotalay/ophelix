@@ -17,6 +17,8 @@ import Headline from "@/features/marketing/components/headline/Headline";
 import { MarketingPageSectionType } from "@/features/marketing/types";
 import SplitSection from "@/features/marketing/components/splitSection/SplitSection";
 import FAQSection from "@/features/components/FAQSection";
+import ProductSpecificationSection from "@/features/components/ProductSpecificationSection";
+import { json } from "node:stream/consumers";
 
 function renderComponents(section: MarketingPageSectionType) {
   switch (section._type) {
@@ -118,6 +120,15 @@ function renderComponents(section: MarketingPageSectionType) {
           navigation={section.navigation}
         />
       );
+    case DOCUMENTS.productSpecification:
+      return(
+        <ProductSpecificationSection
+          key={section._key}
+          title={section.title}
+          text={section.text}
+          specificationItems={section.specificationItems}
+        />
+      )
   }
 }
 

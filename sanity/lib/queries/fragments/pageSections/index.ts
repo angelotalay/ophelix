@@ -4,5 +4,6 @@ import heroSectionFragment from "@/sanity/lib/queries/fragments/pageSections/her
 import splitCtaSectionFragment from "@/sanity/lib/queries/fragments/pageSections/splitCtaSectionFragment";
 import splitSectionFragment from "@/sanity/lib/queries/fragments/pageSections/splitSectionFragment";
 import faqSectionFragment from "@/sanity/lib/queries/fragments/pageSections/faqSectionFragment";
+import productSpecificationFragment from "@/sanity/lib/queries/fragments/pageSections/productSpecificationFragment";
 
-export {ctaSectionFragment, headlineSectionFragment, heroSectionFragment, splitCtaSectionFragment, splitSectionFragment, faqSectionFragment};
+export {ctaSectionFragment, headlineSectionFragment, heroSectionFragment, splitCtaSectionFragment, splitSectionFragment, faqSectionFragment, productSpecificationFragment};
