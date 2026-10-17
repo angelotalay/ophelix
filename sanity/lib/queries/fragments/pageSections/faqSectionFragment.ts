@@ -14,6 +14,6 @@ const faqSectionFragment = `
     }
   }
 }
-`;
+` as const;
 
 export default faqSectionFragment;

@@ -1,4 +1,4 @@
-const ctaSectionFragment: string = `{
+const ctaSectionFragment = `{
     alignment,
     intent,
     ctaImage,
@@ -8,6 +8,6 @@ const ctaSectionFragment: string = `{
     "ctaTitle": content->title,
     "supportingNote": content->supportingNote,
     textAlignment,
-  }`;
+  }` as const;
 
 export default ctaSectionFragment;

@@ -1,4 +1,4 @@
-const splitCtaSectionFragment: string = `{
+const splitCtaSectionFragment = `{
       "eyebrow": content->eyebrow,
       "title": content->title,
       "ctaText": content->text,
@@ -8,6 +8,6 @@ const splitCtaSectionFragment: string = `{
       "supportingNote": content->supportingNote,
       layout, 
       intent
-    }`;
+    }` as const;
 
 export default  splitCtaSectionFragment;

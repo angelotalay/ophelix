@@ -15,6 +15,26 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type Summarize = {
+  jobId?: string;
+  completedAt?: number;
+  title?: string;
+  description?: string;
+  tags?: Array<string>;
+};
+
+export type Moderate = {
+  jobId?: string;
+  completedAt?: number;
+  exceedsThreshold?: boolean;
+  maxScores?: MaxScores;
+};
+
+export type MaxScores = {
+  sexual?: number;
+  violence?: number;
+};
+
 export type Testimonial = {
   _id: string;
   _type: "testimonial";
@@ -22,10 +42,10 @@ export type Testimonial = {
   _updatedAt: string;
   _rev: string;
   rating?: number;
-  testimonialText: string;
-  name: string;
+  testimonialText?: string;
+  name?: string;
   occupation?: string;
-  location: string;
+  location?: string;
 };
 
 export type UserStorySection = {
@@ -34,10 +54,10 @@ export type UserStorySection = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
+  title?: string;
   subtext?: string;
-  headlineImage: ImageAsset;
-  storyBlocks: Array<
+  headlineImage?: ImageAsset;
+  storyBlocks?: Array<
     {
       _key: string;
     } & UserStoryInstance
@@ -103,7 +123,7 @@ export type Footer = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  companyDetails: CompanyReference;
+  companyDetails?: CompanyReference;
 };
 
 export type SanityImageAssetReference = {
@@ -119,9 +139,9 @@ export type Company = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name: string;
-  yearEstablished: string;
-  address: Address;
+  name?: string;
+  yearEstablished?: string;
+  address?: Address;
   phone?: string;
   socialMediaLinks?: Array<
     {
@@ -140,25 +160,25 @@ export type Company = {
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
 };
 
 export type SanityImageHotspot = {
   _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
 };
 
 export type Address = {
   _type: "address";
-  streetName: string;
-  streetNumber: string;
-  postCode: string;
+  streetName?: string;
+  streetNumber?: string;
+  postCode?: string;
 };
 
 export type MarketingPage = {
@@ -168,10 +188,10 @@ export type MarketingPage = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  slug: Slug;
+  slug?: Slug;
   publishedAt?: string;
   updatedAt?: string;
-  pageSections: Array<
+  pageSections?: Array<
     | ({
         _key: string;
       } & HeroSection)
@@ -182,10 +202,10 @@ export type MarketingPage = {
         _key: string;
       } & SplitCtaSection)
     | {
-        title: string;
+        title?: string;
         subtext?: string;
-        headlineImage: ImageAsset;
-        storyBlocks: Array<
+        headlineImage?: ImageAsset;
+        storyBlocks?: Array<
           {
             _key: string;
           } & UserStoryInstance
@@ -216,21 +236,21 @@ export type MarketingPage = {
 
 export type ImageAsset = {
   _type: "imageAsset";
-  image: {
+  image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  alt: string;
+  alt?: string;
   caption?: string;
   attribution?: string;
 };
 
 export type Slug = {
   _type: "slug";
-  current: string;
+  current?: string;
   source?: string;
 };
 
@@ -240,12 +260,12 @@ export type DocumentationPage = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
+  title?: string;
   text?: string;
-  slug: Slug;
+  slug?: Slug;
   publishedAt?: string;
   updatedAt?: string;
-  pageSections: Array<
+  pageSections?: Array<
     | ({
         _key: string;
       } & RichText)
@@ -264,9 +284,9 @@ export type FaqReference = {
 
 export type FaqSection = {
   _type: "faqSection";
-  title: string;
+  title?: string;
   text?: string;
-  faqSet: FaqReference;
+  faqSet?: FaqReference;
   ctaNavigation?: Navigation;
 };
 
@@ -284,11 +304,11 @@ export type Faq = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  faqSet: string;
+  faqSet?: string;
   text?: string;
-  faqItems: Array<{
-    question: string;
-    answer: RichText;
+  faqItems?: Array<{
+    question?: string;
+    answer?: RichText;
     _type: "faqItem";
     _key: string;
   }>;
@@ -318,7 +338,7 @@ export type RichText = {
 
 export type CarouselSection = {
   _type: "carouselSection";
-  headline: string;
+  headline?: string;
   headlineSubText?: string;
   carouselImages?: Array<
     {
@@ -329,7 +349,7 @@ export type CarouselSection = {
 
 export type SplitSection = {
   _type: "splitSection";
-  leftColumn: Array<
+  leftColumn?: Array<
     | ({
         _key: string;
       } & RichText)
@@ -340,7 +360,7 @@ export type SplitSection = {
         _key: string;
       } & TextColumns)
   >;
-  rightColumn: Array<
+  rightColumn?: Array<
     | ({
         _key: string;
       } & RichText)
@@ -351,27 +371,27 @@ export type SplitSection = {
         _key: string;
       } & TextColumns)
   >;
-  intent: "primary" | "muted" | "dark" | "neutral" | "white";
+  intent?: "primary" | "muted" | "dark" | "neutral" | "white";
 };
 
 export type HeadlineSection = {
   _type: "headlineSection";
-  title: string;
-  text: string;
+  title?: string;
+  text?: string;
   eyebrow?: string;
-  intent: "primary" | "muted" | "dark" | "neutral" | "white";
+  intent?: "primary" | "muted" | "dark" | "neutral" | "white";
 };
 
 export type TestimonialsSection = {
   _type: "testimonialsSection";
   title?: string;
   subtext?: string;
-  testimonialList: Array<{
+  testimonialList?: Array<{
     rating?: number;
-    testimonialText: string;
-    name: string;
+    testimonialText?: string;
+    name?: string;
     occupation?: string;
-    location: string;
+    location?: string;
     _type: "testimonial";
     _key: string;
   }>;
@@ -386,25 +406,25 @@ export type CtaReference = {
 
 export type CtaSection = {
   _type: "ctaSection";
-  content: CtaReference;
+  content?: CtaReference;
   ctaImage?: ImageAsset;
-  alignment: "left" | "right" | "center";
-  textAlignment: "left" | "right" | "center";
+  alignment?: "left" | "right" | "center";
+  textAlignment?: "left" | "right" | "center";
   intent?: "primary" | "muted" | "dark" | "neutral" | "white";
 };
 
 export type SplitCtaSection = {
   _type: "splitCtaSection";
-  content: CtaReference;
-  ctaImage: ImageAsset;
+  content?: CtaReference;
+  ctaImage?: ImageAsset;
   layout?: "image-left" | "image-right";
-  intent: "primary" | "muted" | "dark" | "neutral" | "white";
+  intent?: "primary" | "muted" | "dark" | "neutral" | "white";
 };
 
 export type UserStoryInstance = {
   _type: "userStoryInstance";
-  storyText: string;
-  userStoryImage: ImageAsset;
+  storyText?: string;
+  userStoryImage?: ImageAsset;
 };
 
 export type Cta = {
@@ -413,7 +433,7 @@ export type Cta = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
+  title?: string;
   eyebrow?: string;
   text?: string;
   ctaNavigation1?: Navigation;
@@ -430,9 +450,9 @@ export type HeroReference = {
 
 export type HeroSection = {
   _type: "heroSection";
-  hero: HeroReference;
-  subTextAlignment: "left" | "right" | "center";
-  alignment: "left" | "right" | "center";
+  hero?: HeroReference;
+  subTextAlignment?: "left" | "right" | "center";
+  alignment?: "left" | "right" | "center";
 };
 
 export type Hero = {
@@ -441,7 +461,7 @@ export type Hero = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
+  title?: string;
   heroText?: string;
   heroImage?: ImageAsset;
   muxVideo?: MuxVideo;
@@ -463,12 +483,12 @@ export type MuxVideo = {
 
 export type TextColumns = {
   _type: "textColumns";
-  leftColumn: Array<
+  leftColumn?: Array<
     {
       _key: string;
     } & RichText
   >;
-  rightColumn: Array<
+  rightColumn?: Array<
     {
       _key: string;
     } & RichText
@@ -477,8 +497,8 @@ export type TextColumns = {
 
 export type SocialMedia = {
   _type: "socialMedia";
-  socialMediaTitle: string;
-  socialMediaLink: string;
+  socialMediaTitle?: string;
+  socialMediaLink?: string;
 };
 
 export type MuxVideoAsset = {
@@ -493,6 +513,28 @@ export type MuxVideoAsset = {
   filename?: string;
   thumbTime?: number;
   data?: MuxAssetData;
+  robotsJobs?: Array<
+    {
+      _key: string;
+    } & MuxRobotsJob
+  >;
+  robotsOutputs?: MuxRobotsOutputs;
+  robotsDirectiveRuns?: Array<
+    {
+      _key: string;
+    } & MuxRobotsDirectiveRun
+  >;
+  robotsPendingCreates?: Array<
+    {
+      _key: string;
+    } & MuxRobotsPendingCreate
+  >;
+};
+
+export type MuxRobotsOutputs = {
+  _type: "mux.robotsOutputs";
+  summarize?: Summarize;
+  moderate?: Moderate;
 };
 
 export type MuxAssetData = {
@@ -512,6 +554,7 @@ export type MuxAssetData = {
   max_stored_frame_rate?: number;
   mp4_support?: string;
   max_resolution_tier?: string;
+  thumbnail_time?: number;
   tracks?: Array<
     {
       _key: string;
@@ -523,6 +566,44 @@ export type MuxAssetData = {
     } & MuxPlaybackId
   >;
   static_renditions?: MuxStaticRenditions;
+  master?: MuxMasterFile;
+};
+
+export type MuxRobotsPendingCreate = {
+  _type: "mux.robotsPendingCreate";
+  requestId?: string;
+  kind?: string;
+  workflow?: string;
+  directiveId?: string;
+  requestedAt?: number;
+};
+
+export type MuxRobotsDirectiveRun = {
+  _type: "mux.robotsDirectiveRun";
+  runId?: string;
+  directiveId?: string;
+  status?: string;
+  startedAt?: number;
+  completedAt?: number;
+  jobIds?: Array<string>;
+};
+
+export type MuxRobotsJob = {
+  _type: "mux.robotsJob";
+  id?: string;
+  workflow?: string;
+  status?: string;
+  created_at?: number;
+  updated_at?: number;
+  units_consumed?: number;
+  error?: string;
+  thumbnailApplied?: boolean;
+};
+
+export type MuxMasterFile = {
+  _type: "mux.masterFile";
+  status?: string;
+  url?: string;
 };
 
 export type MuxStaticRenditions = {
@@ -593,9 +674,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: "sanity.imageDimensions";
-  height: number;
-  width: number;
-  aspectRatio: number;
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
 };
 
 export type SanityImageMetadata = {
@@ -621,14 +702,14 @@ export type SanityFileAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   source?: SanityAssetSourceData;
 };
 
@@ -650,14 +731,14 @@ export type SanityImageAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   metadata?: SanityImageMetadata;
   source?: SanityAssetSourceData;
 };
@@ -670,6 +751,9 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | Summarize
+  | Moderate
+  | MaxScores
   | Testimonial
   | UserStorySection
   | MarketingPageReference
@@ -710,7 +794,12 @@ export type AllSanitySchemaTypes =
   | TextColumns
   | SocialMedia
   | MuxVideoAsset
+  | MuxRobotsOutputs
   | MuxAssetData
+  | MuxRobotsPendingCreate
+  | MuxRobotsDirectiveRun
+  | MuxRobotsJob
+  | MuxMasterFile
   | MuxStaticRenditions
   | MuxStaticRenditionFile
   | MuxPlaybackId
@@ -726,24 +815,24 @@ export type AllSanitySchemaTypes =
 
 // Source: sanity/lib/queries/documentationPage.ts
 // Variable: documentationPageQuery
-// Query: *[_type == "documentationPage" && slug.current == $slug][0] {    title,    text,    created_at,    updated_at,    "pageSections": pageSections[]{  _type,  _key,  _type == "richText" => {    ...  },  _type == "faqSection" => {  title,  text,  "faqItems": faqSet->faqItems,  "navigation": ctaNavigation{    title,    type,    type == "internal" => {      internalLink    },    type == "external" => {      externalLink    }  }},}  }
+// Query: *[_type == "documentationPage" && slug.current == $slug][0] {    title,    text,    publishedAt,    updatedAt,    "pageSections": pageSections[]{  _type,  _key,  _type == "richText" => {    ...  },  _type == "faqSection" => {  title,  text,  "faqItems": faqSet->faqItems,  "navigation": ctaNavigation{    title,    type,    type == "internal" => {      internalLink    },    type == "external" => {      externalLink    }  }},}  }
 export type DocumentationPageQueryResult = {
-  title: string;
+  title: string | null;
   text: string | null;
-  created_at: null;
-  updated_at: null;
+  publishedAt: string | null;
+  updatedAt: string | null;
   pageSections: Array<
     | {
         _type: "faqSection";
         _key: string;
-        title: string;
+        title: string | null;
         text: string | null;
         faqItems: Array<{
-          question: string;
-          answer: RichText;
+          question?: string;
+          answer?: RichText;
           _type: "faqItem";
           _key: string;
-        }>;
+        }> | null;
         navigation:
           | {
               title: string | null;
@@ -778,14 +867,7 @@ export type DocumentationPageQueryResult = {
             _key: string;
           }>;
           style?:
-            | "blockquote"
-            | "h1"
-            | "h2"
-            | "h3"
-            | "h4"
-            | "h5"
-            | "h6"
-            | "normal";
+            "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
           listItem?: "bullet" | "number";
           markDefs?: Array<{
             href?: string;
@@ -797,7 +879,7 @@ export type DocumentationPageQueryResult = {
           _key: string;
         }>;
       }
-  >;
+  > | null;
 } | null;
 
 // Source: sanity/lib/queries/landingPage.ts
@@ -808,7 +890,7 @@ export type LandingPageQueryResult = {
     | {
         _type: "carouselSection";
         _key: string;
-        headline: string;
+        headline?: string;
         headlineSubText?: string;
         carouselImages?: Array<
           {
@@ -819,27 +901,27 @@ export type LandingPageQueryResult = {
     | {
         _type: "ctaSection";
         _key: string;
-        alignment: "center" | "left" | "right";
+        alignment: "center" | "left" | "right" | null;
         intent: "dark" | "muted" | "neutral" | "primary" | "white" | null;
         ctaImage: ImageAsset | null;
         ctaNavigation1: Navigation | null;
         ctaNavigation2: Navigation | null;
         ctaText: string | null;
-        ctaTitle: string;
+        ctaTitle: string | null;
         supportingNote: string | null;
-        textAlignment: "center" | "left" | "right";
+        textAlignment: "center" | "left" | "right" | null;
       }
     | {
         _type: "faqSection";
         _key: string;
-        title: string;
+        title: string | null;
         text: string | null;
         faqItems: Array<{
-          question: string;
-          answer: RichText;
+          question?: string;
+          answer?: RichText;
           _type: "faqItem";
           _key: string;
-        }>;
+        }> | null;
         navigation:
           | {
               title: string | null;
@@ -867,14 +949,14 @@ export type LandingPageQueryResult = {
         _type: "headlineSection";
         _key: string;
         eyebrow: string | null;
-        title: string;
-        text: string;
-        intent: "dark" | "muted" | "neutral" | "primary" | "white";
+        title: string | null;
+        text: string | null;
+        intent: "dark" | "muted" | "neutral" | "primary" | "white" | null;
       }
     | {
         _type: "heroSection";
         _key: string;
-        title: string;
+        title: string | null;
         text: string | null;
         heroNavigation1: Navigation | null;
         heroNavigation2: Navigation | null;
@@ -882,8 +964,8 @@ export type LandingPageQueryResult = {
           playbackId: string | null;
         } | null;
         heroImage: ImageAsset | null;
-        alignment: "center" | "left" | "right";
-        subTextAlignment: "center" | "left" | "right";
+        alignment: "center" | "left" | "right" | null;
+        subTextAlignment: "center" | "left" | "right" | null;
       }
     | {
         _type: "imageAsset";
@@ -894,8 +976,8 @@ export type LandingPageQueryResult = {
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           _type: "image";
-        };
-        alt: string;
+        } | null;
+        alt?: string;
         caption?: string;
         attribution?: string;
       }
@@ -903,14 +985,14 @@ export type LandingPageQueryResult = {
         _type: "splitCtaSection";
         _key: string;
         eyebrow: string | null;
-        title: string;
+        title: string | null;
         ctaText: string | null;
-        ctaImage: ImageAsset;
+        ctaImage: ImageAsset | null;
         ctaNavigation1: Navigation | null;
         ctaNavigation2: Navigation | null;
         supportingNote: string | null;
         layout: "image-left" | "image-right" | null;
-        intent: "dark" | "muted" | "neutral" | "primary" | "white";
+        intent: "dark" | "muted" | "neutral" | "primary" | "white" | null;
       }
     | {
         _type: "splitSection";
@@ -919,14 +1001,14 @@ export type LandingPageQueryResult = {
           | {
               _type: "imageAsset";
               _key: string;
-              alt: string;
+              alt: string | null;
               caption: string | null;
               attribution: string | null;
               url: string | null;
               imageDimensions: {
-                width: number;
-                height: number;
-                aspectRatio: number;
+                width: number | null;
+                height: number | null;
+                aspectRatio: number | null;
               } | null;
             }
           | {
@@ -962,30 +1044,30 @@ export type LandingPageQueryResult = {
           | {
               _type: "textColumns";
               _key: string;
-              leftColumn: Array<
+              leftColumn?: Array<
                 {
                   _key: string;
                 } & RichText
               >;
-              rightColumn: Array<
+              rightColumn?: Array<
                 {
                   _key: string;
                 } & RichText
               >;
             }
-        >;
+        > | null;
         rightColumn: Array<
           | {
               _type: "imageAsset";
               _key: string;
-              alt: string;
+              alt: string | null;
               caption: string | null;
               attribution: string | null;
               url: string | null;
               imageDimensions: {
-                width: number;
-                height: number;
-                aspectRatio: number;
+                width: number | null;
+                height: number | null;
+                aspectRatio: number | null;
               } | null;
             }
           | {
@@ -1021,31 +1103,31 @@ export type LandingPageQueryResult = {
           | {
               _type: "textColumns";
               _key: string;
-              leftColumn: Array<
+              leftColumn?: Array<
                 {
                   _key: string;
                 } & RichText
               >;
-              rightColumn: Array<
+              rightColumn?: Array<
                 {
                   _key: string;
                 } & RichText
               >;
             }
-        >;
-        intent: "dark" | "muted" | "neutral" | "primary" | "white";
+        > | null;
+        intent: "dark" | "muted" | "neutral" | "primary" | "white" | null;
       }
     | {
         _type: "testimonialsSection";
         _key: string;
         title?: string;
         subtext?: string;
-        testimonialList: Array<{
+        testimonialList?: Array<{
           rating?: number;
-          testimonialText: string;
-          name: string;
+          testimonialText?: string;
+          name?: string;
           occupation?: string;
-          location: string;
+          location?: string;
           _type: "testimonial";
           _key: string;
         }>;
@@ -1053,10 +1135,10 @@ export type LandingPageQueryResult = {
     | {
         _type: "userStorySection";
         _key: string;
-        title: string;
+        title?: string;
         subtext?: string;
-        headlineImage: ImageAsset;
-        storyBlocks: Array<
+        headlineImage?: ImageAsset;
+        storyBlocks?: Array<
           {
             _key: string;
           } & UserStoryInstance
@@ -1073,7 +1155,7 @@ export type MarketingPageQueryResult = {
     | {
         _type: "carouselSection";
         _key: string;
-        headline: string;
+        headline?: string;
         headlineSubText?: string;
         carouselImages?: Array<
           {
@@ -1084,27 +1166,27 @@ export type MarketingPageQueryResult = {
     | {
         _type: "ctaSection";
         _key: string;
-        alignment: "center" | "left" | "right";
+        alignment: "center" | "left" | "right" | null;
         intent: "dark" | "muted" | "neutral" | "primary" | "white" | null;
         ctaImage: ImageAsset | null;
         ctaNavigation1: Navigation | null;
         ctaNavigation2: Navigation | null;
         ctaText: string | null;
-        ctaTitle: string;
+        ctaTitle: string | null;
         supportingNote: string | null;
-        textAlignment: "center" | "left" | "right";
+        textAlignment: "center" | "left" | "right" | null;
       }
     | {
         _type: "faqSection";
         _key: string;
-        title: string;
+        title: string | null;
         text: string | null;
         faqItems: Array<{
-          question: string;
-          answer: RichText;
+          question?: string;
+          answer?: RichText;
           _type: "faqItem";
           _key: string;
-        }>;
+        }> | null;
         navigation:
           | {
               title: string | null;
@@ -1132,14 +1214,14 @@ export type MarketingPageQueryResult = {
         _type: "headlineSection";
         _key: string;
         eyebrow: string | null;
-        title: string;
-        text: string;
-        intent: "dark" | "muted" | "neutral" | "primary" | "white";
+        title: string | null;
+        text: string | null;
+        intent: "dark" | "muted" | "neutral" | "primary" | "white" | null;
       }
     | {
         _type: "heroSection";
         _key: string;
-        title: string;
+        title: string | null;
         text: string | null;
         heroNavigation1: Navigation | null;
         heroNavigation2: Navigation | null;
@@ -1147,8 +1229,8 @@ export type MarketingPageQueryResult = {
           playbackId: string | null;
         } | null;
         heroImage: ImageAsset | null;
-        alignment: "center" | "left" | "right";
-        subTextAlignment: "center" | "left" | "right";
+        alignment: "center" | "left" | "right" | null;
+        subTextAlignment: "center" | "left" | "right" | null;
       }
     | {
         _type: "imageAsset";
@@ -1159,8 +1241,8 @@ export type MarketingPageQueryResult = {
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           _type: "image";
-        };
-        alt: string;
+        } | null;
+        alt?: string;
         caption?: string;
         attribution?: string;
       }
@@ -1168,14 +1250,14 @@ export type MarketingPageQueryResult = {
         _type: "splitCtaSection";
         _key: string;
         eyebrow: string | null;
-        title: string;
+        title: string | null;
         ctaText: string | null;
-        ctaImage: ImageAsset;
+        ctaImage: ImageAsset | null;
         ctaNavigation1: Navigation | null;
         ctaNavigation2: Navigation | null;
         supportingNote: string | null;
         layout: "image-left" | "image-right" | null;
-        intent: "dark" | "muted" | "neutral" | "primary" | "white";
+        intent: "dark" | "muted" | "neutral" | "primary" | "white" | null;
       }
     | {
         _type: "splitSection";
@@ -1184,14 +1266,14 @@ export type MarketingPageQueryResult = {
           | {
               _type: "imageAsset";
               _key: string;
-              alt: string;
+              alt: string | null;
               caption: string | null;
               attribution: string | null;
               url: string | null;
               imageDimensions: {
-                width: number;
-                height: number;
-                aspectRatio: number;
+                width: number | null;
+                height: number | null;
+                aspectRatio: number | null;
               } | null;
             }
           | {
@@ -1227,30 +1309,30 @@ export type MarketingPageQueryResult = {
           | {
               _type: "textColumns";
               _key: string;
-              leftColumn: Array<
+              leftColumn?: Array<
                 {
                   _key: string;
                 } & RichText
               >;
-              rightColumn: Array<
+              rightColumn?: Array<
                 {
                   _key: string;
                 } & RichText
               >;
             }
-        >;
+        > | null;
         rightColumn: Array<
           | {
               _type: "imageAsset";
               _key: string;
-              alt: string;
+              alt: string | null;
               caption: string | null;
               attribution: string | null;
               url: string | null;
               imageDimensions: {
-                width: number;
-                height: number;
-                aspectRatio: number;
+                width: number | null;
+                height: number | null;
+                aspectRatio: number | null;
               } | null;
             }
           | {
@@ -1286,31 +1368,31 @@ export type MarketingPageQueryResult = {
           | {
               _type: "textColumns";
               _key: string;
-              leftColumn: Array<
+              leftColumn?: Array<
                 {
                   _key: string;
                 } & RichText
               >;
-              rightColumn: Array<
+              rightColumn?: Array<
                 {
                   _key: string;
                 } & RichText
               >;
             }
-        >;
-        intent: "dark" | "muted" | "neutral" | "primary" | "white";
+        > | null;
+        intent: "dark" | "muted" | "neutral" | "primary" | "white" | null;
       }
     | {
         _type: "testimonialsSection";
         _key: string;
         title?: string;
         subtext?: string;
-        testimonialList: Array<{
+        testimonialList?: Array<{
           rating?: number;
-          testimonialText: string;
-          name: string;
+          testimonialText?: string;
+          name?: string;
           occupation?: string;
-          location: string;
+          location?: string;
           _type: "testimonial";
           _key: string;
         }>;
@@ -1318,24 +1400,27 @@ export type MarketingPageQueryResult = {
     | {
         _type: "userStorySection";
         _key: string;
-        title: string;
+        title?: string;
         subtext?: string;
-        headlineImage: ImageAsset;
-        storyBlocks: Array<
+        headlineImage?: ImageAsset;
+        storyBlocks?: Array<
           {
             _key: string;
           } & UserStoryInstance
         >;
       }
-  >;
+  > | null;
 } | null;
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
+declare global {
   interface SanityQueries {
-    '\n  *[_type == "documentationPage" && slug.current == $slug][0] {\n    title,\n    text,\n    created_at,\n    updated_at,\n    "pageSections": pageSections[]{\n  _type,\n  _key,\n  _type == "richText" => {\n    ...\n  },\n\n  _type == "faqSection" => \n{\n  title,\n  text,\n  "faqItems": faqSet->faqItems,\n  "navigation": ctaNavigation{\n    title,\n    type,\n    type == "internal" => {\n      internalLink\n    },\n    type == "external" => {\n      externalLink\n    }\n  }\n}\n,\n}\n  }\n': DocumentationPageQueryResult;
+    '\n  *[_type == "documentationPage" && slug.current == $slug][0] {\n    title,\n    text,\n    publishedAt,\n    updatedAt,\n    "pageSections": pageSections[]{\n  _type,\n  _key,\n  _type == "richText" => {\n    ...\n  },\n\n  _type == "faqSection" => \n{\n  title,\n  text,\n  "faqItems": faqSet->faqItems,\n  "navigation": ctaNavigation{\n    title,\n    type,\n    type == "internal" => {\n      internalLink\n    },\n    type == "external" => {\n      externalLink\n    }\n  }\n}\n,\n}\n  }\n': DocumentationPageQueryResult;
     '\n*[_type == "siteSettings"][0]{\n  "pageSections": landingPage->pageSections[]{\n  _type,\n  _key,\n\n  _type == "heroSection" => \n{\n      "title": hero->title,\n      "text": hero->heroText,\n      "heroNavigation1": hero->heroNavigation1,\n      "heroNavigation2": hero->heroNavigation2,\n      "muxVideo": hero->muxVideo {\n        "playbackId":asset->playbackId,\n      },\n      "heroImage": hero->heroImage,\n      alignment, \n      subTextAlignment,\n    },\n  _type == "splitCtaSection" => {\n      "eyebrow": content->eyebrow,\n      "title": content->title,\n      "ctaText": content->text,\n      ctaImage,\n      "ctaNavigation1": content->ctaNavigation1,\n      "ctaNavigation2": content->ctaNavigation2,\n      "supportingNote": content->supportingNote,\n      layout, \n      intent\n    },\n  _type == "ctaSection" => {\n    alignment,\n    intent,\n    ctaImage,\n    "ctaNavigation1": content -> ctaNavigation1, \n    "ctaNavigation2": content->ctaNavigation2, \n    "ctaText": content->text, \n    "ctaTitle": content->title,\n    "supportingNote": content->supportingNote,\n    textAlignment,\n  },\n\n  _type == "imageAsset" => {\n    ...,\n    image\n  },\n\n  _type == "userStorySection" => {\n    ...\n  },\n\n  _type == "carouselSection" => {\n    ...\n  },\n\n  _type == "testimonialsSection" => {\n    ...\n  },\n\n  _type == "headlineSection" => {\n    eyebrow,\n    title,\n    text, \n    intent,\n  }, \n  \n  _type == "splitSection" => \n{\n  _type == "splitSection" => {\n    "leftColumn": leftColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    "rightColumn": rightColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    intent\n  }\n}\n, \n  \n  _type == "faqSection" => \n{\n  title,\n  text,\n  "faqItems": faqSet->faqItems,\n  "navigation": ctaNavigation{\n    title,\n    type,\n    type == "internal" => {\n      internalLink\n    },\n    type == "external" => {\n      externalLink\n    }\n  }\n}\n,\n}\n  }\n': LandingPageQueryResult;
     '\n  *[_type == "marketingPage" && slug.current == $slug][0] {\n    "pageSections": pageSections[] \n      {\n  _type,\n  _key,\n\n  _type == "heroSection" => \n{\n      "title": hero->title,\n      "text": hero->heroText,\n      "heroNavigation1": hero->heroNavigation1,\n      "heroNavigation2": hero->heroNavigation2,\n      "muxVideo": hero->muxVideo {\n        "playbackId":asset->playbackId,\n      },\n      "heroImage": hero->heroImage,\n      alignment, \n      subTextAlignment,\n    },\n  _type == "splitCtaSection" => {\n      "eyebrow": content->eyebrow,\n      "title": content->title,\n      "ctaText": content->text,\n      ctaImage,\n      "ctaNavigation1": content->ctaNavigation1,\n      "ctaNavigation2": content->ctaNavigation2,\n      "supportingNote": content->supportingNote,\n      layout, \n      intent\n    },\n  _type == "ctaSection" => {\n    alignment,\n    intent,\n    ctaImage,\n    "ctaNavigation1": content -> ctaNavigation1, \n    "ctaNavigation2": content->ctaNavigation2, \n    "ctaText": content->text, \n    "ctaTitle": content->title,\n    "supportingNote": content->supportingNote,\n    textAlignment,\n  },\n\n  _type == "imageAsset" => {\n    ...,\n    image\n  },\n\n  _type == "userStorySection" => {\n    ...\n  },\n\n  _type == "carouselSection" => {\n    ...\n  },\n\n  _type == "testimonialsSection" => {\n    ...\n  },\n\n  _type == "headlineSection" => {\n    eyebrow,\n    title,\n    text, \n    intent,\n  }, \n  \n  _type == "splitSection" => \n{\n  _type == "splitSection" => {\n    "leftColumn": leftColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    "rightColumn": rightColumn[]\n{\n  _type,\n  _key,\n  _type == "imageAsset" => \n{\n          alt,\n          caption,\n          attribution,\n          "url": image.asset->url,\n          "imageDimensions": image.asset->metadata.dimensions {\n            width,\n            height,\n            aspectRatio\n          }\n}\n ,\n  _type == "richText" => {\n    ...\n  },\n  _type == "textColumns" => {\n    ...\n  },\n}\n,\n    intent\n  }\n}\n, \n  \n  _type == "faqSection" => \n{\n  title,\n  text,\n  "faqItems": faqSet->faqItems,\n  "navigation": ctaNavigation{\n    title,\n    type,\n    type == "internal" => {\n      internalLink\n    },\n    type == "external" => {\n      externalLink\n    }\n  }\n}\n,\n}\n   }   \n': MarketingPageQueryResult;
   }
+}
+// Lets @sanity/client releases that predate the global registry read it too
+declare module "@sanity/client" {
+  interface SanityQueries extends globalThis.SanityQueries {}
 }

@@ -3,7 +3,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { LandingPageQueryResult } from "@/sanity/types";
 
 async function getLandingPageQueryResult(): Promise<LandingPageQueryResult> {
-  const { data } = await sanityFetch({ query: landingPageQuery });
+  const { data } = await sanityFetch({ query: landingPageQuery, stega: false });
   return data;
 }
 

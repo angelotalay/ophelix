@@ -1,4 +1,4 @@
-const heroSectionFragment: string = `
+const heroSectionFragment = `
 {
       "title": hero->title,
       "text": hero->heroText,
@@ -10,6 +10,6 @@ const heroSectionFragment: string = `
       "heroImage": hero->heroImage,
       alignment, 
       subTextAlignment,
-    }`;
+    }` as const;
 
 export default heroSectionFragment;

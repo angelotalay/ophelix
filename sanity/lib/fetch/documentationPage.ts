@@ -10,6 +10,7 @@ async function getDocumentationPageQueryResult({
   const { data } = await sanityFetch({
     query: documentationPageQuery,
     params: { slug },
+    stega: false,
   });
   return data;
 }

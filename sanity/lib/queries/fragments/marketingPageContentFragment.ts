@@ -2,7 +2,7 @@ import {ctaSectionFragment, heroSectionFragment, splitCtaSectionFragment, headli
 
 import {OBJECTS, COMMON_OBJECTS, DOCUMENTS} from "@/sanity/schemaTypes/constants";
 
-const marketingPageContentFragment: string = `{
+const marketingPageContentFragment = `{
   _type,
   _key,
 
@@ -32,6 +32,6 @@ const marketingPageContentFragment: string = `{
   _type == "${OBJECTS.splitSection}" => ${splitSectionFragment}, 
   
   _type == "${OBJECTS.faqSection}" => ${faqSectionFragment},
-}`;
+}` as const;
 
 export default marketingPageContentFragment

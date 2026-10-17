@@ -12,7 +12,7 @@ const splitSectionColumnFragment = `
     ...
   },
 }
-`;
+` as const;
 
 const splitSectionFragment = `
 {
@@ -22,6 +22,6 @@ const splitSectionFragment = `
     intent
   }
 }
-`;
+` as const;
 
 export default splitSectionFragment;
