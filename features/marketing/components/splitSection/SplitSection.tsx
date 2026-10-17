@@ -62,7 +62,6 @@ function renderContent({item}: {item: Get<SplitSectionType["leftColumn"], number
         </div>
       );
 
-
   }
 }
 

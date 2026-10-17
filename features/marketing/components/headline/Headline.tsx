@@ -6,6 +6,7 @@ import Container from "@/components/layout/Container";
 import Stack from "@/components/layout/Stack";
 import Section from "@/components/layout/Section";
 import {MarketingPageSectionType as PageSection} from "@/features/marketing/types";
+import Heading from "@/components/typography/Heading";
 
 
 // This will be extracted out from a shared file
@@ -36,7 +37,7 @@ function Headline({ eyebrow, title, text, intent } : HeadlineSectionProps) {
           {eyebrow && (
             <p className="font-semibold text-foreground">{eyebrow}</p>
           )}
-          <h2 className="font-display text-5xl">{title}</h2>
+          <Heading as="h2" font="body">{title}</Heading>
           <p className="max-w-xl text-center text-xl text-foreground">{text}</p>
         </Stack>
       </Container>

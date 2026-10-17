@@ -14,6 +14,7 @@ import Stack from "@/components/layout/Stack";
 import Section from "@/components/layout/Section";
 import { urlFor } from "@/sanity/lib/image";
 import { MarketingPageSectionType } from "@/features/marketing/types";
+import Heading from "@/components/typography/Heading";
 
 type CarouselHeadlineSectionType = FilterByType<MarketingPageSectionType, "carouselSection">;
 type CarouselImageItem = Get<CarouselHeadlineSectionType, "carouselImages", number>;
@@ -48,7 +49,7 @@ function CarouselHeadline({
       <Container>
         <Stack gap="lg">
           <Stack className="w-full items-center justify-center" gap="md">
-            <h2 className="font-display text-5xl"> {headline} </h2>
+            <Heading as="h2" font="body">{headline}</Heading>
             {subtext && <p>{subtext}</p>}
           </Stack>
           <div>

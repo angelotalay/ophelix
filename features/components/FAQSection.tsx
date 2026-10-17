@@ -14,6 +14,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui-library/accordion";
 import RoundedButton from "@/components/buttons/RoundedButton";
+import Heading from "@/components/typography/Heading";
 
 
 type FAQSectionType = FilterByType<MarketingPageSectionType, "faqSection">
@@ -50,7 +51,7 @@ function FAQSection({title, text, faqItems, navigation}: FAQSectionProps) {
         <Stack orientation="vertical" gap="lg" className="justify-center items-center">
           <Stack orientation="vertical" gap="md" className="justify-center items-center">
             <OphelixShort className="h-12 w-16" />
-            <h2 className="font-display text-5xl">{title}</h2>
+            <Heading as="h2" font="display">{title}</Heading>
             <p>{text}</p>
             {navigation && <RoundedButton variant="outline" intent="background">{navigation.title}</RoundedButton>}
           </Stack>

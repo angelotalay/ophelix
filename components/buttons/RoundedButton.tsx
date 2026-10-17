@@ -3,7 +3,7 @@ import { Button } from "@/components/ui-library/button";
 import { cva } from "class-variance-authority";
 import { VariantProps } from "class-variance-authority";
 
-const roundedButtonVariants = cva("rounded-full", {
+const roundedButtonVariants = cva("rounded-md", {
   variants: {
     intent: {
       primary: "bg-primary text-primary-foreground",
@@ -44,7 +44,7 @@ export type RoundedButtonProps = {
 function RoundedButton({
   children,
   className,
-  size = "sm",
+  size = "lg",
   variant = "default",
   intent = "primary",
 }: RoundedButtonProps) {

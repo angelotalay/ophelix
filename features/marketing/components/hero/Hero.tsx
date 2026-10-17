@@ -81,7 +81,7 @@ function HeroHeader({
             <NavigationButtons
               navigationButton1={navigationButton1}
               navigationButton2={navigationButton2}
-              size="default"
+              size="lg"
               intent1="primary"
               intent2="background"
             />
