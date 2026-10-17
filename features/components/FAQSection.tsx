@@ -38,7 +38,9 @@ function FAQItem({itemKey,question, answer}: FAQItemProps){
     <AccordionItem value={itemKey}>
       <AccordionTrigger className="font-semibold">{question}</AccordionTrigger>
       <AccordionContent>
-        {answer.richText && <RichText richTextContent={answer.richText} />}
+        {answer?.richText && (
+          <RichText richTextContent={answer.richText} />
+        )}
       </AccordionContent>
     </AccordionItem>
   );

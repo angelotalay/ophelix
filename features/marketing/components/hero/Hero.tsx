@@ -10,7 +10,7 @@ import Stack from "@/components/layout/Stack";
 import { urlFor } from "@/sanity/lib/image";
 import type { Get, FilterByType } from "@sanity/codegen";
 import { MarketingPageSectionType } from "@/features/marketing/types";
-import Heading from "@/components/typography/Heading"
+import Heading from "@/components/typography/Heading";
 
 const heroVariants = cva("h-full", {
   variants: {
@@ -19,7 +19,7 @@ const heroVariants = cva("h-full", {
       left: "justify-end items-start",
       right: "justify-end items-end",
     },
-  }
+  },
 });
 
 const subTextVariants = cva("text-2xl whitespace-pre-wrap", {
@@ -37,20 +37,19 @@ type HeroSectionType = FilterByType<MarketingPageSectionType, "heroSection">;
 interface HeroSectionProps {
   title: HeroSectionType["title"];
   text: HeroSectionType["text"];
-  muxVideo: Get<HeroSectionType, "muxVideo", "playbackId">
+  muxVideo: Get<HeroSectionType, "muxVideo", "playbackId">;
   image: HeroSectionType["heroImage"];
-  navigationButton1: HeroSectionType["heroNavigation1"]
+  navigationButton1: HeroSectionType["heroNavigation1"];
   navigationButton2: HeroSectionType["heroNavigation2"];
   align: HeroSectionType["alignment"];
   subTextAlign: HeroSectionType["subTextAlignment"];
 }
 
-
-
 type HeroHeaderProps = Pick<
   HeroSectionProps,
   "title" | "text" | "navigationButton1" | "navigationButton2" | "subTextAlign"
-> & VariantProps<typeof heroVariants>;
+> &
+  VariantProps<typeof heroVariants>;
 
 function HeroHeader({
   title,
@@ -58,22 +57,21 @@ function HeroHeader({
   navigationButton1,
   navigationButton2,
   align = "center",
-  subTextAlign = "center"
+  subTextAlign = "center",
 }: HeroHeaderProps) {
   const hasButtons = navigationButton1 || navigationButton2;
 
   return (
     <Container className="h-full">
-      <Stack gap="md" className={heroVariants({align: align})}>
-        <Stack
-          className="whitespace-pre-wrap text-background"
-          gap="sm"
-        >
-          <Heading as="h1" font="display">{title}</Heading>
+      <Stack gap="md" className={heroVariants({ align: align })}>
+        <Stack className="whitespace-pre-wrap text-background" gap="sm">
+          <Heading as="h1" font="display">
+            {title}
+          </Heading>
         </Stack>
 
-        <Stack gap="sm" className=" text-background">
-          <p className={subTextVariants({align: subTextAlign})}>{text}</p>
+        <Stack gap="sm" className="text-background">
+          <p className={subTextVariants({ align: subTextAlign })}>{text}</p>
         </Stack>
 
         {hasButtons && (
@@ -100,7 +98,7 @@ function Hero({
   navigationButton1,
   navigationButton2,
   align,
-  subTextAlign
+  subTextAlign,
 }: HeroSectionProps) {
   return (
     <Section
@@ -118,7 +116,7 @@ function Hero({
             autoPlay
             playsInline
           />
-        ) : image ? (
+        ) : image && image.image ? (
           <Image
             src={urlFor(image.image).url()}
             alt=""

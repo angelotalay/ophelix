@@ -27,13 +27,14 @@ interface CarouselHeadlineProps {
 function CarouselImage({ item }: { item: CarouselImageItem }) {
   return (
     <CarouselItem>
-      <Image
-        src={urlFor(item.image).url()}
-        height={738}
-        width={1280}
-        className={"aspect-video rounded-md object-cover"}
-        alt="Watch placeholder image"
-      />
+      {item.image?.asset?._ref && (
+        <Image
+          src={urlFor(item.image).url()}
+          alt={item.alt ?? ""}
+          width={600}
+          height={400}
+        />
+      )}
     </CarouselItem>
   );
 }
