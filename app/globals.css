@@ -51,7 +51,7 @@
   --radius-4xl: calc(var(--radius) + 16px);
 
   /* Fonts */
-  --font-sans: var(--font-inter-tight);
+  --font-sans: var(--font-karla);
   --font-display: var(--font-playfair-display);
 
 }
@@ -96,7 +96,7 @@
   --neutral: oklch(0.9702 0 0);
   --neutral-foreground: oklch(0.205 0 0);
   /* Fallback Fonts */
-  --font-inter-tight: system-ui;
+  --font-karla: system-ui;
   --font-playfair-display: serif;
 
   /*Fall back navbar value*/
@@ -142,7 +142,7 @@
 
 
   /* Fallback fonts */
-  --font-inter-tight: system-ui;
+  --font-karla: system-ui;
   --font-playfair-display: serif;
 }
 

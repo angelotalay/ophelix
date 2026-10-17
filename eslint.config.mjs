@@ -7,7 +7,7 @@ import eslintConfigPrettier from "eslint-config-prettier/flat";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-    eslintConfigPrettier,
+  eslintConfigPrettier,
 
   // Override default ignores of eslint-config-next.
   globalIgnores([
@@ -16,6 +16,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "sanity/types.ts",
   ]),
 ]);
 

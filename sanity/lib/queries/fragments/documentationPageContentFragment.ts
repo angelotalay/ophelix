@@ -1,19 +1,8 @@
-import {
-  ctaSectionFragment,
-  heroSectionFragment,
-  splitCtaSectionFragment,
-  headlineSectionFragment,
-  splitSectionFragment,
-  faqSectionFragment,
-} from "@/sanity/lib/queries/fragments/pageSections";
+import { faqSectionFragment } from "@/sanity/lib/queries/fragments/pageSections";
 
-import {
-  OBJECTS,
-  COMMON_OBJECTS,
-  DOCUMENTS,
-} from "@/sanity/schemaTypes/constants";
+import { OBJECTS, COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
 
-const documentationPageContentFragment: string = `{
+const documentationPageContentFragment = `{
   _type,
   _key,
   _type == "${COMMON_OBJECTS.richText}" => {
@@ -21,6 +10,6 @@ const documentationPageContentFragment: string = `{
   },
 
   _type == "${OBJECTS.faqSection}" => ${faqSectionFragment},
-}`;
+}` as const;
 
 export default documentationPageContentFragment;

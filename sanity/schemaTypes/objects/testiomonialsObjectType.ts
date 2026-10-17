@@ -1,5 +1,5 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
-import { BlockElementIcon } from "@sanity/icons";
+import { BlockElementIcon } from "@sanity/icons/BlockElement";
 import { DOCUMENTS, OBJECTS } from "@/sanity/schemaTypes/constants";
 
 // How do we display the preview for this?

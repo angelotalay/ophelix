@@ -14,7 +14,7 @@ import {
   OBJECTS,
 } from "@/sanity/schemaTypes/constants";
 import Headline from "@/features/marketing/components/headline/Headline";
-import {MarketingPageSectionType} from "@/features/marketing/types";
+import { MarketingPageSectionType } from "@/features/marketing/types";
 import SplitSection from "@/features/marketing/components/splitSection/SplitSection";
 import FAQSection from "@/features/components/FAQSection";
 
@@ -54,7 +54,7 @@ function renderComponents(section: MarketingPageSectionType) {
           headlineTitle={section.title}
           headlineText={section.subtext}
           headlineImage={section.headlineImage}
-          userStoryBlocks={section.storyBlocks}
+          userStoryBlocks={section.storyBlocks ?? []}
         />
       );
     case OBJECTS.carousel:
@@ -90,17 +90,34 @@ function renderComponents(section: MarketingPageSectionType) {
         />
       );
     case OBJECTS.headline:
-      return(
-        <Headline key={section._key} intent={section.intent} eyebrow={section.eyebrow} title={section.title} text={section.text}/>
-      )
+      return (
+        <Headline
+          key={section._key}
+          intent={section.intent ?? "primary"}
+          eyebrow={section.eyebrow}
+          title={section.title}
+          text={section.text}
+        />
+      );
     case OBJECTS.splitSection:
-      return(
-        <SplitSection key={section._key} leftColumn={section.leftColumn} rightColumn={section.rightColumn} intent={section.intent}/>
-      )
+      return (
+        <SplitSection
+          key={section._key}
+          leftColumn={section.leftColumn}
+          rightColumn={section.rightColumn}
+          intent={section.intent}
+        />
+      );
     case OBJECTS.faqSection:
-      return(
-        <FAQSection key={section._key} title={section.title} text={section.text} faqItems={section.faqItems} navigation={section.navigation}/>
-      )
+      return (
+        <FAQSection
+          key={section._key}
+          title={section.title}
+          text={section.text}
+          faqItems={section.faqItems}
+          navigation={section.navigation}
+        />
+      );
   }
 }
 

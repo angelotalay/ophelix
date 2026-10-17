@@ -1,5 +1,113 @@
 [
   {
+    "type": "type",
+    "name": "summarize",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "jobId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "completedAt": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
+        "title": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "description": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "tags": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "string"
+            }
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "type": "type",
+    "name": "moderate",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "jobId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "completedAt": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
+        "exceedsThreshold": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
+        "maxScores": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "maxScores"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "type": "type",
+    "name": "maxScores",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "sexual": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
+        "violence": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
     "name": "testimonial",
     "type": "document",
     "attributes": {
@@ -46,14 +154,14 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "name": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "occupation": {
         "type": "objectAttribute",
@@ -67,7 +175,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       }
     }
   },
@@ -111,7 +219,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "subtext": {
         "type": "objectAttribute",
@@ -126,7 +234,7 @@
           "type": "inline",
           "name": "imageAsset"
         },
-        "optional": false
+        "optional": true
       },
       "storyBlocks": {
         "type": "objectAttribute",
@@ -148,7 +256,7 @@
             }
           }
         },
-        "optional": false
+        "optional": true
       }
     }
   },
@@ -441,7 +549,7 @@
           "type": "inline",
           "name": "company.reference"
         },
-        "optional": false
+        "optional": true
       }
     }
   },
@@ -515,14 +623,14 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "yearEstablished": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "address": {
         "type": "objectAttribute",
@@ -530,7 +638,7 @@
           "type": "inline",
           "name": "address"
         },
-        "optional": false
+        "optional": true
       },
       "phone": {
         "type": "objectAttribute",
@@ -642,28 +750,28 @@
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         },
         "bottom": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         },
         "left": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         },
         "right": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -686,28 +794,28 @@
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         },
         "y": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         },
         "height": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         },
         "width": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -730,21 +838,21 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "streetNumber": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "postCode": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -797,7 +905,7 @@
           "type": "inline",
           "name": "slug"
         },
-        "optional": false
+        "optional": true
       },
       "publishedAt": {
         "type": "objectAttribute",
@@ -873,7 +981,7 @@
                     "value": {
                       "type": "string"
                     },
-                    "optional": false
+                    "optional": true
                   },
                   "subtext": {
                     "type": "objectAttribute",
@@ -888,7 +996,7 @@
                       "type": "inline",
                       "name": "imageAsset"
                     },
-                    "optional": false
+                    "optional": true
                   },
                   "storyBlocks": {
                     "type": "objectAttribute",
@@ -910,7 +1018,7 @@
                         }
                       }
                     },
-                    "optional": false
+                    "optional": true
                   },
                   "_type": {
                     "type": "objectAttribute",
@@ -1025,7 +1133,7 @@
             ]
           }
         },
-        "optional": false
+        "optional": true
       }
     }
   },
@@ -1087,14 +1195,14 @@
               }
             }
           },
-          "optional": false
+          "optional": true
         },
         "alt": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "caption": {
           "type": "objectAttribute",
@@ -1131,7 +1239,7 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "source": {
           "type": "objectAttribute",
@@ -1183,7 +1291,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "text": {
         "type": "objectAttribute",
@@ -1198,7 +1306,7 @@
           "type": "inline",
           "name": "slug"
         },
-        "optional": false
+        "optional": true
       },
       "publishedAt": {
         "type": "objectAttribute",
@@ -1254,7 +1362,7 @@
             ]
           }
         },
-        "optional": false
+        "optional": true
       }
     }
   },
@@ -1306,7 +1414,7 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "text": {
           "type": "objectAttribute",
@@ -1321,7 +1429,7 @@
             "type": "inline",
             "name": "faq.reference"
           },
-          "optional": false
+          "optional": true
         },
         "ctaNavigation": {
           "type": "objectAttribute",
@@ -1428,7 +1536,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "text": {
         "type": "objectAttribute",
@@ -1449,7 +1557,7 @@
                 "value": {
                   "type": "string"
                 },
-                "optional": false
+                "optional": true
               },
               "answer": {
                 "type": "objectAttribute",
@@ -1457,7 +1565,7 @@
                   "type": "inline",
                   "name": "richText"
                 },
-                "optional": false
+                "optional": true
               },
               "_type": {
                 "type": "objectAttribute",
@@ -1480,7 +1588,7 @@
             }
           }
         },
-        "optional": false
+        "optional": true
       }
     }
   },
@@ -1697,7 +1805,7 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "headlineSubText": {
           "type": "objectAttribute",
@@ -1799,7 +1907,7 @@
               ]
             }
           },
-          "optional": false
+          "optional": true
         },
         "rightColumn": {
           "type": "objectAttribute",
@@ -1856,7 +1964,7 @@
               ]
             }
           },
-          "optional": false
+          "optional": true
         },
         "intent": {
           "type": "objectAttribute",
@@ -1885,7 +1993,7 @@
               }
             ]
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -1908,14 +2016,14 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "text": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "eyebrow": {
           "type": "objectAttribute",
@@ -1951,7 +2059,7 @@
               }
             ]
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -2002,14 +2110,14 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": false
+                  "optional": true
                 },
                 "name": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": false
+                  "optional": true
                 },
                 "occupation": {
                   "type": "objectAttribute",
@@ -2023,7 +2131,7 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": false
+                  "optional": true
                 },
                 "_type": {
                   "type": "objectAttribute",
@@ -2046,7 +2154,7 @@
               }
             }
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -2100,7 +2208,7 @@
             "type": "inline",
             "name": "cta.reference"
           },
-          "optional": false
+          "optional": true
         },
         "ctaImage": {
           "type": "objectAttribute",
@@ -2129,7 +2237,7 @@
               }
             ]
           },
-          "optional": false
+          "optional": true
         },
         "textAlignment": {
           "type": "objectAttribute",
@@ -2150,7 +2258,7 @@
               }
             ]
           },
-          "optional": false
+          "optional": true
         },
         "intent": {
           "type": "objectAttribute",
@@ -2203,7 +2311,7 @@
             "type": "inline",
             "name": "cta.reference"
           },
-          "optional": false
+          "optional": true
         },
         "ctaImage": {
           "type": "objectAttribute",
@@ -2211,7 +2319,7 @@
             "type": "inline",
             "name": "imageAsset"
           },
-          "optional": false
+          "optional": true
         },
         "layout": {
           "type": "objectAttribute",
@@ -2257,7 +2365,7 @@
               }
             ]
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -2280,7 +2388,7 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "userStoryImage": {
           "type": "objectAttribute",
@@ -2288,7 +2396,7 @@
             "type": "inline",
             "name": "imageAsset"
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -2333,7 +2441,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "eyebrow": {
         "type": "objectAttribute",
@@ -2423,7 +2531,7 @@
             "type": "inline",
             "name": "hero.reference"
           },
-          "optional": false
+          "optional": true
         },
         "subTextAlignment": {
           "type": "objectAttribute",
@@ -2444,7 +2552,7 @@
               }
             ]
           },
-          "optional": false
+          "optional": true
         },
         "alignment": {
           "type": "objectAttribute",
@@ -2465,7 +2573,7 @@
               }
             ]
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -2510,7 +2618,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "heroText": {
         "type": "objectAttribute",
@@ -2640,7 +2748,7 @@
               }
             }
           },
-          "optional": false
+          "optional": true
         },
         "rightColumn": {
           "type": "objectAttribute",
@@ -2662,7 +2770,7 @@
               }
             }
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -2685,14 +2793,14 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "socialMediaLink": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -2774,6 +2882,112 @@
           "name": "mux.assetData"
         },
         "optional": true
+      },
+      "robotsJobs": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "mux.robotsJob"
+            }
+          }
+        },
+        "optional": true
+      },
+      "robotsOutputs": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "mux.robotsOutputs"
+        },
+        "optional": true
+      },
+      "robotsDirectiveRuns": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "mux.robotsDirectiveRun"
+            }
+          }
+        },
+        "optional": true
+      },
+      "robotsPendingCreates": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "mux.robotsPendingCreate"
+            }
+          }
+        },
+        "optional": true
+      }
+    }
+  },
+  {
+    "name": "mux.robotsOutputs",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "mux.robotsOutputs"
+          }
+        },
+        "summarize": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "summarize"
+          },
+          "optional": true
+        },
+        "moderate": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "moderate"
+          },
+          "optional": true
+        }
       }
     }
   },
@@ -2895,6 +3109,13 @@
           },
           "optional": true
         },
+        "thumbnail_time": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
         "tracks": {
           "type": "objectAttribute",
           "value": {
@@ -2944,6 +3165,228 @@
           "value": {
             "type": "inline",
             "name": "mux.staticRenditions"
+          },
+          "optional": true
+        },
+        "master": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "mux.masterFile"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "mux.robotsPendingCreate",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "mux.robotsPendingCreate"
+          }
+        },
+        "requestId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "kind": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "workflow": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "directiveId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "requestedAt": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "mux.robotsDirectiveRun",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "mux.robotsDirectiveRun"
+          }
+        },
+        "runId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "directiveId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "status": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "startedAt": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
+        "completedAt": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
+        "jobIds": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "string"
+            }
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "mux.robotsJob",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "mux.robotsJob"
+          }
+        },
+        "id": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "workflow": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "status": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "created_at": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
+        "updated_at": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
+        "units_consumed": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
+        "error": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "thumbnailApplied": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "mux.masterFile",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "mux.masterFile"
+          }
+        },
+        "status": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "url": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
           },
           "optional": true
         }
@@ -3352,21 +3795,21 @@
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         },
         "width": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         },
         "aspectRatio": {
           "type": "objectAttribute",
           "value": {
             "type": "number"
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -3521,35 +3964,35 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "extension": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "mimeType": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "size": {
         "type": "objectAttribute",
         "value": {
           "type": "number"
         },
-        "optional": false
+        "optional": true
       },
       "assetId": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "uploadId": {
         "type": "objectAttribute",
@@ -3563,14 +4006,14 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "url": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "source": {
         "type": "objectAttribute",
@@ -3694,35 +4137,35 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "extension": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "mimeType": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "size": {
         "type": "objectAttribute",
         "value": {
           "type": "number"
         },
-        "optional": false
+        "optional": true
       },
       "assetId": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "uploadId": {
         "type": "objectAttribute",
@@ -3736,14 +4179,14 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "url": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "metadata": {
         "type": "objectAttribute",

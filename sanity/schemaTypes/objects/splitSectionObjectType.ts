@@ -1,6 +1,6 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
 import intentField from "@/sanity/schemaTypes/fields/intentField";
-import { InlineIcon } from "@sanity/icons";
+import { InlineIcon } from "@sanity/icons/Inline";
 import {COMMON_OBJECTS, OBJECTS} from "@/sanity/schemaTypes/constants";
 
 const columnArrayMembers = [

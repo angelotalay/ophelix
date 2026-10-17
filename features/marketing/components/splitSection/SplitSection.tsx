@@ -14,23 +14,39 @@ import intentVariants from "@/components/variants/intentVariants";
 
 const splitSectionVariants = intentVariants("");
 
-type SplitSectionType = FilterByType<MarketingPageSectionType, "splitSection">
+type SplitSectionType = FilterByType<MarketingPageSectionType, "splitSection">;
 type SplitSectionProps = {
-  leftColumn: Get<SplitSectionType, "leftColumn">
-  rightColumn: Get<SplitSectionType, "rightColumn">
-} & VariantProps<typeof splitSectionVariants>
+  leftColumn: Get<SplitSectionType, "leftColumn">;
+  rightColumn: Get<SplitSectionType, "rightColumn">;
+} & VariantProps<typeof splitSectionVariants>;
 
-
-function renderContent({item}: {item: Get<SplitSectionType["leftColumn"], number>}){
+function renderContent({
+  item,
+}: {
+  item: Get<SplitSectionType["leftColumn"], number>;
+}) {
   switch (item._type) {
-    case COMMON_OBJECTS.imageAsset:
-      if(item.url && item.imageDimensions){
-        return <Image className="h-auto" key={item._key} src={urlFor(item.url).url()} alt={item.alt} width={item.imageDimensions.width} height={item.imageDimensions?.height} />;
+    case COMMON_OBJECTS.imageAsset: {
+      const { url, alt, imageDimensions, _key } = item;
+
+      if (!url || !imageDimensions?.width || !imageDimensions?.height) {
+        return null;
       }
-      break;
+
+      return (
+        <Image
+          key={_key}
+          className="h-auto"
+          src={url}
+          alt={alt ?? ""}
+          width={imageDimensions.width}
+          height={imageDimensions.height}
+        />
+      );
+    }
     case COMMON_OBJECTS.richText:
-      if(item.richText){
-        return <RichText key={item._key} richTextContent={item.richText}/>;
+      if (item.richText) {
+        return <RichText key={item._key} richTextContent={item.richText} />;
       }
       break;
     case COMMON_OBJECTS.textColumns:
@@ -40,7 +56,7 @@ function renderContent({item}: {item: Get<SplitSectionType["leftColumn"], number
           key={item._key}
         >
           <Stack orientation="vertical" gap="md" className="justify-center">
-            {item.leftColumn.map((columnItem) =>
+            {item.leftColumn?.map((columnItem) =>
               columnItem.richText ? (
                 <RichText
                   richTextContent={columnItem.richText}
@@ -50,7 +66,7 @@ function renderContent({item}: {item: Get<SplitSectionType["leftColumn"], number
             )}
           </Stack>
           <Stack orientation="vertical" gap="md" className="justify-center">
-            {item.rightColumn.map((columnItem) =>
+            {item.rightColumn?.map((columnItem) =>
               columnItem.richText ? (
                 <RichText
                   richTextContent={columnItem.richText}
@@ -61,26 +77,28 @@ function renderContent({item}: {item: Get<SplitSectionType["leftColumn"], number
           </Stack>
         </div>
       );
-
-
   }
 }
 
-function SplitSection({leftColumn, rightColumn, intent}: SplitSectionProps) {
+function SplitSection({ leftColumn, rightColumn, intent }: SplitSectionProps) {
   return (
-    <Section as="section" paddingY="md" className={splitSectionVariants({ intent })} >
+    <Section
+      as="section"
+      paddingY="md"
+      className={splitSectionVariants({ intent })}
+    >
       <Container data-intent={intent}>
         <div className="grid grid-cols-1 gap-x-6 md:grid-cols-2">
           <Stack orientation="vertical" className="justify-center">
-            {leftColumn.map((item) => renderContent({ item }))}
+            {leftColumn?.map((item) => renderContent({ item }))}
           </Stack>
           <Stack orientation="vertical" className="justify-center">
-            {rightColumn.map((item) => renderContent({ item }))}
+            {rightColumn?.map((item) => renderContent({ item }))}
           </Stack>
         </div>
       </Container>
     </Section>
   );
-};
+}
 
 export default SplitSection;
