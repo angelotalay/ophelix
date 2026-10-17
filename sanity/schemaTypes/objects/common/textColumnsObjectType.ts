@@ -1,5 +1,5 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
-import { BlockElementIcon } from "@sanity/icons";
+import { BlockElementIcon } from "@sanity/icons/BlockElement";
 import { COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
 
 const columnArrayMembers = [

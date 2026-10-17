@@ -1,5 +1,5 @@
 import { defineType, defineField } from "sanity";
-import { PanelLeftIcon } from "@sanity/icons";
+import { PanelLeftIcon } from "@sanity/icons/PanelLeft";
 import { DOCUMENTS, COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
 
 const navigationHeaderDocument = defineType({

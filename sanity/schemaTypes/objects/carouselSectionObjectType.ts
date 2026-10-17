@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { OBJECTS, COMMON_OBJECTS } from "@/sanity/schemaTypes/constants";
-import { ImageIcon } from "@sanity/icons";
+import { ImageIcon } from "@sanity/icons/Image";
 
 const imageCarouselObjectType = defineType({
   name: OBJECTS.carousel,

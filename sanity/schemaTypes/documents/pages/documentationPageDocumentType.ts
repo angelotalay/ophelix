@@ -1,6 +1,6 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
-import { EarthGlobeIcon } from "@sanity/icons";
-import { CalendarIcon } from "@sanity/icons";
+import { EarthGlobeIcon } from "@sanity/icons/EarthGlobe";
+import { CalendarIcon } from "@sanity/icons/Calendar";
 import {
   DOCUMENTS,
   COMMON_OBJECTS,

@@ -1,6 +1,6 @@
 import { defineType, defineField } from "sanity";
 import { OBJECTS } from "@/sanity/schemaTypes/constants";
-import { BlockElementIcon } from "@sanity/icons";
+import { BlockElementIcon } from "@sanity/icons/BlockElement";
 import alignmentField, { ALIGNMENT_TYPES } from "@/sanity/schemaTypes/fields/alignmentField";
 import intentField from "@/sanity/schemaTypes/fields/intentField";
 
