@@ -1,5 +1,5 @@
 import { defineType, defineField } from "sanity";
-import { BlockElementIcon } from "@sanity/icons";
+import { BlockElementIcon } from "@sanity/icons/BlockElement";
 import { OBJECTS } from "@/sanity/schemaTypes/constants";
 import intentField from "@/sanity/schemaTypes/fields/intentField";
 import eyebrowField from "@/sanity/schemaTypes/fields/eyebrowField";

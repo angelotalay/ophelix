@@ -1,7 +1,7 @@
 import { defineType, defineField } from "sanity";
 import intentField from "@/sanity/schemaTypes/fields/intentField";
 import { OBJECTS } from "@/sanity/schemaTypes/constants";
-import { BlockElementIcon } from "@sanity/icons";
+import { BlockElementIcon } from "@sanity/icons/BlockElement";
 
 const splitCtaSectionObjectType = defineType({
   name: OBJECTS.splitCta,

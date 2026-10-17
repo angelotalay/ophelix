@@ -1,5 +1,5 @@
 import { defineType, defineField } from "sanity";
-import { EditIcon } from "@sanity/icons";
+import { EditIcon } from "@sanity/icons/Edit";
 import { DOCUMENTS } from "@/sanity/schemaTypes/constants";
 
 const footerDocumentType = defineType({

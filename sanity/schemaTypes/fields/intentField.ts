@@ -1,5 +1,5 @@
 import { defineField } from "sanity";
-import { ColorWheelIcon } from "@sanity/icons";
+import { ColorWheelIcon } from "@sanity/icons/ColorWheel";
 
 const intentField = defineField({
   name: "intent",

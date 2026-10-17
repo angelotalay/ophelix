@@ -1,5 +1,5 @@
 import { defineType, defineField } from "sanity";
-import { ControlsIcon } from "@sanity/icons";
+import { ControlsIcon } from "@sanity/icons/Controls";
 
 const siteSettingsDocumentType = defineType({
   name: "siteSettings",
