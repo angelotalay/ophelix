@@ -33,18 +33,18 @@ function ProductSpecificationSection({
             <h1 className="text-5xl">{title}</h1>
             <p className="">{text}</p>
           </Stack>
-          <Stack orientation={"vertical"} gap={"sm"}>
+          <Stack orientation={"vertical"} gap={"sm"} className="w-full">
             {specificationItems &&
               specificationItems.map((item) => (
-                <Stack key={item._key} orientation="horizontal" gap="lg">
+                <Stack key={item._key} orientation="horizontal" gap="lg" className="justify-around">
                   <Stack orientation="vertical" gap="md">
                     <h2 className="text-4xl">{item.title}</h2>
                     <p>{item.text}</p>
                   </Stack>
                   {item.image?.url && (
                     <Image
-                      width={item.image.imageDimensions?.width ?? 200}
-                      height={item.image.imageDimensions?.height ?? 200}
+                      width={250}
+                      height={250}
                       src={item.image.url}
                       alt={item.image.alt ?? ""}
                     />
